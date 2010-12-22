@@ -1,0 +1,22 @@
+= Wordpress posts
+
+See wp.xml
+
+= Import wp to individual yaml posts
+
+First, make sure you have 'save_to_yaml(load_wp(ARGV[0]))' UNcommented inside wp2gh.rb
+
+  ruby wp2gh.rb wp.xml
+
+This writes the '.yml' files to ./_raw and the '.textile' to ./_posts
+
+= Updating a post
+
+Edit the individual yaml file. Then, make sure 'save_to_yaml(load_wp(ARGV[0]))' is COMMENTED.
+
+  ruby wp2gh.rb
+  git add .
+  git commit -m 'your message'
+  git push
+
+
