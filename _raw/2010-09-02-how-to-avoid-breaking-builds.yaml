@@ -1,0 +1,50 @@
+title:        'How to avoid breaking builds'
+published_at: '2010-09-02'
+filename:     '2010-09-02-how-to-avoid-breaking-builds'
+content: |-
+  <img class="alignleft" src="http://www.bryanbibat.net/images/git-logo.png" alt="git" /> The guy I’m mentoring right now in one of my freelancing gigs is fairly new to software development so I decided to give him a couple of guidelines (conveniently posted on the project’s wiki) on how to properly use <a href="http://blog.bryanbibat.net/2009/06/10/distributed-revision-control/">git</a>.
+  
+  Hopefully this should spare me the horrible flashbacks to the days when everyone I was working with was consistently breaking builds everyday.
+  <blockquote>
+  <h3>Best Practices</h3>
+  <ul>
+  	<li><strong>Commit often.</strong> The more you commit, the easier it is to do stuff like rolling back changes or pinpointing where a change was committed.</li>
+  	<li><strong>Put a meaningful comment every commit.</strong> You’ll be thankful you did that 3-6 months down the line when you’re trying to verify if a certain piece of code is a bug or a feature.</li>
+  	<li><strong>Push with care.</strong> Follow the procedure below to avoid breaking the build i.e. pushing a version of the code which doesn’t work.</li>
+  </ul>
+  <h3>Proper Version Control Procedure</h3>
+  Before you push your code to the repository, please follow the following procedure:
+  <ul>
+  	<li>If you still haven’t done it yet, commit your changes to your local repository (<tt>git add</tt> and/or <tt>git commit -a -m</tt>).</li>
+  </ul>
+  <ol>
+  	<li>Pull the changes from the remote repository (<tt>git pull</tt>).</li>
+  	<li>In case of conflict, manually edit the conflicting files.
+  <ul>
+  	<li>You may have to collaborate with the other dev for this.</li>
+  	<li>After fixing the conflict, commit the merged changes and go back to step 1 (<tt>git pull</tt>).</li>
+  </ul>
+  </li>
+  	<li>Run the DB migrations.</li>
+  	<li>Run the RSpec tests.
+  <ul>
+  	<li>If the specs fail, either fix the code or fix the specs.</li>
+  	<li>After fixing the failing specs, commit the fixes and go back to step 1.</li>
+  </ul>
+  </li>
+  	<li>Run the Cucumber tests.
+  <ul>
+  	<li>If the specs fail, either fix the code or fix the features.</li>
+  	<li>After fixing the failing features, commit the fixes and go back to step 1.</li>
+  </ul>
+  </li>
+  	<li>Do a simple developer test. Open the server, log in, and open a couple of pages.
+  <ul>
+  	<li>If the system doesn’t work, find the problem and fix it.</li>
+  	<li>After making the system run smoothly again, commit the fixes and go back to step 1.</li>
+  </ul>
+  </li>
+  	<li>You can now push your changes to the remote repository using <tt>git push</tt>.</li>
+  </ol>
+  </blockquote>
+  You might notice that we’re using RSpec and Cucumber in our project. I’ll talk more about them in a later post.

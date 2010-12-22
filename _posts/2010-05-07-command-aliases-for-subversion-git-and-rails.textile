@@ -1,0 +1,51 @@
+---
+layout: post
+title:        'Command aliases for Subversion, Git and Rails'
+published_at: 2010-05-07
+---
+
+<h1> {{ page.title }} </h1>
+
+<p class='meta'> {{ page.published_at }} </p>
+
+<p>I got a Peepcode unlimited last year which came with a nice video about the command line. <a href="http://peepcode.com/products/advanced-command-line" >Check it out</a>.</p>
+
+<p>Not too many people will find this interesting. For me, it's something I just want to do for myself (and for those I'd work for if I'm still employed).</p>
+
+<h2>Aliases matter</h2> 
+
+
+<p>I haven't organized my aliases into a separate file as shown in the video but I am using some useful aliases right now.</p>
+
+<p>These are some of the aliases I have:</p>
+
+<pre class="brush: ruby">
+alias start_mysql="/Library/StartupItems/MySQLCOM/MySQLCOM start"
+alias stop_mysql="/Library/StartupItems/MySQLCOM/MySQLCOM stop"
+#adds all new and modified files for a git repository
+alias ga="git add ."
+#adds all new files for subversion 
+alias sa="svn status | grep "^\?" | sed -e 's/? *//' | sed -e 's/ /\\ /g' | xargs svn add"
+</pre>
+
+
+<p>I find Rails 3 commands much more confusing than the old ones although they seem to be nearly the same. Plus it gets a little  complex considering I'm using different versions. For those following through my posts regarding Rails on OS X/ Linux, you'd probably find this useful.</p>
+
+<pre class="brush: ruby">
+#The new command to install a plugin in Rails 3 (subject to change - probably) 
+ruby script/rails plugin install plugin_repository
+</pre>
+
+
+<p>A little long right? This is what I need for sanity:</p>
+
+<pre class="brush: ruby">
+alias plugin_install="ruby script/rails plugin install"
+#use Rails3 for Ruby 1.8.7 
+alias r3="rvm 1.8.7%rails3"
+#use Rails3 version and starts the rails app
+alias rs="rvm 1.8.7%rails3 && rails server"
+</pre>
+
+
+<p>Sweet. Now I can sleep. Zzzz...</p>

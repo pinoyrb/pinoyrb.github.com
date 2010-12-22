@@ -1,0 +1,38 @@
+title:        'Book Review: Tapworthy'
+published_at: '2010-08-01'
+filename:     '2010-08-01-book-review-tapworthy'
+content: |-
+  <p><img src="http://covers.oreilly.com/images/0636920001133/cat.gif" alt="Tapworthy" /><br />
+  <strong>Tapworthy</strong><br />
+  Designing Great iPhone Apps<br />
+  by Josh Clark<br />
+  Publisher: O&#8217;Reilly Media<br />
+  Released: June 2010<br />
+  320 pages</p>
+  <p>I&#8217;m a programmer who occasionally dabbles in user interface design when I&#8217;m doing solo projects. I know enough to know when a UI is bad or good, but I&#8217;m at a loss on how to create good UI from scratch. On my iPhone games, I do my own UI. There&#8217;s the <a href="http://developer.apple.com/iphone/library/documentation/userexperience/conceptual/mobilehig/Introduction/Introduction.html" onclick="pageTracker._trackPageview('/outgoing/developer.apple.com/iphone/library/documentation/userexperience/conceptual/mobilehig/Introduction/Introduction.html?referer=');">iPhone Human Interface Guid</a>e, but I feel that it&#8217;s a bit hard to digest and I feel that it&#8217;s too specific to non-gaming applications.  </p>
+  <p><a href="http://oreilly.com/catalog/0636920001133" onclick="pageTracker._trackPageview('/outgoing/oreilly.com/catalog/0636920001133?referer=');">Tapworthy</a> takes iPhone HIG then mixes it with insights from recent user interface research and human psychology. The result is a very readable guide with specific do&#8217;s and don&#8217;ts to follow in designing your iPhone app interface. The tips, along with the long but readable discussion on the principles behind those tips, are general enough that even game developers will find them useful.</p>
+  <p>For example, the recommended hit region for user interface elements should be 44&#215;44 pixels. This is a very important principle to follow (n00b mistake: on an app I was developing, I started with swipeable coins that are 20&#215;20. Not surprisingly, on my first user tests, the users found the coins too small and very hard to swipe). The iPhone HIG actually mentions this, but this tip is buried in there and is only mentioned three times. In Tapworthy, this tip has its own section title (&#8220;The Magic Number is 44&#8243;) and is mentioned more than a dozen times to really drill in the point.</p>
+  <p>Another solid tip from the book: Do not use text in designing the app&#8217;s icon. It won&#8217;t be readable, and it will just add visual clutter to the icon. This tip is actually part of an entire 30-page chapter (Chapter 7) devoted to App Icon Design.</p>
+  <p>I can&#8217;t find anything that I don&#8217;t like about this book. It can use some improvements, though:</p>
+  <ul>
+  <li>Given that roughly half of iPhone apps are games, it could add more tips specific to gaming applications. Maybe games aren&#8217;t in the author&#8217;s repertoire, and that&#8217;s a topic for another book.</li>
+  <li>The book contains lots of internal references, e.g. &#8220;&#8230;a concept explained in the Facebook case study on page 236&#8230;&#8221;. On the PDF version, the references aren&#8217;t links, though. What&#8217;s more, on the ePub version, when reading it on Stanza for the iPhone, the links are meaningless because the ePub pages on Stanza doesn&#8217;t really match the PDF&#8217;s page numbers. This isn&#8217;t major, though, and it&#8217;s something O&#8217;Reilly can easily fix with an updated digital release.</li>
+  </ul>
+  <p>If I have to describe this book in a nutshell, I&#8217;ll say it&#8217;s Alan Cooper&#8217;s <a href="http://www.amazon.com/About-Face-Essentials-Interface-Design/dp/1568843224" onclick="pageTracker._trackPageview('/outgoing/www.amazon.com/About-Face-Essentials-Interface-Design/dp/1568843224?referer=');">About Face</a>, translated to the iPhone world. Great work.</p>
+  
+  <!-- Quick Adsense WordPress Plugin: http://techmilieu.com/quick-adsense -->
+  <div style="float:none;margin:10px 0 10px 0;text-align:center;">
+  <script type="text/javascript"><!--
+  google_ad_client = "pub-9240414629474053";
+  /* 234x60, created 12/28/09 */
+  google_ad_slot = "7708933576";
+  google_ad_width = 234;
+  google_ad_height = 60;
+  //-->
+  </script>
+  <script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+  </script>
+  </div>
+  
+  <div style="font-size:0px;height:0px;line-height:0px;margin:0;padding:0;clear:both"></div>

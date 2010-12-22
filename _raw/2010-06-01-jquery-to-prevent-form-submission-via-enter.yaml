@@ -1,0 +1,6 @@
+title:        'jQuery to prevent form submission via ENTER'
+published_at: '2010-06-01'
+filename:     '2010-06-01-jquery-to-prevent-form-submission-via-enter'
+content: |-
+  <p>Note to self:</p>
+  <script src='http://gist.github.com/420440.js?file=prevent-enter.js' />

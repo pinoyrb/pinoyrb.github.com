@@ -1,0 +1,59 @@
+---
+layout: post
+title:        'Sinatra Gems and Frameworks You Should Know About'
+published_at: 2010-04-19
+---
+
+<h1> {{ page.title }} </h1>
+
+<p class='meta'> {{ page.published_at }} </p>
+
+<p><strong><a href="http://github.com/padrino/padrino-framework" >Padrino</a></strong></p>
+
+<p>The godfather of Sinatra. Those who like Rails will probably want to start with Padrino rather than just bare-bones Sinatra DSL. Check out the <a href="http://www.padrinorb.com/guides/blog-tutorial" >blog tutorial</a>.</p>
+
+<p>This entire blog in Sinatra has about 200 lines of code and uses various gems. It is very simple because I like simplicity and I believe there are just a lot of things about Wordpress which I do not need.</p>
+
+<p>Gems you might want to use:</p>
+
+<p><strong><a href="http://github.com/jnicklas/carrierwave" >Carrierwave</a></strong></p>
+
+<p>An alternative to Paperclip for uploading images for Rails apps. It is framework-agnostic so you can use it for Sinatra apps.</p>
+
+<p><strong><a href="http://github.com/nakajima/rack-flash" >Rack Flash</a></strong></p>
+
+<p>Missing flash notices in Rails? You'll definitely need this one.</p>
+
+<p>on your app:</p>
+
+<pre class="brush: ruby">
+
+post '/sing' do
+
+  flash[:notice]  = "Post has been created."
+
+end
+
+</pre>
+
+
+<p>on your views or layout:</p>
+
+<pre class="brush: ruby">
+
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+</pre>
+
+
+<p><strong><a href="http://github.com/adamwiggins/pony" >Pony</a></strong></p>
+
+<p>Pony is used for sending email much like ActionMailer in Rails.</p>
+
+<p><strong><a href="http://github.com/rsl/stringex" >Stringex</a></strong></p>
+
+<p>For clean url's. I have a lot of posts about google-friendly links and I wrote about friendly id which is used by nearly every Rails developer in the world. I do feel, however, the advantages of just using Stringex. Imagine having better queries if your slug isn't found on different table. It's a lot faster that way.</p>
+
+<p>If any one of you have heard about <a href="http://railsplugins.org" >Rails Plugins</a> site which is dedicated to finding out which gems work for Rails3, I think there should be a site for Rubyists in general wherein Ruby programmers, Gem developers and users can discuss whether gems work for a specific framework. There are DSL's other than Sinatra. And for me there's nothing wrong with that as long as we have a way of knowing what works and what doesn't work for the DSL.</p>

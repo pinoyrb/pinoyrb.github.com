@@ -1,0 +1,41 @@
+---
+layout: post
+title:        'How to Get Amazon Data Using Ruby'
+published_at: 2010-05-24
+---
+
+<h1> {{ page.title }} </h1>
+
+<p class='meta'> {{ page.published_at }} </p>
+
+<p>This is post is inspired by several posts of Greg Moreno on RubyonCloud. Check out <a href="http://www.rubyoncloud.org" >the site</a>.</p>
+
+<p>Install the <a href="http://github.com/jugend/amazon-ecs/" >Amazon ECS gem</a>. If you're already using Amazon s3 gem, you don't need to create a new config/yaml file.</p>
+
+<p>I almost always use a module for configuration. A module can be included on any controller/model/another module in the application.</p>
+
+<pre class="brush: ruby">
+module GlobalStuff
+
+  raw_config = File.read(RAILS_ROOT + "/config/amazon_s3.yml")
+  env = RAILS_ENV
+  APP_CONFIG = YAML.load(raw_config)[env]
+  AMAZON_ACCESS_KEY_ID = APP_CONFIG["access_key_id"]
+  AMAZON_SECRET = APP_CONFIG["secret_access_key"]
+
+end
+
+</pre>
+
+
+<p>What you might want to do: Get the image of the product and the detailed page url.</p>
+
+<p>You can probably do it on a model called amazon.rb and or any existing model file.</p>
+
+<pre class="brush: ruby">
+include GlobalStuff  
+Amazon::Ecs.options = {:aWS_access_key_id => AMAZON_ACCESS_KEY_ID, :aWS_secret_key => AMAZON_SECRET}
+res = Amazon::Ecs.item_search("0307463745", :response_group => 'Medium', :sort => 'salesrank')
+res.items[0].get('mediumimage/url')
+res.items[0].get('detailpageurl')
+</pre>

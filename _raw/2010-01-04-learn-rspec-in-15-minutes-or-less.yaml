@@ -1,0 +1,121 @@
+title:        'Learn RSpec in 15 Minutes or Less'
+published_at: '2010-01-04'
+filename:     '2010-01-04-learn-rspec-in-15-minutes-or-less'
+content: |-
+  <p>You can learn RSpec in less than 15 minutes especially if you are not Rails newbie. RSpec and BDD is a way of getting an application done right in an unbelievably short period of time.</p>
+  
+  <p>BDD is behaviour-driven development. You think about all the specification and expectations regarding a project before working on it. That's what most software developers normally do. I spend at least one day just thinking about specifications and based on experience - I think about several details like:</p>
+  
+  <ol>
+  <li>User Interface (Look and feel)</li>
+  <li>Project Goals (What makes the application fun? Who are your audience? How can you profit from the project?)</li>
+  <li>Plugins and Gems required by the project</li>
+  <li>Key Features - (What feature can't be deferred?)</li>
+  <li>What can go wrong? (OOP is now pronounced "uh-oh P")</li>
+  </ol>
+  
+  
+  <p>Regarding number 3 and 4, they are quite related and it usually takes over a day to think about everything. For number 5, I usually don't stress about it but I do consider things like server issues.</p>
+  
+  <p>Let's do another blog application :</p>
+  
+  <pre class="brush: ruby">
+  #on config/environments/test.rb
+  
+  config.gem 'rspec-rails', :lib=>false
+  config.gem 'rspec', :lib=>false
+  config.gem 'cucumber', :lib=>false
+  
+  Do rake gems:install RAILS_ENV=test
+  
+  </pre>
+  
+  
+  
+  
+  <pre class="brush: ruby">
+  script/generate rspec_scaffold Post user_id:integer title:string body:text
+  </pre>
+  
+  
+  <p>The code above generates everything - MVC + Spec tests. Someone asked me if I do use the default scaffolds in Rails. I do use scaffolding but with RSpec (rspec_scaffold).</p>
+  
+  <p>Adding Authlogic for authentication. (If required later, you can try declarative authorization or role requirement for role-based authorization.)</p>
+  
+  <pre class="brush: ruby">
+  
+  script/plugin install git://github.com/binarylogic/authlogic.git
+  
+  </pre>
+  
+  
+  <p>Here's a nice write-up on <a href="http://rails.anyware-technologies.com.br/2009/04/21/tdd-on-rails-4-rspec-authlogic-factory_girl-and-resource_controller/" >Rspec and authlogic.</a></p>
+  
+  <p>A more real-world example of an rspec model test (taken off a previous project of mine) of RSpec:</p>
+  
+  <pre class="brush: ruby">
+  
+  #in spec/models/article_spec.rb 
+  
+  require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+  
+  describe Article do
+    before(:each) do
+      @article = Article.new
+      @filename = "01.jpg"
+      @file_type = "image/jpeg"
+      @file_size = "304986"
+      @file_updated_at    = Time.now
+      @date = Time.now
+    end
+  
+    it "should not be valid when empty" do
+      @article.should_not be_valid
+    end
+  
+    ['user_id, title, body, category_id, date'].each do |field|
+      it "should require #{field}" do
+       @article.should_not be_valid
+      end
+    end
+    
+    it "should be valid when details are not empty" do
+      @article.user_id = 1
+      @article.title = "A long day and things are still not right"
+      @article.body = "There are many variations of passages of 
+  Lorem Ipsum available, but the majority have suffered 
+  alteration in some form, by injected humour, or randomised words 
+  which don't look even slightly believable. 
+  If you are going to use a passage of Lorem Ipsum, you need 
+  to be sure there isn't anything embarrassing hidden in the 
+  middle of text.
+  
+  All the Lorem Ipsum generators on the Internet tend to 
+  repeat predefined chunks as necessary, making this the first 
+  true generator on the Internet. 
+  It uses a dictionary of over 200 Latin words, 
+  combined with a handful of model sentence structures, 
+  to generate Lorem Ipsum which looks reasonable. 
+  The generated Lorem Ipsum is therefore always free 
+  from repetition, injected humour, or non-characteristic 
+  words etc."
+      @article.category_id = Category.new
+      @article.photo_file_name = @filename
+      @article.photo_content_type = @file_type
+      @article.photo_file_size = @file_size
+      @article.photo_updated_at = @file_updated_at
+      @article.date = @date
+      @article.should be_valid
+    end
+  
+  
+  end
+  
+  </pre>
+  
+  
+  <p><strong>RSpec in Rails 3</strong></p>
+  
+  <p>Based on observation, RSpec has better acceptance in the rails community than the default test suite. I am expecting Rails 3 book to cover more about automated testing with RSpec.</p>
+  
+  <p>Happy New Year! I love Rails and all the people working hard to make it better.</p>

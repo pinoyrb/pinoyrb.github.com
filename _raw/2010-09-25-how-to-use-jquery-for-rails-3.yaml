@@ -1,0 +1,75 @@
+title:        'How to Use jQuery For Rails 3'
+published_at: '2010-09-25'
+filename:     '2010-09-25-how-to-use-jquery-for-rails-3'
+content: |-
+  <p>jQuery is the defacto Javascript framework used by happy programmers. I am very glad to use it in almost all of the applications I am working on.</p>
+  
+  <p>There are many posts on how to use it for Rails 3. But here's another one which may help Rails 3 newbies (aren't we all newbies when it comes to Rails 3?).</p>
+  
+  <p><strong> The jQuery Rails gem </strong></p>
+  
+  <p>In your Gemfile, include the jquery-rails gem created by Andre Arko of Engine Yard.</p>
+  
+  <pre class="brush: ruby">
+  gem "jquery-rails"
+  </pre>
+  
+  
+  <p>And install the gem using the command:</p>
+  
+  <pre class="brush: ruby">
+  
+  bundle install
+  </pre>
+  
+  
+  <p>Install jQuery. The following command will remove prototype and scriptaculous files and add jQuery to your application:</p>
+  
+  <pre class="brush: ruby">
+  rails generate jquery:install
+  or
+  rails g jquery:install
+  </pre>
+  
+  
+  <p><strong> Using livequery </strong></p>
+  
+  <p>So you probably know that the following code will no longer work:</p>
+  
+  <pre class="brush: ruby">
+  <= link_to_remote 'delete', :url => admin_image_path(image), :confirm => 'Are you sure you want to delete this image?', :method => :delete >
+  </pre>
+  
+  
+  <p>They probably realized there's way too much javascript on the body tags making Rails apps look ugly when you view the source.</p>
+  
+  <p>There's a need to include <a href="http://docs.jquery.com/Plugins/livequery" >livequery</a>  within the head tag or before closing body tag if you wish to follow the YSlow recommendations.</p>
+  
+  <pre class="brush: ruby">
+  
+  On application.js 
+  
+  $('a[data-remote=true]').livequery('click', function() {
+    return request({ url : this.href });
+  });
+   
+  
+  $('form[data-remote=true]').livequery('submit', function() {
+    return request({ url : this.action, type : this.method, data : $(this).serialize() });
+  });
+  
+  $(function() {
+    $(".alert").click(function() {
+      alert(this.getAttribute("data-confirm"));
+      return false;
+    })
+  })
+  
+  
+  Replace the link_to_remote code with the following: 
+  
+  <%=link_to "Delete", admin_image_path(image), :method=>:delete, :confirm=>"Are you sure you want to delete this image?", :remote=>:true, :class=>"alert"%>
+  </pre>
+  
+  
+  <p>That is it! Advantages of this code over the previous code is obvious. It's not obtrusive and it works. Congratulations to all of us. We're no longer living in caves and eating whatever exists in the wild. We actually have a choice.</p>

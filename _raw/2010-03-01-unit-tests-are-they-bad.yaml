@@ -1,0 +1,29 @@
+title:        'Unit tests: Are they bad?'
+published_at: '2010-03-01'
+filename:     '2010-03-01-unit-tests-are-they-bad'
+content: |-
+  <p>Jay fields wrote a blog post about the <a href='http://blog.jayfields.com/2010/02/maintainability-of-unit-tests.html'>maintainability of tests</a>. Basically his takeaways were the following:</p>
+  
+  <ol>
+  <li>You should <strong>probably</strong> write unit tests</li>
+  
+  <li>Only focus on the test cases which provides the <strong>most business value</strong>.</li>
+  
+  <li>Make tests <strong>more concise</strong>.</li>
+  </ol>
+  
+  <p>I have been on the other side of the fence, and have gone berserk writing tests for all cases, working hard to increase the coverage of my code. I have even followed the &#8220;Unit tests should only access itself, and should only interact with other objects via mocks and stubs&#8221; advice. All that led to just more maintainability, so I agree that there is a striking balance to maximize the ROI of your testing efforts.</p>
+  
+  <h2 id='most_of_the_data_validation_parts_are_important'>Most of the data validation parts are important</h2>
+  
+  <p>In order to address maintainability and conciseness while still testing almost all of your validations, we just use macros. An example of this would be:</p>
+  <script src='http://gist.github.com/318023.js?file=item_spec.rb' />
+  <p>The bulk of the work here would be writing the matchers, but if you create enough reusable matchers anyway, the return of investment for writing the matchers would be very high. (I&#8217;ve written Rails 3 / Rspec 2 only matchers which can be found <a href='http://rubygems.org/gems/rspec-rails-matchers'>here</a>.</p>
+  
+  <h2 id='conciseness_is_king'>Conciseness is king!</h2>
+  
+  <p>Again, I just have to stress the value of matchers here. A concrete case here is date parsing, and its importance to us (the product makers) that it just works. Example:</p>
+  <script src='http://gist.github.com/318028.js?file=item_spec_date.rb' />
+  <h2 id='test_wisely'>Test wisely</h2>
+  
+  <p>If you charge by the hour, you have to take into consideration that every programming decision you make will cost your client money. If you&#8217;re working for your own product, you have to weigh the benefit of having 90% test coverage versus having all the cool effects in your UI for example.</p>

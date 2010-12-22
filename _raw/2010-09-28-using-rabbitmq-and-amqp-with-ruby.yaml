@@ -1,0 +1,82 @@
+title:        'Using RabbitMQ and AMQP with Ruby'
+published_at: '2010-09-28'
+filename:     '2010-09-28-using-rabbitmq-and-amqp-with-ruby'
+content: |-
+  <p><em>This post is also available at <a href="http://rubyoncloud.org">Ruby On Cloud</a></em></p>
+  <p><a href="http://www.amqp.org/">AMQP</a> stands for Advanced Message Queuing Protocol. RabbitMQ is a server that implements the protocol. RabbitMQ is available on Linux, OSX, and Windows. Installation instructions for RabbitMQ are available at <a href="http://www.rabbitmq.com/install.html">http://www.rabbitmq.com/install.html</a></p>
+  <p>I will be running RabbitMQ on Ubuntu 9.10. First, let&#8217;s install the server:</p>
+  <pre class="brush: bash;">
+      apt-get install rabbitmq-server
+  </pre>
+  <p>Note the server is installed as a daemon after the installation. Just to be sure, let&#8217;s stop and start the server.</p>
+  <pre class="brush: bash;">
+      greg@gohan:~$ sudo /etc/init.d/rabbitmq-server stop
+      Stopping rabbitmq-server: rabbitmq-server.
+      greg@gohan:~$ sudo /etc/init.d/rabbitmq-server start
+      Starting rabbitmq-server: SUCCESS
+      rabbitmq-server.
+  </pre>
+  <p>Next, we install the amqp gem by Aman Gupta. The gem can also be found at <a href="http://github.com/tmm1/amqp">http://github.com/tmm1/amqp</a></p>
+  <pre class="brush: bash;">
+      greg@gohan:~$ gem install amqp
+      Building native extensions.  This could take a while...
+      Successfully installed eventmachine-0.12.10
+      Successfully installed amqp-0.6.7
+      2 gems installed
+  </pre>
+  <p>Let&#8217;s now build a simple publisher code. Note the difference in the gem&#8217;s name and the file you need to use the gem.</p>
+  <pre class="brush: ruby;">
+      require 'mq'
+  
+      Thread.new { AMQP.start }
+  
+      # All queues are created automatically the first time it is
+      # accessed. Make sure this is the same queue our consumers
+      # will use.
+      q = MQ.queue('my_queue')
+  
+      i=0
+      while true
+        i += 1
+        q.publish(&quot;Hello, World #{i}&quot;)
+        sleep(1)
+      end
+  </pre>
+  <p>Next, the consumer code:</p>
+  <pre class="brush: ruby;">
+      require 'mq'
+  
+      AMQP.start do
+        q = MQ.queue('my_queue')
+  
+        q.subscribe do |msg|
+          puts &quot;#{Time.now}: #{msg}&quot; if msg
+        end
+      end
+  </pre>
+  <p>The &#8216;subscribe&#8217; method registers with the queue telling it to call the block when a message has arrived. Alternatively, you can use &#8216;pop&#8217; but this would constantly poll the server for new messages making unnecessary calls even if the queue is empty.</p>
+  <pre class="brush: ruby;">
+      AMQP.start do
+        q = MQ.queue('my_queue')
+        q.pop do |msg|
+          puts &quot;#{Time.now}: #{msg}&quot; if msg
+          q.pop
+        end
+      end
+  </pre>
+  <p>If you want to run AMQP on several machines, just specify the location of the broker in your publisher and consumer code:</p>
+  <pre class="brush: ruby;">
+      AMQP.start(:host =&gt; '192.168.0.195') do
+        # code here
+      end
+  </pre>
+  <p>You only need to run 1 rabbitmq server, which in my case is on Ubuntu. When you try the code in other machines, you only need the <a href="http://github.com/tmm1/amqp">amqp</a> gem installed.</p>
+  <p>I highly recommend &#8220;<a href="http://tinyurl.com/2aqcz22">Distributed Programming with Ruby</a>&#8221; by Mark Bates if you&#8217;re interested in distributed programming.</p>
+  
+  
+  <p>Related posts:<ol><li><a href='http://gregmoreno.ca/how-to-setup-a-rails-3-app/' rel='bookmark' title='Permanent Link: How to setup a Rails 3 app'>How to setup a Rails 3 app</a> <small>I finally decided to give Rails 3 a spin after beta was released 20 days ago. In geek time, that&#8217;s being a late adopter. But first, a warning. I&#8217;ve read...</small></li>
+  <li><a href='http://gregmoreno.ca/deploy-a-rails-3-sqlite3-application-in-tomcat-using-jruby/' rel='bookmark' title='Permanent Link: Deploy a Rails 3, Sqlite3 application in Tomcat using JRuby'>Deploy a Rails 3, Sqlite3 application in Tomcat using JRuby</a> <small>and have a Ruby version running side-by-side. A few months ago I got interested in JRuby while researching for text mining algorithms. I found some gems but they are either...</small></li>
+  <li><a href='http://gregmoreno.ca/ruby-101-how-to-add-methods-to-a-ruby-class/' rel='bookmark' title='Permanent Link: Ruby 101: How to add methods to a Ruby class'>Ruby 101: How to add methods to a Ruby class</a> <small>Let’s add a method that checks whether an Array has many elements. a = [1,2,3] a.many? # NoMethodError: undefined method `many?' Let’s fix this by adding a new method to...</small></li>
+  </ol></p>
+  <p><a href="http://feedads.g.doubleclick.net/~a/a1ChoPbfLSf_hBwmmvFHSEOXYXA/0/da"><img src="http://feedads.g.doubleclick.net/~a/a1ChoPbfLSf_hBwmmvFHSEOXYXA/0/di" border="0" ismap="true"></img></a><br/>
+  <a href="http://feedads.g.doubleclick.net/~a/a1ChoPbfLSf_hBwmmvFHSEOXYXA/1/da"><img src="http://feedads.g.doubleclick.net/~a/a1ChoPbfLSf_hBwmmvFHSEOXYXA/1/di" border="0" ismap="true"></img></a></p>

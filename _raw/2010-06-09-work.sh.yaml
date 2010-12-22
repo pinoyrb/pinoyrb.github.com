@@ -1,0 +1,173 @@
+title:        'work.sh'
+published_at: '2010-06-09'
+filename:     '2010-06-09-work.sh'
+content: |-
+  <p>From a cold boot, to start working on one of my Rails projects, I need to do the following:</p>
+  <ul>
+  <ol/> open Terminal, then Start MySQL or PostgreSQL</p>
+  <ol/> in a separate Terminal tab: cd Documents/projects/
+  <projectname> ; mate .</p>
+  <ol/> (if applicable) in a separate Terminal tab: Start Solr or Ferret</p>
+  <ol/> Start Firefox</p>
+  <ol/> Start Evernote
+  </ul>
+  <p>That&#8217;s a lot of keystrokes and mouse actions. No wonder I end up playing games most of the time, because Age of Empires III takes just one click.</p>
+  <p>I can configure MySQL and PostgreSQL to run on startup, but that&#8217;s wasteful. That&#8217;ll slow down the machine&#8217;s startup time, and sometimes I use just MySQL, on other projects I use PostgreSQL, and on other projects I use neither but instead use MongoDB. And that will just take away one step in this 5-step process to get from cold bootup to work bliss.</p>
+  <p>Ideally, there&#8217;s a one-click work button, a sideproject1 button, a sideproject2 button, etc. Press the right button and the Mac will be transformed into a mode optimized for the work to be done: run the needed apps, close unneeded apps, play music from the &#8220;work playlist&#8221;, change the desktop background, etc.</p>
+  <p>I have decided to learn AppleScript to build those magic buttons. Here&#8217;s what I&#8217;ve come up with so far:</p>
+  <div class="code">
+  <code></p>
+  
+  <div class="wp_syntax"><table><tr><td class="line_numbers"><pre>1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+  10
+  11
+  12
+  13
+  14
+  15
+  16
+  17
+  18
+  19
+  20
+  21
+  22
+  23
+  24
+  25
+  26
+  27
+  28
+  29
+  30
+  31
+  32
+  33
+  34
+  35
+  36
+  37
+  38
+  39
+  40
+  41
+  42
+  43
+  44
+  45
+  46
+  47
+  48
+  49
+  50
+  51
+  52
+  53
+  54
+  55
+  56
+  57
+  58
+  59
+  60
+  61
+  62
+  63
+  64
+  65
+  66
+  67
+  68
+  69
+  70
+  71
+  72
+  73
+  74
+  </pre></td><td class="code"><pre class="applescript" style="font-family:monospace;">#!<span style="color: #000000;">/</span>bin<span style="color: #000000;">/</span>sh
+  &nbsp;
+  # <span style="color: #ff0033; font-weight: bold;">From</span>: http:<span style="color: #000000;">//</span>stackoverflow.com<span style="color: #000000;">/</span>questions<span style="color: #000000;">/</span><span style="color: #000000;">1589114</span><span style="color: #000000;">/</span>opening<span style="color: #000000;">-</span>a<span style="color: #000000;">-</span>new<span style="color: #000000;">-</span>terminal<span style="color: #000000;">-</span>tab<span style="color: #000000;">-</span>in<span style="color: #000000;">-</span>osxsnow<span style="color: #000000;">-</span>leopard<span style="color: #000000;">-</span>with<span style="color: #000000;">-</span>the<span style="color: #000000;">-</span>opening<span style="color: #000000;">-</span>terminal<span style="color: #000000;">-</span>windows<span style="color: #000000;">/</span><span style="color: #000000;">1590818</span>#<span style="color: #000000;">1590818</span>
+  # <span style="color: #000000;">&#40;</span>See answer <span style="color: #0066ff;">by</span> i0n that says <span style="color: #009900;">&quot;courtesy of Dan Benjamin&quot;</span> http:<span style="color: #000000;">//</span>twitter.com<span style="color: #000000;">/</span>danbenjamin<span style="color: #000000;">&#41;</span>
+  &nbsp;
+  # Sets up <span style="color: #ff0033; font-weight: bold;">my</span> Infinitely terminal windows
+  &nbsp;
+  # 1. <span style="color: #0066ff;">Run</span> MongoDB
+  # 2. <span style="color: #0066ff;">Run</span> redis <span style="color: #ff0033; font-weight: bold;">in</span> a <span style="color: #0066ff;">new</span> terminal <span style="color: #0066ff;">tab</span>
+  # 3. cd <span style="color: #ff0033; font-weight: bold;">to</span> <span style="color: #ff0033;">the</span> project
+  # 4. <span style="color: #0066ff;">Launch</span> Evernote
+  # 5. <span style="color: #0066ff;">Launch</span> Firefox
+  # 6. <span style="color: #0066ff;">Launch</span> GitX
+  &nbsp;
+  &nbsp;
+  # 1. <span style="color: #0066ff;">Run</span> MongoDB <span style="color: #ff0033; font-weight: bold;">in</span> a <span style="color: #0066ff;">new</span> terminal
+  <span style="color: #000000;">/</span>usr<span style="color: #000000;">/</span>bin<span style="color: #000000;">/</span>osascript <span style="color: #000000;">&lt;&lt;</span>mongo
+  <span style="color: #0066ff;">activate</span> <span style="color: #0066ff;">application</span> <span style="color: #009900;">&quot;Terminal&quot;</span>
+  <span style="color: #ff0033; font-weight: bold;">tell</span> <span style="color: #0066ff;">application</span> <span style="color: #009900;">&quot;System Events&quot;</span>
+  	keystroke <span style="color: #009900;">&quot;t&quot;</span> using <span style="color: #000000;">&#123;</span>command down<span style="color: #000000;">&#125;</span>
+  <span style="color: #ff0033; font-weight: bold;">end</span> <span style="color: #ff0033; font-weight: bold;">tell</span>
+  <span style="color: #ff0033; font-weight: bold;">tell</span> <span style="color: #0066ff;">application</span> <span style="color: #009900;">&quot;Terminal&quot;</span>
+  	<span style="color: #ff0033; font-weight: bold;">repeat</span> <span style="color: #ff0033; font-weight: bold;">with</span> win <span style="color: #ff0033; font-weight: bold;">in</span> windows
+  		<span style="color: #ff0033; font-weight: bold;">try</span>
+  			<span style="color: #ff0033; font-weight: bold;">if</span> <span style="color: #ff0033; font-weight: bold;">get</span> frontmost <span style="color: #ff0033; font-weight: bold;">of</span> win <span style="color: #ff0033; font-weight: bold;">is</span> <span style="color: #0066ff;">true</span> <span style="color: #ff0033; font-weight: bold;">then</span>
+  				do <span style="color: #ff0033; font-weight: bold;">script</span> <span style="color: #009900;">&quot;cd ~; ./mongo.sh&quot;</span> <span style="color: #ff0033; font-weight: bold;">in</span> <span style="color: #000000;">&#40;</span>selected <span style="color: #0066ff;">tab</span> <span style="color: #ff0033; font-weight: bold;">of</span> win<span style="color: #000000;">&#41;</span>
+  			<span style="color: #ff0033; font-weight: bold;">end</span> <span style="color: #ff0033; font-weight: bold;">if</span>
+  		<span style="color: #ff0033; font-weight: bold;">end</span> <span style="color: #ff0033; font-weight: bold;">try</span>
+  	<span style="color: #ff0033; font-weight: bold;">end</span> <span style="color: #ff0033; font-weight: bold;">repeat</span>
+  <span style="color: #ff0033; font-weight: bold;">end</span> <span style="color: #ff0033; font-weight: bold;">tell</span>
+  mongo
+  &nbsp;
+  # 2. <span style="color: #0066ff;">Run</span> redis <span style="color: #ff0033; font-weight: bold;">in</span> a <span style="color: #0066ff;">new</span> terminal
+  <span style="color: #000000;">/</span>usr<span style="color: #000000;">/</span>bin<span style="color: #000000;">/</span>osascript <span style="color: #000000;">&lt;&lt;</span>redis
+  <span style="color: #0066ff;">activate</span> <span style="color: #0066ff;">application</span> <span style="color: #009900;">&quot;Terminal&quot;</span>
+  <span style="color: #ff0033; font-weight: bold;">tell</span> <span style="color: #0066ff;">application</span> <span style="color: #009900;">&quot;System Events&quot;</span>
+  	keystroke <span style="color: #009900;">&quot;t&quot;</span> using <span style="color: #000000;">&#123;</span>command down<span style="color: #000000;">&#125;</span>
+  <span style="color: #ff0033; font-weight: bold;">end</span> <span style="color: #ff0033; font-weight: bold;">tell</span>
+  <span style="color: #ff0033; font-weight: bold;">tell</span> <span style="color: #0066ff;">application</span> <span style="color: #009900;">&quot;Terminal&quot;</span>
+  	<span style="color: #ff0033; font-weight: bold;">repeat</span> <span style="color: #ff0033; font-weight: bold;">with</span> win <span style="color: #ff0033; font-weight: bold;">in</span> windows
+  		<span style="color: #ff0033; font-weight: bold;">try</span>
+  			<span style="color: #ff0033; font-weight: bold;">if</span> <span style="color: #ff0033; font-weight: bold;">get</span> frontmost <span style="color: #ff0033; font-weight: bold;">of</span> win <span style="color: #ff0033; font-weight: bold;">is</span> <span style="color: #0066ff;">true</span> <span style="color: #ff0033; font-weight: bold;">then</span>
+  				do <span style="color: #ff0033; font-weight: bold;">script</span> <span style="color: #009900;">&quot;cd ~; ./redis.sh&quot;</span> <span style="color: #ff0033; font-weight: bold;">in</span> <span style="color: #000000;">&#40;</span>selected <span style="color: #0066ff;">tab</span> <span style="color: #ff0033; font-weight: bold;">of</span> win<span style="color: #000000;">&#41;</span>
+  			<span style="color: #ff0033; font-weight: bold;">end</span> <span style="color: #ff0033; font-weight: bold;">if</span>
+  		<span style="color: #ff0033; font-weight: bold;">end</span> <span style="color: #ff0033; font-weight: bold;">try</span>
+  	<span style="color: #ff0033; font-weight: bold;">end</span> <span style="color: #ff0033; font-weight: bold;">repeat</span>
+  <span style="color: #ff0033; font-weight: bold;">end</span> <span style="color: #ff0033; font-weight: bold;">tell</span>
+  redis
+  &nbsp;
+  # 3. cd <span style="color: #ff0033; font-weight: bold;">to</span> <span style="color: #ff0033;">the</span> workers project
+  <span style="color: #000000;">/</span>usr<span style="color: #000000;">/</span>bin<span style="color: #000000;">/</span>osascript <span style="color: #000000;">&lt;&lt;</span>workers
+  <span style="color: #0066ff;">activate</span> <span style="color: #0066ff;">application</span> <span style="color: #009900;">&quot;Terminal&quot;</span>
+  <span style="color: #ff0033; font-weight: bold;">tell</span> <span style="color: #0066ff;">application</span> <span style="color: #009900;">&quot;System Events&quot;</span>
+  	keystroke <span style="color: #009900;">&quot;t&quot;</span> using <span style="color: #000000;">&#123;</span>command down<span style="color: #000000;">&#125;</span>
+  <span style="color: #ff0033; font-weight: bold;">end</span> <span style="color: #ff0033; font-weight: bold;">tell</span>
+  <span style="color: #ff0033; font-weight: bold;">tell</span> <span style="color: #0066ff;">application</span> <span style="color: #009900;">&quot;Terminal&quot;</span>
+  	<span style="color: #ff0033; font-weight: bold;">repeat</span> <span style="color: #ff0033; font-weight: bold;">with</span> win <span style="color: #ff0033; font-weight: bold;">in</span> windows
+  		<span style="color: #ff0033; font-weight: bold;">try</span>
+  			<span style="color: #ff0033; font-weight: bold;">if</span> <span style="color: #ff0033; font-weight: bold;">get</span> frontmost <span style="color: #ff0033; font-weight: bold;">of</span> win <span style="color: #ff0033; font-weight: bold;">is</span> <span style="color: #0066ff;">true</span> <span style="color: #ff0033; font-weight: bold;">then</span>
+  				do <span style="color: #ff0033; font-weight: bold;">script</span> <span style="color: #009900;">&quot;cd ~/Documents/projects/infinitely/workers; mate .&quot;</span> <span style="color: #ff0033; font-weight: bold;">in</span> <span style="color: #000000;">&#40;</span>selected <span style="color: #0066ff;">tab</span> <span style="color: #ff0033; font-weight: bold;">of</span> win<span style="color: #000000;">&#41;</span>
+  			<span style="color: #ff0033; font-weight: bold;">end</span> <span style="color: #ff0033; font-weight: bold;">if</span>
+  		<span style="color: #ff0033; font-weight: bold;">end</span> <span style="color: #ff0033; font-weight: bold;">try</span>
+  	<span style="color: #ff0033; font-weight: bold;">end</span> <span style="color: #ff0033; font-weight: bold;">repeat</span>
+  <span style="color: #ff0033; font-weight: bold;">end</span> <span style="color: #ff0033; font-weight: bold;">tell</span>
+  workers
+  &nbsp;
+  <span style="color: #0066ff;">sleep</span> <span style="color: #000000;">1</span>
+  # 4. <span style="color: #0066ff;">Launch</span> Evernote
+  <span style="color: #0066ff;">open</span> <span style="color: #000000;">/</span>Applications<span style="color: #000000;">/</span>Evernote.app
+  &nbsp;
+  # 5. <span style="color: #0066ff;">Launch</span> Firefox
+  <span style="color: #0066ff;">open</span> <span style="color: #000000;">/</span>Applications<span style="color: #000000;">/</span>Firefox.app
+  &nbsp;
+  clear</pre></td></tr></table></div>
+  
+  <p></code>
+  </div>
+  <p>There&#8217;s still no &#8220;Open iTunes and play songs in my &#8216;work&#8217; playlist&#8221; section, but I&#8217;m working on it. And here&#8217;s something to make it more interesting: <a href="http://www.apeth.com/rbappscript/00intro.html" onclick="pageTracker._trackPageview('/outgoing/www.apeth.com/rbappscript/00intro.html?referer=');">AppleScripting with Ruby</a>!</p>
+  <p><em>This script borrowed heavily from the ideas of the people in this <a href="http://stackoverflow.com/questions/1589114/opening-a-new-terminal-tab-in-osxsnow-leopard-with-the-opening-terminal-windows/1590818#1590818" onclick="pageTracker._trackPageview('/outgoing/stackoverflow.com/questions/1589114/opening-a-new-terminal-tab-in-osxsnow-leopard-with-the-opening-terminal-windows/1590818_1590818?referer=');">Stackoverflow thread</a>.</em></p>

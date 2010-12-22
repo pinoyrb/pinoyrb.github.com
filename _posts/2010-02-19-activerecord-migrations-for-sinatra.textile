@@ -1,0 +1,138 @@
+---
+layout: post
+title:        'ActiveRecord Migrations for Sinatra'
+published_at: 2010-02-19
+---
+
+<h1> {{ page.title }} </h1>
+
+<p class='meta'> {{ page.published_at }} </p>
+
+<p>I have learned that <a href="http://sequel.rubyforge.org/" >Sequel ORM</a> was simple and is the preferred ORM for Sinatra developers. But I feel so attached to ActiveRecord right now. Basically some of the gems I am using are actually extensions to ActiveRecord and I have grown to love these Ruby gems despite being ActiveRecord-centric. They wouldn't work with DataMapper or anything else.</p>
+
+<p>Creating migrations in Sinatra is simple. Just create db/migrate folder. Create a db/config.yml which is similar to database.yml in Rails.</p>
+
+<p>Example config file:</p>
+
+<pre class="brush: ruby">
+
+development:
+  adapter: mysql
+  encoding: utf8
+  database: mywayorthehighway
+  username: root
+  password: 
+
+</pre>
+
+
+<p>Of course, you can have other environments there.</p>
+
+<p>The very lengthy code below is the magic that makes migrations work. Add them up on the Rakefile.</p>
+
+<pre class="brush: ruby">
+
+require 'rake'
+require 'active_record'
+require 'yaml'
+
+
+desc "Import DB"
+task :import => :environment do
+url = ENV['URL'] or raise "No url specified, use URL="
+
+require 'rest_client'
+posts = YAML.load RestClient.get(url)
+
+posts.each do |post|
+DB[:posts] << post
+end
+end
+
+task :default => :dbsetup
+
+task :loadconfig do
+DBconfig = YAML::load( File.open('db/config.yml') )['development']
+end
+
+desc "Setup db"
+task :dbsetup => :loadconfig do
+create(DBconfig)
+migrate(DBconfig)
+end
+
+desc "Do migrations"
+task :migrate => :loadconfig do
+migrate(DBconfig)
+end
+
+def create( config )
+begin
+if config['adapter'] =~ /sqlite/
+if File.exist?(config['database'])
+$stderr.puts "#{config['database']} already exists"
+else
+begin
+# Create the SQLite database
+ActiveRecord::Base.establish_connection(config)
+ActiveRecord::Base.connection
+rescue
+$stderr.puts $!, *($!.backtrace)
+$stderr.puts "Couldn't create database for #{config.inspect}"
+end
+end
+return # Skip the else clause of begin/rescue
+else
+ActiveRecord::Base.establish_connection(config)
+ActiveRecord::Base.connection
+end
+rescue
+case config['adapter']
+when 'mysql'
+@charset = ENV['CHARSET'] || 'utf8'
+@collation = ENV['COLLATION'] || 'utf8_general_ci'
+begin
+ActiveRecord::Base.establish_connection(config.merge('database' => nil))
+ActiveRecord::Base.connection.create_database(config['database'], :charset => (config['charset'] || @charset), 
+:collation => (config['collation'] || @collation))
+ActiveRecord::Base.establish_connection(config)
+rescue
+$stderr.puts "Couldn't create database for #{config.inspect}, charset: #{config['charset'] || @charset}, 
+collation: #{config['collation'] || @collation}"
+end
+when 'postgresql'
+@encoding = config[:encoding] || ENV['CHARSET'] || 'utf8'
+begin
+ActiveRecord::Base.establish_connection(config.merge('database' => 'postgres', 'schema_search_path' => 'public'))
+ActiveRecord::Base.connection.create_database(config['database'], config.merge('encoding' => @encoding))
+ActiveRecord::Base.establish_connection(config)
+rescue
+$stderr.puts $!, *($!.backtrace)
+$stderr.puts "Couldn't create database for #{config.inspect}"
+end
+end
+else
+$stderr.puts "#{config['database']} already exists"
+end
+end
+
+def migrate( config )
+ActiveRecord::Base.logger = Logger.new(STDOUT)
+ActiveRecord::Base.establish_connection(config)
+ActiveRecord::Migrator.up "db/migrate/"
+end
+
+</pre>
+
+
+<p>So let's check that before running "rake."</p>
+
+<pre class="brush: ruby">
+rake -T
+(in /Users/katz/web/bridgeutopiaweb)
+rake dbsetup  # Setup db
+rake import   # Import DB
+rake migrate  # Do migrations
+rake start    # Start the app server
+rake stop     # Stop the app server
+</pre>

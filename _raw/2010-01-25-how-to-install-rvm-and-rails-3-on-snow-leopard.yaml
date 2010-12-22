@@ -1,0 +1,215 @@
+title:        'How to Install RVM and Rails 3 on Snow Leopard'
+published_at: '2010-01-25'
+filename:     '2010-01-25-how-to-install-rvm-and-rails-3-on-snow-leopard'
+content: |-
+  <p>This is a continuation of my post on installing Ruby version manager or multiple versions of Ruby for Unix. This time it's about OS X 10.6.1 or the Snow Leopard.</p>
+  
+  <p>Snow Leopard includes Ruby and Rails by default if you install XCode. The version is 1.8.7 and 2.2.2 for each, respectively. This would not suffice for most developers because we need to start porting to Ruby 1.9 and start experimenting with Rails 3. The goal is to just keep moving forward and use the best version that exists.</p>
+  
+  <p>Update: Since I am getting a lot of feedback regarding this post. I noticed it's not newbie-friendly. Sorry. Here are the missing steps.</p>
+  
+  <p>My Apache2  is installed in /usr/local and PHP5 is compiled by source. I do not use what Leopard has by default because it wasn't working well for me.</p>
+  
+  <p>In case it happens for you and you want to install PHP5 and more modules. See the following guides:</p>
+  
+  <p><a href="http://diymacserver.com/installing-apache/compiling-apache-in-64-bits-mode-on-leopard/" >Compiling Apache in 64-bits Mode on Leopard </a></p>
+  
+  <br />
+  
+  
+  <p><a href="http://diymacserver.com/installing-php/" >Installing PHP</a></p>
+  
+  <br />
+  
+  
+  <p><a href="http://diymacserver.com/installing-apache/starting-apache-at-boot-on-leopard" >Starting Apache at boot on Leopard </a></p>
+  
+  <br />
+  
+  
+  <p>I also installed <a href="http://www.finkproject.org/" >Fink</a></p>
+  
+  <p>So at the very least, you can skip reading what's written on the links above if your Apache2 installed is OK.</p>
+  
+  <p>Install <a href="http://www.gnu.org/software/wget/" > WGET</a> (but you can also use curl) or just download via web browser.</p>
+  
+  <pre class="brush: ruby">
+  tar -xzvf wget-latest.tar.gz
+  cd wget-1.11.4/
+  ./configure
+  make
+  sudo make install
+  </pre>
+  
+  
+  <p>Install Readline</p>
+  
+  <pre class="brush: ruby">
+  wget ftp://ftp.cwru.edu/pub/bash/readline-6.0.tar.gz
+  tar -xvzf readline-6.0.tar.gz
+  cd readline-6.0
+  ./configure
+  make
+  sudo make install
+  </pre>
+  
+  
+  <p>Install Most</p>
+  
+  <pre class="brush: ruby">
+  wget ftp://space.mit.edu/pub/davis/most/most-5.0.0.tar.gz
+  tar xvzf most-5.0.0.tar.gz
+  cd most-5.0.0
+  ./configure
+  make
+  sudo make install
+  </pre>
+  
+  
+  <p>RVM installation for OS X.</p>
+  
+  <p>Please read the guides on the website of Wayne. <a href="http://rvm.beginrescueend.com/" > Click here</a> to go there.</p>
+  
+  <p>Note: The path "/usr/local" is important. This makes a bit of a difference between installing on Ubuntu/Debian and OS X.</p>
+  
+  <pre class="brush: ruby">
+  sudo gem install rvm #install rvm 
+  rvm-install 
+  rvm install 1.8.7 -C --enable-shared,--with-readline-dir=/usr/local
+  rvm install 1.9.1 -C --enable-shared,--with-readline-dir=/usr/local
+  rvm install 1.9.2 -C --enable-shared,--with-readline-dir=/usr/local
+  rvm 1.8.7 --default
+  </pre>
+  
+  
+  <p><strong>Install Prerequisites</strong></p>
+  
+  <p>Git</p>
+  
+  <p>Hivelogic tutorials are good. Check out <a href="http://hivelogic.com/articles/compiling-git-on-snow-leopard/" > how to install Git on Leopard.</a></p>
+  
+  <p>SQLite 3</p>
+  
+  <pre class="brush: ruby">
+  wget http://www.sqlite.org/sqlite-amalgamation-3.6.22.tar.gz
+  tar xvzf sqlite-amalgamation-3.6.22.tar.gz
+  cd sqlite-3.6.22/
+  ./configure
+  make
+  sudo make install
+  </pre>
+  
+  
+  <p>MySQL</p>
+  
+  <p>Download from <a href="http://dev.mysql.com/downloads/mysql/5.1.html#macosx-dmg" > MYSQL website</a></p>
+  
+  <p>Select the version compatible with your Mac.</p>
+  
+  <pre class="brush: ruby">
+  sudo /Library/StartupItems/MySQLCOM/MySQLCOM start
+  </pre>
+  
+  
+  <p>Install Rails 3.0 Pre</p>
+  
+  <pre class="brush: ruby">
+  rvm use 1.8.7%rails3 
+  gem install rake rack test-spec thor sqlite3-ruby 
+  gem install mysql -- --with-mysql-dir=/usr/local/mysql    
+  git clone git://github.com/rails/rails.git && cd rails
+  rake package && gem install -f */pkg/*.gem pkg/*.gem  
+  cd arel && thor :build && thor :install 
+  cd ~
+  
+  </pre>
+  
+  
+  <p>And all this didn't take time for me even while writing this post. I now have a successful install for Rails 3 Pre. Same result with Ubuntu Karmic Koala.</p>
+  
+  <pre class="brush: ruby">
+  
+  Katherine-Pes-iMac:~ katz$ rails -v
+  Rails 3.0.pre
+  
+  rails new yourawesomeapp -d mysql 
+  </pre>
+  
+  
+  <p>I suggest replacing the .gitignore file immediately with the .gitignore you've been using or add those necessary entries.</p>
+  
+  <p>An example of a complete .gitignore file is <a href="http://github.com/railsdog/spree/blob/master/.gitignore" >here.</a></p>
+  
+  <p>But often this is just what you need:</p>
+  
+  <pre class="brush: ruby">
+  *~
+  .#*
+  .DS_Store
+  backups/* #[I keep some files relevant to the application like the database dump on the same folder] 
+  log/* #[we don't need the the log files submitted
+   
+  </pre>
+  
+  
+  <p>Keep adding in other entries later.</p>
+  
+  <p>Update:</p>
+  
+  <p>Install Rails 3 Beta</p>
+  
+  <pre class="brush: ruby">
+  gem install tzinfo builder memcache-client rack rack-test rack-mount erubis mail text-format thor bundler i18n
+  gem install rails --pre
+  </pre>
+  
+  
+  <p>Some guides out there are wrong. Do not use "sudo" when you are using RVM. Your gems are on your user's home directory.</p>
+  
+  <p>If things are not working and you have followed installation guides. You're missing an important part which is called the .bash_profile. Please review your .bash_profile first. I can't explain every line but every line is important.</p>
+  
+  <p>This is what I have right now:</p>
+  
+  <pre class="brush: ruby">
+  Katherine-Pes-iMac:~ katz$ cat .bash_profile
+  
+  export PATH=/usr/local/bin/:/usr/local/sbin/:/opt/local/bin/:/opt/local/sbin/
+  :/Users/katz/.rvm/rubies/ruby-1.8.7-p248/bin:
+  /Users/katz/.rvm/gems/ruby-1.8.7-p248/bin:
+  /Users/katz/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
+  export PATH="/usr/local/bin:/usr/local/sbin:
+  /usr/local/mysql/bin:$PATH" 
+  
+  export APACHE2="/usr/local/apache2/bin"
+  export PATH="${APACHE2}:${PATH}"
+  
+  export EDITOR='mate -w'
+  export CLICOLOR=1
+  
+  export LSCOLORS=ExFxCxDxBxegedabagacad
+  export PAGER=most
+  
+  if [[ -s /Users/katz/.rvm/scripts/rvm ]] ; then source /Users/katz/.rvm/scripts/rvm ; fi
+  
+  
+  alias start_mysql="/Library/StartupItems/MySQLCOM/MySQLCOM start"
+  alias stop_mysql="/Library/StartupItems/MySQLCOM/MySQLCOM stop"
+  
+  . /sw/bin/init.sh
+  
+  function gemdir {
+  if [[ -z "$1" ]] ; then
+  echo "gemdir expects a parameter, which should be a valid rvm Ruby selector"
+  else
+  rvm "$1"
+  cd `rvm gemdir`
+  pwd
+  fi
+  }
+  
+  </pre>
+  
+  
+  <p>As you can see, there's RVM code. If you follow RVM installation properly you should have something like that. Aliases are shortcuts for starting/stopping MYSQL but mine is automatically loaded on startup.</p>
+  
+  <p>Have fun :)</p>

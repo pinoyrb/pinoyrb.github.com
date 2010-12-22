@@ -1,0 +1,23 @@
+---
+layout: post
+title:        'Sorting with Ohm'
+published_at: 2010-05-11
+---
+
+<h1> {{ page.title }} </h1>
+
+<p class='meta'> {{ page.published_at }} </p>
+
+<p>In the last 2 months of using <a href='http://ohm.keyvalue.org'>Ohm</a>, I have used sort a couple of times, and have ran into some gotchas.</p>
+
+<h2 id='lesson_1__and__are_two_different_beasts'>Lesson 1: <code>sort</code> and <code>sort_by</code> are two different beasts</h2>
+
+<p>At first I thought that you can just do <code>sort(:by =&gt; :field)</code>. The following example best illustrates what happens under the hood:</p>
+<script src='http://gist.github.com/396833.js?file=sorting-internals.rb' />
+<h2 id='lesson_2__and__are_friends'>Lesson 2: <code>ALPHA</code> and <code>DESC</code> are friends.</h2>
+
+<p>If you come from an SQL world (I did), you may be used to just doing an <code>ORDER BY</code> and just expecting things to work. Here in redis, <code>sort</code> assumes you want it to sort by their double precision numbers by default, but you can also do lexical sorting. As usual, an example best illustrates the different scenarios:</p>
+<script src='http://gist.github.com/396844.js?file=sort-order.rb' />
+<h2 id='lesson_3_will_come_up_because_im_making_this_up_as_i_go'>Lesson 3: Will come up, because I&#8217;m making this up as I go</h2>
+
+<p>But on a more serious note, I need to grok the usecase of <code>:get</code> which corresponds to doing a GET in redis.</p>

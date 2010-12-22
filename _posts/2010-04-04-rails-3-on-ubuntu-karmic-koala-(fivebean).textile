@@ -1,0 +1,248 @@
+---
+layout: post
+title:        'Rails 3 on Ubuntu Karmic Koala (Fivebean)'
+published_at: 2010-04-04
+---
+
+<h1> {{ page.title }} </h1>
+
+<p class='meta'> {{ page.published_at }} </p>
+
+<p>This is one of my "Getting Things Right" posts, a.k.a, "How The Hell Do I Set Up My Rails Site on a VPS host." It’s almost always more difficult to get things right than get things done. I tried Slicehost and Linode before and I always ended up rebuilding because I couldn't get the right setup.</p>
+
+<p>Rails 3 is a little more painful than 2.3.5. This is not due to the framework itself but due to deployment issues. This dissuades a lot of people from even trying. Why should you bother using something that doesn't work on any of your servers? But which is important? "Your application" or "your server" ? Remember that you server exists for your application and not otherwise.</p>
+
+<p>I thought about the idea today as i's Easter Sunday. Happy Easter, all. It’s time to kill the stuff that "kills your time," and wake up from a really bad dream full of passenger errors.</p>
+
+<p>So little time, so much to do. Why should I bother thinking too much. As someone told me, it’s not worth pulling your hair for - got get a
+<a href="http://fivebean.com/account/aff.php?aff=135" >Fivebean</a>
+plan.  Fivebean offers fairly cheap VPS hosting. VPS Starter is good enough for a Rails 3 app and some static sites. When your app has probably over 500 users or so and you feel that things are getting slower, upgrade to VPS Bite or VPS Turbo. Do not worry about scaling. 70% of those who do, don’t even get there. I am still paying Dreamhost however and I keep a few sites there. The only thing I like about Dreamhost is it’s good enough as a staging server for Rails apps but they impose a lot of limits - memory limits. They can kill the Ruby processes and your site will be inaccessible for some time. You have the option to contact them and let them move your site to a better server or just get a VPS. Dreamhost PS may not be a very good option as well.</p>
+
+<p><strong>32-bit or 64-bit?</strong></p>
+
+<p>I always choose 32-bit regardless of the plan I take. I took a plan with 768MB memory and still chose 32-bit because based on experience, 768MB is never enough for some applications to run.</p>
+
+<p>So here's the lengthy guide on setting up Rails 3 on Ubuntu Karmic Koala. I may add in comments and stuff I missed later but this should work for you as it worked for me.</p>
+
+<pre class="brush: ruby">
+
+ssh root@your-ip-address
+
+or ssh anotherroot@your-ip-address
+
+</pre>
+
+
+<p>When using root, you may not use “sudo” anymore.</p>
+
+<p>Edit sources list:</p>
+
+<pre class="brush: ruby">
+nano /etc/apt/sources.list
+
+It should have: 
+
+deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+
+deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates main restricted
+
+deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+
+deb http://us.archive.ubuntu.com/ubuntu/ karmic multiverse
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic multiverse
+deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates multiverse
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates multiverse
+
+deb http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb http://security.ubuntu.com/ubuntu karmic-security universe
+deb-src http://security.ubuntu.com/ubuntu karmic-security universe
+deb http://security.ubuntu.com/ubuntu karmic-security multiverse
+deb-src http://security.ubuntu.com/ubuntu karmic-security multiverse
+
+</pre>
+
+
+<p>Update Ubuntu.</p>
+
+<pre class="brush: ruby">
+
+sudo apt-get update
+sudo apt-get dist-upgrade
+
+</pre>
+
+
+<p>Set up locale:</p>
+
+<pre class="brush: ruby">
+sudo locale-gen en_US.UTF-8
+sudo /usr/sbin/update-locale LANG=en_US.UTF-8
+</pre>
+
+
+<p>Install build-essential:</p>
+
+<pre class="brush: ruby">
+
+sudo apt-get install build-essential
+
+</pre>
+
+
+<p>Install Ruby 1.8.7</p>
+
+<pre class="brush: ruby">
+
+sudo apt-get install ruby irb ri rdoc ruby1.8-dev libzlib-ruby libyaml-ruby libreadline-ruby libncurses-ruby 
+libcurses-ruby libruby libruby-extras libfcgi-ruby1.8 build-essential libopenssl-ruby libdbm-ruby libdbi-ruby
+ libdbd-sqlite3-ruby sqlite3 libsqlite3-dev libsqlite3-ruby libxml-ruby libxml2-dev ri1.8 rdoc1.8
+
+</pre>
+
+
+<p>As of this date, there are still some issues with Rails 3 and Ruby 1.9.1. There is a segmentation fault when running “rails server”. It neither works on development or production for me. Until it does work, I will use 1.8.7.</p>
+
+<p>Install rubygems version 1.3.6. Rails 3 Beta 2  requires 1.3.6.</p>
+
+<pre class="brush: ruby">
+mkdir src
+cd src
+sudo apt-get install wget
+wget http://rubyforge.org/frs/download.php/69365/rubygems-1.3.6.tgz
+tar xvzf rubygems-1.3.6.tgz
+cd rubygems-1.3.6
+sudo ruby setup.rb
+</pre>
+
+
+<p>Install the mysql gem (for those using mysql). Since it’s VPS, why not use PostgreSQL? Go ahead and google that if that’s what you need.</p>
+
+<pre class="brush: ruby">
+sudo apt-get install libmysqlclient-dev
+sudo gem install mysql --no-rdoc --no-ri
+</pre>
+
+
+<p>Install Phusion Passenger requirements and the passenger gem.</p>
+
+<pre class="brush: ruby">
+sudo apt-get install libc6 libpcre3 libpcre3-dev libpcrecpp0 libssl0.9.8 libssl-dev zlib1g zlib1g-dev lsb-base
+
+sudo gem install passenger
+passenger-install-nginx-module
+</pre>
+
+
+<p>Create the script for starting and stopping nginx server:</p>
+
+<pre class="brush: ruby">
+
+sudo nano /etc/init.d/nginx
+
+Copy this to the new file. 
+
+#! /bin/sh
+
+### BEGIN INIT INFO
+# Provides:          nginx
+# Required-Start:    $all
+# Required-Stop:     $all
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: starts the nginx web server
+# Description:       starts nginx using start-stop-daemon
+### END INIT INFO
+
+PATH=/opt/nginx/sbin:/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=/opt/nginx/sbin/nginx
+NAME=nginx
+DESC=nginx
+
+test -x $DAEMON || exit 0
+
+# Include nginx defaults if available
+if [ -f /etc/default/nginx ] ; then
+        . /etc/default/nginx
+fi
+
+set -e
+
+case "$1" in
+  start)
+        echo -n "Starting $DESC: "
+        start-stop-daemon --start --quiet --pidfile /opt/nginx/logs/$NAME.pid \
+                --exec $DAEMON -- $DAEMON_OPTS
+        echo "$NAME."
+        ;;
+  stop)
+        echo -n "Stopping $DESC: "
+        start-stop-daemon --stop --quiet --pidfile /opt/nginx/logs/$NAME.pid \
+                --exec $DAEMON
+        echo "$NAME."
+        ;;
+  restart|force-reload)
+        echo -n "Restarting $DESC: "
+        start-stop-daemon --stop --quiet --pidfile \
+                /opt/nginx/logs/$NAME.pid --exec $DAEMON
+        sleep 1
+        start-stop-daemon --start --quiet --pidfile \
+                /opt/nginx/logs/$NAME.pid --exec $DAEMON -- $DAEMON_OPTS
+        echo "$NAME."
+        ;;
+  reload)
+          echo -n "Reloading $DESC configuration: "
+          start-stop-daemon --stop --signal HUP --quiet --pidfile     /opt/nginx/logs/$NAME.pid \
+              --exec $DAEMON 
+          echo "$NAME."
+          ;;
+      *)
+            N=/etc/init.d/$NAME
+            echo "Usage: $N {start|stop|restart|reload|force-reload}" >&2
+            exit 1   
+            ;;
+    esac
+
+    exit 0
+
+
+</pre>
+
+
+<p>Edit permissions of the script.</p>
+
+<pre class="brush: ruby">
+sudo chmod +x /etc/init.d/nginx
+sudo /usr/sbin/update-rc.d -f nginx defaults
+
+sudo /etc/init.d/nginx start
+</pre>
+
+
+<p>And finally install Rails 3 Beta 2</p>
+
+<pre class="brush: ruby">
+sudo gem install arel tzinfo builder memcache-client rack rack-test rack-mount erubis mail text-format thor bundler 
+sudo gem install rails --prerelease
+</pre>
+
+
+<p>Other things you should never forget:</p>
+
+<p>Postfix for sending email</p>
+
+<pre class="brush: ruby">
+sudo apt-get install postfix
+</pre>
+
+
+<p>Git for source control management</p>
+
+<pre class="brush: ruby">
+sudo apt-get install git-core
+</pre>

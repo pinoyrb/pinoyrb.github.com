@@ -1,0 +1,32 @@
+---
+layout: post
+title:        'Upgrading our existing app to OOR Ohm'
+published_at: 2010-07-06
+---
+
+<h1> {{ page.title }} </h1>
+
+<p class='meta'> {{ page.published_at }} </p>
+
+<br /><i>OOR - Object Oriented Redis.</i>
+<h2 id='1__is_dead_long_live_'>1. <code>key(:something)</code> is dead, long live <code>key[:something]</code></h2>
+
+<p>Basically you just have to change the method signature. An example follows:</p>
+<script src='http://gist.github.com/465477.js?file=nest-example-usage.rb' />
+<p>Another important thing to note here, is that the return value of <code>Ohm::Model#key</code> and <code>Ohm::Model::key</code> are no longer strings, but a customized version of <a href='http://github.com/soveran/nest'>Nest</a>.</p>
+
+<p>You can do all sorts of Redis operations on keys now. I&#8217;ll let the code do the talking:</p>
+<script src='http://gist.github.com/465473.js?file=quick-nest-example.rb' />
+<h2 id='2__is_now_the_new_and_awesome__for_s_s_etc'>2. <code>.raw</code> is now the new and awesome <code>.key</code> (for <code>Set</code>s, <code>List</code>s, etc)</h2>
+
+<p>If you were previously doing raw Redis operations on sets using .raw, you have to make a small change to your code.</p>
+<script src='http://gist.github.com/465479.js?file=instance-level-example.rb' />
+<p>As previously mentioned, we can do all sorts of Redis operations on <code>key[:sorted_position_tags]</code>. Basically everything except <code>KEYS</code>.</p>
+
+<h2 id='3_there_is_no_step_3_except_the_ohmcontrib_update'>3. There is no step 3 (except the ohm-contrib update)</h2>
+
+<p>The latest <a href='http://github.com/sinefunc/ohm-contrib'>ohm-contrib</a> has been updated to work with the latest ohm version.</p>
+
+<p>Unfortunately, the patch doesn&#8217;t do any backward compatibility check with older Ohm versions.</p>
+
+<p>(Although the only two plugins that broke during the upgrade were Ohm::Boundaries and Ohm::Locking).</p>

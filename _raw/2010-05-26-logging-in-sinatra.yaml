@@ -1,0 +1,6 @@
+title:        'Logging in Sinatra'
+published_at: '2010-05-26'
+filename:     '2010-05-26-logging-in-sinatra'
+content: |-
+  <p>This is more of a note to self. I spent a few mins figuring this out properly so best not to waste a few mins again next time.</p>
+  <script src='http://gist.github.com/414048.js?file=sinatra-monk-logging.rb' />

@@ -1,0 +1,17 @@
+---
+layout: post
+title:        'Ruby Coding Conventions'
+published_at: 2010-04-06
+---
+
+<h1> {{ page.title }} </h1>
+
+<p class='meta'> {{ page.published_at }} </p>
+
+<p>I&#8217;ve recently been following chris neukirchen&#8217;s coding conventions by the letter. All of them are really good. But one of the most interesting and probably opinionated convention he advocates is this:</p>
+<script src='http://gist.github.com/357442.js?file=coding.txt' />
+<p>All of them actually make perfect sense for me except the <code>a, b, c: any object</code> part. I&#8217;ve personally never used them.</p>
+
+<p>Here are some idioms I&#8217;ve probably used a hundred times before:</p>
+<script src='http://gist.github.com/357449.js?file=samples.rb' />
+<p>If you wish to read more here is the <a href='http://github.com/chneukirchen/styleguide/blob/master/RUBY-STYLE'>full style guide</a></p>

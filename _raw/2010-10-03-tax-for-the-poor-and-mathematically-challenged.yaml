@@ -1,0 +1,11 @@
+title:        'Tax for the poor and mathematically challenged'
+published_at: '2010-10-03'
+filename:     '2010-10-03-tax-for-the-poor-and-mathematically-challenged'
+content: |-
+  <p><a href="http://apps.bryanbibat.net/lotto/"><img src="http://www.bryanbibat.net/images/lotto_simulator.png" alt="lotto simulator" class="aligncenter" /></a></p>
+  <p>The Lottery: another way for the government to tax the (typically tax-exempt) poor.</p>
+  <p>As much as I&#8217;d like to shy away from yet-another-&#8221;greed is evil&#8221; post, recent circumstances have led me to mingle with people who still think spending money on the lottery is a good idea. So instead of being a jerk IRL, I&#8217;ll just post the arguments against the lottery here online.</p>
+  <p>The first argument against the lottery is that the odds are stacked <em>waaaaay</em> against you. Anyone who has even the basic knowledge of <a href="http://en.wikipedia.org/wiki/Enumerative_combinatorics">Combinatorics</a> and <a href="http://en.wikipedia.org/wiki/Return_on_Investment">ROI</a> knows that the lottery is a loser&#8217;s game.</p>
+  <p>Don&#8217;t believe me? Why not try <a href="http://apps.bryanbibat.net/lotto/">this little app I made using Rails 3 and a dash of jQuery</a>. You could even check <a href="http://github.com/bryanbibat/lotto">the source code</a> to <a href="http://github.com/bryanbibat/lotto/blob/master/app/models/lotto_drawer.rb#L36">see</a> if the drawing algorithm is sound.</p>
+  <p>(It&#8217;s not an original idea, though. I just based it on a <a href="http://news.ycombinator.com/item?id=1736853">Hacker News link</a> last week.) </p>
+  <p>The second argument is that the people likely to win the lottery are the people least likely to have the financial literacy to handle such a large amount. But I guess <a href="http://blog.bryanbibat.net/2010/09/27/biggest-financial-obstacle-your-pride/">you already knew that</a>.</p>

@@ -1,0 +1,79 @@
+title:        'Syntax Highlighting for Ruby'
+published_at: '2010-06-10'
+filename:     '2010-06-10-syntax-highlighting-for-ruby'
+content: |-
+  <p>There are more than couple of ways to do syntax highlighting for Ruby code. Your geek blog doesn't look nice if the code cannot be read properly or cannot be copied easily. Gists work well. Most blogs now would probably just use gist.github.com especially if it's lengthly file or there are way to many stuff on it that you don't want to scare your visitors. By naming the file "syntax.rb" on gist.github.com for instance, it would know what code you are using and syntax highlighting will be based on the filename. See <a href="http://gist.github.com/432825" > syntax.rb </a>.</p>
+  
+  <p>The following code used to work well for me:</p>
+  
+  <pre class="brush: ruby">
+  def to_html(markdown)
+    out = []
+    noncode = []
+    code_block = nil
+    markdown.split("\n").each do |line|
+    if !code_block and line.strip.downcase == '<pre class="brush: ruby">'
+      out << Maruku.new(noncode.join("\n")).to_html
+      noncode = []
+      code_block = []
+    elsif code_block and line.strip.downcase == '</pre>'
+     convertor = Syntax::Convertors::HTML.for_syntax "ruby"
+     highlighted = convertor.convert(code_block.join("\n"))
+     out << "<pre class="brush: ruby">#{highlighted}</pre>"
+     code_block = nil
+    elsif code_block
+     code_block << line
+    else
+     noncode << line
+    end
+  end
+   out << Maruku.new(noncode.join("\n")).to_html
+   out.join("\n")
+  end
+  </pre>
+  
+  
+  <p>There are at least two problems with this code:</p>
+  
+  <ol>
+  <li>Maruku, a markdown interpreter is slow. At least slower than RDiscount, another Markdown interpreter.</li>
+  <li>The output doesn't look good even with CSS work done. There's white-space before the code making it appear intended when it fact it is not.</li>
+  <li>There are just too many lines of code. Period.</li>
+  </ol>
+  
+  
+  <p>I had to convert everything to HAML recently. Starting to feel an aversion towards using and overusing ERB.</p>
+  
+  <p>This code works for me:</p>
+  
+  <pre class="brush: ruby">
+  
+  def to_html(markdown)
+    markdown = markdown.gsub("<pre class="brush: ruby">", '<pre class="brush: ruby">').gsub("</pre>", "</pre>")
+    markdown = RDiscount.new(markdown)
+    markdown = markdown.to_html
+  end
+  
+  </pre>
+  
+  
+  <p>Why the code above is better:</p>
+  
+  <ol>
+  <li>Uses RDiscount gem which is faster than Maruku</li>
+  <li>It is intended to work with Javascript <a href="http://alexgorbatchev.com/wiki/SyntaxHighlighter" >Syntax Highlighter</a>. Just make sure to include the brush for Ruby on head tag along with the core.</li>
+  <li>It allows user to copy and print the code</li>
+  <li>It's shorter</li>
+  </ol>
+  
+  
+  <p>The following video shows the difference:</p>
+  
+  <div class="clear">
+  
+  <object width="600" height="400"><param name="allowfullscreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=12453281&server=vimeo.com&show_title=1&show_byline=1&show_portrait=0&color=&fullscreen=1" /><embed src="http://vimeo.com/moogaloop.swf?clip_id=12453281&server=vimeo.com&show_title=1&show_byline=1&show_portrait=0&color=&fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="600" height="400"></embed></object>
+  
+  </div>
+  
+  
+  <p>And the final result can be seen on my blog.</p>

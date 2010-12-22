@@ -1,0 +1,33 @@
+title:        'How to Install and Use Rails 3 Generators'
+published_at: '2010-04-05'
+filename:     '2010-04-05-how-to-install-and-use-rails-3-generators'
+content: |-
+  <p>This is why Rails3's philosophy is agnosticism:</p>
+  
+  <p>You can override default template engine (erb) through config/application.rb. So if you use HAML, running scaffold generator will create HAML files for the views. If you use Rspec for testing as most Ruby developers do, you may also specify rspec as the default test framework.</p>
+  
+  <pre class="brush: ruby">
+  #Configure generators values. Many other options are available, be sure to check the documentation.
+  config.generators do |g|
+    g.template_engine :haml
+    g.test_framework :rspec, :fixture => true, :views => false
+  end
+  </pre>
+  
+  
+  <p>I think the right repository for the Rails 3 generators is the one maintained by Andre Arko of Engine Yard.</p>
+  
+  <pre class="brush: ruby">
+  cd yourapp
+  git clone git://github.com/indirect/rails3-generators.git lib/generators
+  </pre>
+  
+  
+  <p>Blog app basics:</p>
+  
+  <pre class="brush: ruby">
+  script/rails generate scaffold post title:string body:text published:boolean 
+  </pre>
+  
+  
+  

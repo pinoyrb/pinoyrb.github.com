@@ -1,0 +1,76 @@
+---
+layout: post
+title:        'Rails 2.3 XSS Plugin'
+published_at: 2010-01-18
+---
+
+<h1> {{ page.title }} </h1>
+
+<p class='meta'> {{ page.published_at }} </p>
+
+<p>This is not new to those closely watching updates regarding Rails development: for Rails 3 applications, there is no need to use the h() function to escape html for security reasons.</p>
+
+<pre class="brush: ruby">
+<%= h @something %>
+is now the same as
+<%= @something %>
+To display the HTML, use:
+<%= raw @something %>
+</pre>
+
+
+<p>To have this feature for Rails 2.3.x applications, there is a need to install the Rails XSS plugin.</p>
+
+<p>Some installation notes:</p>
+
+<p>Install rails 2.3.5 or higher, or freeze rails from 2-3-stable.</p>
+
+<pre class="brush: ruby">
+gem install rails 
+</pre>
+
+
+<p>Install erubis</p>
+
+<pre class="brush: ruby">
+gem install erubis
+</pre>
+
+
+<p> Install this plugin</p>
+
+<pre class="brush: ruby">
+script/plugin install git://github.com/NZKoz/rails_xss.git
+</pre>
+
+
+<p>I you are using exception notification plugin for production (which, by the way, you should), this fork of the original plugin might help you avoid any weird issues related to the XSS plugin and Rails 2.3.5:</p>
+
+<p>http://github.com/jeremyevans/exception_notification</p>
+
+<pre class="brush: ruby">
+script/plugin install git://github.com/jeremyevans/exception_notification.git
+</pre>
+
+
+<p>By the way, what does the h() stand for?</p>
+
+<p>hack me! hack me hack me. :D</p>
+
+<p>Ok Thanks to Jesse for informing me, h stands for html_escape (because that's just what it does).</p>
+
+<p>Update:</p>
+
+<p><strong>HAML escape html option</strong></p>
+
+<p>Reading on this <a href="http://nex-3.com/posts/86-rails-xss-protection-and-haml" >post</a>, it seems that it's a much better option for me right now.</p>
+
+<pre class="brush: ruby">
+gem install haml (current version today is 2.2.7)
+
+and add: 
+Haml::Template.options[:escape_html]=true
+below the Rails config on environment.rb
+
+
+</pre>

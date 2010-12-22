@@ -1,0 +1,22 @@
+title:        'Fuzzy searching in SOLR with Sunspot'
+published_at: '2010-08-05'
+filename:     '2010-08-05-fuzzy-searching-in-solr-with-sunspot'
+content: |-
+  <p>At one point or another, you&#8217;ll need this functionality:</p>
+  
+  <p><code>Find all people whose names start with Jo Sm</code> &lt;- (i.e. the famous John Smith)</p>
+  
+  <h2 id='step_1_make_it_work'>Step 1. Make it work</h2>
+  
+  <p>How do we go about that in SOLR (specifically using sunspot?). Here&#8217;s my brain dump based off of a gist:</p>
+  <script src='http://gist.github.com/509529.js?file=sunspot-text-starting-with-explanation.rb' />
+  <p>Turns out, <strong><code>starting_with</code> in conjunction with a <code>text</code> index works only for a string in lowercase form.</strong> No biggie, we just have to remember.</p>
+  
+  <h2 id='step_2_make_it_pretty'>Step 2. Make it pretty?</h2>
+  
+  <p>Doing that for every type of search for lots of fields will quickly become cumbersome. How do we clean that up? Why a DSL of course!</p>
+  
+  <p>Luckily ruby allows us to extend classes pretty easily. We can do the following:</p>
+  <script src='http://gist.github.com/509546.js?file=sunspot-ext.rb' />
+  <p>After that, the example above will look a lot simpler:</p>
+  <script src='http://gist.github.com/509550.js?file=dsl-example.rb' />

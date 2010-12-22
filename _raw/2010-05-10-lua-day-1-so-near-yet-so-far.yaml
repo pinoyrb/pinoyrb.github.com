@@ -1,0 +1,27 @@
+title:        'Lua Day 1: So near yet so far'
+published_at: '2010-05-10'
+filename:     '2010-05-10-lua-day-1-so-near-yet-so-far'
+content: |-
+  <p>So far Lua is strikingly similar to ruby. This of course only appears to be the case for very simple scripts.</p>
+  <p>Some common things so far:</p>
+  <ol>
+  <li>Condition expressions accepts any value, and false / nil are the only things which are failures. 0 and &#8221;&#8221; are both true.</li>
+  <li>The concept of a <code>Nil</code> class which only has nil as a value.</li>
+  <li>The use of <code>end</code> to denote closing blocks for if, for, function definitions, etc.</li>
+  <li>The general way in which a program feels.</li>
+  </ol>
+  <h2 id='lua_fibonacci'>Lua Fibonacci:</h2>
+  <p><script src='http://gist.github.com/395900.js?file=lua-fib.lua' /></p>
+  <h2 id='ruby_fibonacci'>Ruby Fibonacci:</h2>
+  <p><script src='http://gist.github.com/395902.js?file=ruby-fib.rb' /></p>
+  <h2 id='the_differences'>The differences?</h2>
+  <ol>
+  <li>Lua statements can&#8217;t be taken as returning a value, hence in the fibonacci example we need to explicitly use <code>return</code>.</li>
+  <li>Lua has a boolean type, unlike in ruby, which has a FalseClass and a TrueClass.</li>
+  <li>Lua only has only double precision floating point numbers to represent any number. Ruby has Fixnum, Bignum, Float.</li>
+  <li>Lua takes the more <code>functional</code> approach for converting between types, e.g. <code>tonumber</code>, <code>tostring</code> instead of Ruby, which has a to<em>i, to</em>s method for numeric and string types.</li>
+  <li>Lua requires parenthesis when calling functions. I guess Ruby is very unique in this regard.</li>
+  <li>Accessing any variable, even undefined ones, are legal, and always returns nil. This also applies to <code>table</code>s, i.e. accessing an undefined key returns <code>nil</code>.</li>
+  <li>Lua has a somewhat weird looking concatenation operator <code>..</code>. Ruby just uses <code>+</code> for concatenating strings.</li>
+  <li>Tables (which are kinda like Arrays and Hashes in one) use a 1-based index.</li>
+  </ol>

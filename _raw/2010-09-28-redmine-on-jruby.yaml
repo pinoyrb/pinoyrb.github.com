@@ -1,0 +1,25 @@
+title:        'Redmine on Jruby'
+published_at: '2010-09-28'
+filename:     '2010-09-28-redmine-on-jruby'
+content: |-
+  <p>To be able to take advantage of jruby, you need to add config.threadsafe! on your rails app. I tried doing this on redmine 1.0.2 but some pages were not working. Some of the errors were</p>
+  <p>uninitialized constant Redmine::Views::OtherFormatsBuilder<br />
+  uninitialized constant Redmine::DefaultData<br />
+  uninitialized constant Redmine::Activity::Fetcher<br />
+  uninitialized constant ActionView::Base::CompiledTemplates::TabularFormBuilder</p>
+  <p>I got it to work by changing config/initializers/30-redmine.rb to</p>
+  <pre class="brush: ruby; auto-links: false; light: true;">
+  I18n.default_locale = 'en'
+  dirs = [&quot;SVG&quot;, &quot;redmine&quot;]
+  files = []
+  lib_path = &quot;#{RAILS_ROOT}/lib&quot;
+  matcher = /\A#{Regexp.escape(lib_path)}\/(.*)\.rb\Z/
+  dirs.each do |dir|
+    files += Dir.glob(&quot;#{lib_path}/#{dir}/**/*.rb&quot;)
+  end
+  files += Dir.glob(&quot;#{lib_path}/*.rb&quot;)
+  files.each do |file|
+    require file.sub(matcher, '\1')
+  end
+  </pre>
+  <p>Adding RAILS_ROOT/lib to config.eager_load_paths doesn&#8217;t work. If there is a better way, let me know in the comments.</p>

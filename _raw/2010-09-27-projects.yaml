@@ -1,0 +1,43 @@
+title:        'Projects'
+published_at: '2010-09-27'
+filename:     '2010-09-27-projects'
+content: |-
+  This is a list of our contributions to the Ruby community:
+  
+  <strong>Evan Sagge</strong>
+  <ul>
+  <blockquote>
+  	<li><a href="http://github.com/evansagge/mongoid-rspec">mongoid-rspec</a>
+  Provides RSpec matchers for Mongoid. Includes matchers for associations, options, validations, and fields.</li>
+  </blockquote>
+  </ul>
+  <strong><a href="http://github.com/diwadm">Diwa del Mundo</a></strong>
+  <blockquote>
+  <ul>
+  	<li><a href="http://chainselects.hypermediasoft.com/">ChainSelects</a>
+  A Rails plugin for creating ajax-based chained drop down select boxes.</li>
+  </ul>
+  </blockquote>
+  <a href="/author/greg"><strong>Greg Moreno</strong></a>
+  <ul>
+  <blockquote>
+  	<li><a href="http://github.com/gregmoreno/openamplify">openamplify
+  </a>Ruby gem to access the <a href="http://community.openamplify.com/blogs/quickstart/pages/overview.aspx">OpenAmplify</a> webservices API.</li>
+  	<li><a href="http://github.com/gregmoreno/globe-mobile">globe-mobile</a>
+  Ruby gem to access Globe's SMS/MMS API.</li>
+  </blockquote>
+  </ul>
+  <a href="/author/bridgeutopia"><strong>Katz Pe</strong></a>
+  <blockquote>
+  <ul>
+  	<li><a href="http://github.com/radamanthus/railsjam">railsjam</a>
+  A Rails3 app for organizing <a href="http://railsjam.net">RailsJam</a> events. Co-developers: Cecille,  <a href="/authors/rad">Rad Batnag</a>.</li>
+  </ul>
+  </blockquote>
+  <strong>Mark Maglana, Emiliano Heyns</strong>
+  <blockquote>
+  <ul>
+  	<li><a href="http://www.redminebacklogs.net">Redmine Backlogs</a>
+  A Redmine plugin for agile teams.</li>
+  </ul>
+  </blockquote>

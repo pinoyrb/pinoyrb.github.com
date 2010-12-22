@@ -1,0 +1,54 @@
+title:        'How to use OpenAmplify with Ruby'
+published_at: '2010-10-06'
+filename:     '2010-10-06-how-to-use-openamplify-with-ruby'
+content: |-
+  <p>The <a href="http://community.openamplify.com/blogs/quickstart/pages/overview.aspx">OpenAmplify API</a> reads text you supply and returns linguistic data explaining and classifying the content. What you do with that analysis is, in the fine tradition of APIs and mashups, up to you. Some possibilities might include pairing ads with articles, creating rich tag-clouds, or monitoring the tone of forum threads.</p>
+  <p>I created a ruby gem to simplify the use of the OpenAmplify API. It&#8217;s still in the early stages but should be enough to get you started.</p>
+  <p><strong>Installation</strong></p>
+  <pre class="brush: bash;">
+      gem install openamplify
+  </pre>
+  <p><strong>Usage:</strong></p>
+  <pre class="brush: ruby;">
+      require 'openamplify'
+  
+      API_KEY = &quot;register to get a key&quot;
+      client = OpenAmplify::Client.new(:api_key =&gt; API_KEY)
+  
+      text = &quot;After getting the MX1000 laser mouse and the Z-5500 speakers i fell in love with logitech&quot;
+      response = client.analyze_text(text)
+  
+      # List all the keys and values returned by OpenAmplify
+      response.each do |k, v|
+        pp k
+        pp v
+      end
+  
+      # 'response' works like a Hash
+      puts response['Topics']
+      puts response['Demographics']
+  </pre>
+  <p><strong>Output Format</strong></p>
+  <p>In case you need a different format, OpenAmplify supports XML, JSON, RDF, CSV. It can also return the result as a fancy HTML page.</p>
+  <pre class="brush: ruby;">
+      # assuming you use Nokogiri
+      doc = Nokogiri::XML(response.to_xml)
+  
+      # or you want a JSON
+      json = JSON.parse(response.to_json)
+  
+      # you should really try the pretty formats
+      puts response.to_pretty
+      # or
+      puts response.to_signals
+  </pre>
+  <p>The source code is available in github: <a href="http://github.com/gregmoreno/openamplify">http://github.com/gregmoreno/openamplify</a></p>
+  <p>This post is also available at <a href="http://www.rubyoncloud.org/questions/how-to-use-openamplify-with-ruby">Ruby On Cloud</a>.</p>
+  
+  
+  <p>Related posts:<ol><li><a href='http://gregmoreno.ca/ruby-101-make-your-class-behave-like-a-ruby-built-in/' rel='bookmark' title='Permanent Link: Ruby 101: Make your class behave like a Ruby built-in'>Ruby 101: Make your class behave like a Ruby built-in</a> <small>I got re-acquianted with this scenario while working on the OpenAmplify gem &#8211; a wrapper for the OpenAmplify API. When you give the api a text like a blog comment,...</small></li>
+  <li><a href='http://gregmoreno.ca/how-to-read-google-buzz-updates-in-ruby/' rel='bookmark' title='Permanent Link: How to read Google buzz updates in Ruby'>How to read Google buzz updates in Ruby</a> <small>require 'rubygems' require 'nokogiri' require 'open-uri' require 'feedzirra' profile_name = 'dave.winer' page = Nokogiri::HTML(open(&quot;http://www.google.com/profiles/#{profile_name}&quot;)) feed_url = page.search('//head/link[@type=&quot;application/atom+xml&quot;]').first['href'] feed = Feedzirra::Feed.fetch_and_parse(feed_url) puts feed.title puts feed.url puts feed.last_modified feed.entries.each do |entry| puts...</small></li>
+  <li><a href='http://gregmoreno.ca/ruby-101-how-to-filter-an-array-using-proc/' rel='bookmark' title='Permanent Link: Ruby 101: How to filter an Array using proc'>Ruby 101: How to filter an Array using proc</a> <small>Over at the PhRUG, a Ruby developer community based in the Philippines, we conduct code review sessions via our mailing list. A code is posted and members share alternative implementations....</small></li>
+  </ol></p>
+  <p><a href="http://feedads.g.doubleclick.net/~a/l0C3FC5XuFqw6AaoPIRebsCi2tY/0/da"><img src="http://feedads.g.doubleclick.net/~a/l0C3FC5XuFqw6AaoPIRebsCi2tY/0/di" border="0" ismap="true"></img></a><br/>
+  <a href="http://feedads.g.doubleclick.net/~a/l0C3FC5XuFqw6AaoPIRebsCi2tY/1/da"><img src="http://feedads.g.doubleclick.net/~a/l0C3FC5XuFqw6AaoPIRebsCi2tY/1/di" border="0" ismap="true"></img></a></p>

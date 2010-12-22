@@ -1,0 +1,52 @@
+---
+layout: post
+title:        'Ohm inside tricks'
+published_at: 2010-05-06
+---
+
+<h1> {{ page.title }} </h1>
+
+<p class='meta'> {{ page.published_at }} </p>
+
+<h2 id='did_you_know_1'>Did you know #1</h2>
+
+<p>I was reading Ohm&#8217;s tests and stumbled upon a cool testcase, which led me to learn about a cool feature.</p>
+<code><pre><span class="keyword">class </span><span class="class">User</span> <span class="punct">&lt;</span> <span class="constant">Ohm</span><span class="punct">::</span><span class="constant">Model</span>
+  <span class="ident">attribute</span> <span class="symbol">:email</span>
+
+  <span class="ident">index</span> <span class="symbol">:email_provider</span>
+
+  <span class="keyword">def </span><span class="method">email_provider</span>
+    <span class="ident">email</span><span class="punct">.</span><span class="ident">split</span><span class="punct">('</span><span class="string">@</span><span class="punct">').</span><span class="ident">last</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="comment"># So you can basically do this:</span>
+<span class="constant">User</span><span class="punct">.</span><span class="ident">find</span><span class="punct">(</span><span class="ident">email_provider</span><span class="punct">:</span> <span class="punct">'</span><span class="string">yahoo.com</span><span class="punct">')</span>
+<span class="constant">User</span><span class="punct">.</span><span class="ident">find</span><span class="punct">(</span><span class="ident">email_provider</span><span class="punct">:</span> <span class="punct">'</span><span class="string">gmail.com</span><span class="punct">')</span>
+</pre></code>
+<p>Pretty neat eh?</p>
+
+<h2 id='did_you_know_2'>Did you know #2</h2>
+
+<p>Now I was talking to <a href='http://twitter.com/soveran'>soveran</a> at the #ohm irc channel on freenode while I stumbled upon #1 above, and he went on to add that you can index any enumerable object.</p>
+
+<p>This here is doubly cool!</p>
+<code><pre><span class="keyword">class </span><span class="class">Item</span> <span class="punct">&lt;</span> <span class="constant">Ohm</span><span class="punct">::</span><span class="constant">Model</span>
+  <span class="ident">attribute</span> <span class="symbol">:tag_list</span>
+
+  <span class="ident">index</span> <span class="symbol">:tags</span>
+
+  <span class="keyword">def </span><span class="method">tags</span>
+    <span class="ident">tag_list</span><span class="punct">.</span><span class="ident">split</span><span class="punct">(/</span><span class="regex"><span class="escape">\s</span>+</span><span class="punct">/)</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="comment"># Now you got yourself a minimalistic tagging solution!</span>
+
+<span class="constant">Item</span><span class="punct">.</span><span class="ident">create</span><span class="punct">(</span><span class="symbol">:tag_list</span> <span class="punct">=&gt;</span> <span class="punct">'</span><span class="string">ohm monkrb redis</span><span class="punct">')</span>
+
+<span class="constant">Item</span><span class="punct">.</span><span class="ident">find</span><span class="punct">(</span><span class="ident">tags</span><span class="punct">:</span> <span class="punct">'</span><span class="string">ohm</span><span class="punct">')</span>
+<span class="constant">Item</span><span class="punct">.</span><span class="ident">find</span><span class="punct">(</span><span class="ident">tags</span><span class="punct">:</span> <span class="punct">'</span><span class="string">monkrb</span><span class="punct">')</span>
+<span class="constant">Item</span><span class="punct">.</span><span class="ident">find</span><span class="punct">(</span><span class="ident">tags</span><span class="punct">:</span> <span class="punct">'</span><span class="string">redis</span><span class="punct">')</span>
+</pre></code>

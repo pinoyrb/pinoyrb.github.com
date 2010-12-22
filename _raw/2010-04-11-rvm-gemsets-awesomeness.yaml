@@ -1,0 +1,28 @@
+title:        'RVM Gemsets: Awesomeness'
+published_at: '2010-04-11'
+filename:     '2010-04-11-rvm-gemsets-awesomeness'
+content: |-
+  If you have recently been keeping up to date with Ruby, and have tried using multiple versions at the same time, you’re most probably using <a href="http://rvm.beginrescueend.com">RVM</a> to manage these different versions.
+  
+  RVM is <em>pretty awesome</em>. But like any tool, you have to grok it a little so you know what it does behind the scenes when you use it.
+  <h2 id="gemsets_allow_you_to_isolate_gems_per_project">Gemsets allow you to isolate gems per project</h2>
+  Ever since RVM released the <code>gemset</code> feature, I’ve never stopped using it on all projects. One very interesting, and probably underused feature of it is the ability to automatically switch to a gemset after <code>cd</code>ing to a directory, i.e.
+  
+  <script src="http://gist.github.com/362946.js?file=bash.sh"></script>
+   
+  If you want to know more see RVM’s section on <a href="http://rvm.beginrescueend.com/workflow/rvmrc/">workflows</a>.
+  
+  <h2 id="how_to_remain_dry">How to remain DRY</h2>
+  
+  Every time you start a project, you’re probably wondering “oh now what I’m gonna have to install all the gems I need again?
+   
+  Of course you don’t have to do this, if you make use of the <code>%global</code> gemset.
+   
+  <script src="http://gist.github.com/362953.js?file=global.sh"></script>
+  <h2 id="its_no_silver_bullet">It’s no Silver bullet</h2>
+  Over time, I’ve discovered a few stuff that, like with any tool, are “good-to-knows”.
+  <ol>
+  	<li>If you have like 100 gems in a gemset, then that would probably equate to 100++ entries in your <code>$LOAD_PATH</code>. I try to keep my gemsets as small as possible.</li>
+  	<li>Huge <code>$LOAD_PATH</code>s impact your application’s load time. Like I said in #1, I guess it’s good practice to keep ‘em gemsets nice and manageable, this way you don’t impact your application’s load time.</li>
+  	<li>RVM and Bundler doesn’t play nice with each other. Our M.O. so far regarding this issue is to situate your Rails 3 app that uses bundler in an environment unaware of RVM, this way isolating each from the other. Bundler loads wwwwwwwwwwwayy tooooo slow with RVM.</li>
+  </ol>

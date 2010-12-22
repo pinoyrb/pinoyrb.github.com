@@ -1,0 +1,44 @@
+---
+layout: post
+title:        'Our first app in Rails 3'
+published_at: 2010-02-23
+---
+
+<h1> {{ page.title }} </h1>
+
+<p class='meta'> {{ page.published_at }} </p>
+
+<p>We&#8217;re building a very simple app, and we decided to start with Rails3. Here is our stack so far:</p>
+
+<ol>
+<li>Rails3</li>
+
+<li>HAML</li>
+
+<li>Paperclip</li>
+
+<li>is<em>taggable</em></li>
+
+<li>twitter-auth</li>
+
+<li>mocha</li>
+
+<li>shoulda</li>
+
+<li>factory<em>girl</em></li>
+
+<li>theia</li>
+</ol>
+
+<h2 id='gotcha_number_one_shoulda'>Gotcha Number One: Shoulda</h2>
+
+<p>When we try using shoulda as advertised, we run into a problem where bundler requires it before Rails.root or RAILS<em>ROOT is set. Hence we had to work around it by putting shoulda and factory</em>girl in a different bundler group (KUDOS to <a href='http://timmedina.net'>tim</a> for the idea).</p>
+
+<h2 id='our_gemfile_so_far'>Our Gemfile so far</h2>
+
+<p>http://gist.github.com/311893</p>
+
+<p>NOTE: We put the code</p>
+<code><pre><span class="constant">Bundler</span><span class="punct">.</span><span class="ident">require</span><span class="punct">(</span><span class="symbol">:thoughtbot</span><span class="punct">)</span>
+</pre></code>
+<p>Somewhere in our <code>test_helper</code> to require shoulda without it complaining.</p>

@@ -1,0 +1,77 @@
+title:        'Install RVM, Passenger, Nginx and Rails 3 on Ubuntu Lucid Lynx'
+published_at: '2010-08-22'
+filename:     '2010-08-22-install-rvm-passenger-nginx-and-rails-3-on-ubuntu-lucid-lynx'
+content: |-
+  <p>This has been a problem encountered by several developers including myself:</p>
+  
+  <p><strong>Getting RVM, Passenger and Rails3 to work</strong></p>
+  
+  <p>Here's a quick and short post. Supposing you already have updated Ubuntu and have Ruby installed.
+  These are the only commands you should need:</p>
+  
+  <pre class="brush: ruby">
+  
+  rvm install 1.9.2
+  
+  rvm 1.9.2 --passenger
+  
+  rvm 1.9.2
+  gem install passenger
+  
+  rvmsudo passenger-install-nginx-module
+  
+  #use rvm by default
+  rvm 1.9.2-preview3 --default
+  
+  #edit the nginx config file. mine is on /opt/nginx/conf/nginx.conf. just change username 
+  
+  passenger_root /home/username/.rvm/gems/ruby-1.9.2-preview3/gems/passenger-2.2.15;
+  passenger_ruby /home/username/.rvm/bin/passenger_ruby;
+  
+  #reboot if you can. I recommend rebooting over restarting/stopping and starting nginx server. reboot was actually the fix I needed after following all the steps above. 
+  
+  sudo reboot 
+  
+  
+  #.rvmrc file on your Rails 3 app should contain. this may be optional but in case you've set a different ruby version, this helps. 
+  
+  if [[ -s "~/.rvm/environments/ruby-1.9.2-preview3" ]] ; then
+    . "~/.rvm/environments/ruby-1.9.2-preview3"
+  else
+    rvm --create use  "ruby-1.9.2-preview3"
+  
+  
+  
+  </pre>
+  
+  
+  <p>If nothing works for you. Check your path, your ruby version and check whether bundler is installed.</p>
+  
+  <p>How to installed bundler for Rails 3:</p>
+  
+  <pre class="brush: ruby">
+  
+  gem install bundler --pre
+  
+  </pre>
+  
+  
+  <p>Most gems for Rails 3 require "--pre" by the way.</p>
+  
+  <p>Installing gems</p>
+  
+  <pre class="brush: ruby">
+  
+  cd app/dir && bundle install
+  
+  </pre>
+  
+  
+  <p>It's that simple. But something failed. I use mysql and pg gem. I use mysql gem for test and development environment because they work better for testing. But I use postgresql for production and staging. Mysql gem was not installed by bundler. You have to run this:</p>
+  
+  <pre class="brush: ruby">
+  gem install mysql -- --with-mysql-config=/usr/bin/mysql_config
+  </pre>
+  
+  
+  <p>Hope this helped someone.</p>

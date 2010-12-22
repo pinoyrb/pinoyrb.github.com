@@ -1,0 +1,82 @@
+---
+layout: post
+title:        'Installing Nginx with Passenger on Snow Leopard Using MacPorts'
+published_at: 2009-12-20
+---
+
+<h1> {{ page.title }} </h1>
+
+<p class='meta'> {{ page.published_at }} </p>
+
+<p><a href="http://www.macports.org/install.php">Install MacPorts</a> if you don&#8217;t have it.</p>
+<p>Download and install the Portfile</p>
+<pre class="brush: bash; auto-links: false; light: true;">
+git clone git://github.com:crigor/admoolabs-ports.git ports
+cd ports/nginx-0.7.64-passenger-2.2.8
+sudo port -v install
+</pre>
+<p>You need to have ruby installed to compile passenger. In case you don&#8217;t have ruby, you can also get it from macports.</p>
+<pre class="brush: bash; light: true;">sudo port -v install ruby</pre>
+<p>If you have an older version of nginx installed using macports, it might move nginx.conf to nginx.conf.altered. Copy it back to nginx.conf if you need it. You can also use this <a href="http://gist.github.com/258789">nginx.conf</a>.</p>
+<p>Edit /opt/local/etc/nginx.conf and add the following lines inside http {}</p>
+<pre class="brush: bash; light: true;">
+passenger_root /opt/local/lib/passenger;
+passenger_ruby /opt/local/bin/ruby;
+</pre>
+<p>Change the ruby path if you&#8217;re not using ruby from macports.</p>
+<p>For each rails app, you need to add the following, also inside http {}</p>
+<pre class="brush: bash; auto-links: false; light: true;">
+server {
+  server_name labs.local;
+  root /Users/crigor/admoolabs/labs/public;
+  access_log /opt/local/var/log/nginx/labs.local.access.log;
+  error_log /opt/local/var/log/nginx/labs.local.error.log;
+  passenger_enabled on;
+  rails_env development;
+}
+</pre>
+<p>Check if your syntax is correct.</p>
+<pre class="brush: bash; light: true;">
+sudo /opt/local/sbin/nginx -t
+</pre>
+<p>If it is, you&#8217;ll see</p>
+<pre class="brush: bash; light: true;">
+the configuration file /opt/local/etc/nginx/nginx.conf syntax is ok
+configuration file /opt/local/etc/nginx/nginx.conf test is successful
+</pre>
+<p>Start nginx with</p>
+<pre class="brush: bash; light: true;">
+sudo /opt/local/sbin/nginx
+</pre>
+<p>You won&#8217;t get any output if it starts correctly. Check if nginx is running</p>
+<pre class="brush: bash; light: true;">
+ps -e | grep nginx -i
+(You should see something like these lines)
+nginx: master process /opt/local/sbin/nginx
+nginx: worker process
+PassengerNginxHelperServer /opt/local/lib/passenger /opt/local/bin/ruby 3 4 0 6 0 300 1 nobody 4294967294 4294967294 /tmp/passenger.10755
+</pre>
+<p>MacPorts added a startup item which is disabled by default. To start it,</p>
+<pre class="brush: bash; light: true;">
+sudo launchctl load -w /Library/LaunchDaemons/org.macports.nginx.plist
+</pre>
+<p>You can stop nginx with</p>
+<pre class="brush: bash; light: true;">
+sudo launchctl stop org.macports.nginx
+</pre>
+<p>but it would just be started right away. If you want it to remain stopped, use</p>
+<pre class="brush: bash; light: true;">
+sudo launchctl unload /Library/LaunchDaemons/org.macports.nginx.plist
+</pre>
+<p>When you make changes to the config, reload the config with</p>
+<pre class="brush: bash; light: true;">
+sudo /opt/local/sbin/nginx -s reload
+</pre>
+<p>Check the other nginx options using</p>
+<pre class="brush: bash; light: true;">/opt/local/sbin/nginx -h</pre>
+<p>One more thing&#8230;<br />
+When you add a rails or rack app, you need to specify a different server_name. You need to add it to /etc/hosts</p>
+<pre class="brush: bash; light: true;">
+127.0.0.1 localhost labs.local
+</pre>
+<p>Don&#8217;t you think it would be great if you can handle this automatically? Me too. Stay tuned for more. This shouldn&#8217;t be a <del>pane</del> pain. <img src='http://crigor.com/wp-includes/images/smilies/icon_wink.gif' alt=';)' class='wp-smiley' /> </p>

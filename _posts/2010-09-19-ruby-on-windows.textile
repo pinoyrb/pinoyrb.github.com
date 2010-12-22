@@ -1,0 +1,57 @@
+---
+layout: post
+title:        'Ruby on Windows'
+published_at: 2010-09-19
+---
+
+<h1> {{ page.title }} </h1>
+
+<p class='meta'> {{ page.published_at }} </p>
+
+<p>Some posts just write themselves. Today&#8217;s post comes from my reply to a guy in <a href="http://groups.google.com/group/ruby-phil">PhRUG</a> who still thinks you need a Mac before you can develop Rails applications.</p>
+<p><img src="http://www.bryanbibat.net/images/windows-ruby.png" alt="windows and ruby" class="aligncenter" /></p>
+<p>The biggest problem the Ruby/Rails community has when trying to spread the word in this country: the lack of interest in supporting Windows.</p>
+<p>I mean, a typical response to the legitimate question &#8220;I&#8217;m using Windows, how to I practice RoR?&#8221; is the fanboy answer: &#8220;Get a Mac!&#8221;</p>
+<p>And that, my dear readers, is a <strong>dick move</strong>. If I was an average college student and you told me that, I&#8217;ll immediately think &#8220;<em>WTF?!? I just want to try out this open-source language and web framework and I need to shell out a couple of years worth of tuition?!?</em>&#8221;</p>
+<p>Answering &#8220;Format your hard drive and install Linux&#8221; is less of a dick move, but a dick move nonetheless. </p>
+<p>Thus, if we rubyists want to spread the word about Ruby, we&#8217;ll have to make Windows a viable OS for Ruby development. Here are a few options available to us:</p>
+<p><span id="more-1047"></span><br />
+<h3>Use Ruby 1.9.2</h3>
+<p>Startup speed is probably the main problem with developing Rails in Windows. Fortunately, Ruby 1.9 is a heck of a lot faster than 1.8 thanks to the new interpreter.</p>
+<p>I tried to install Rails 3 on my gaming rig just now to see the difference.</p>
+<ul>
+<li>Downloaded and installed the 1.9.2 installer from the official ruby site. Note that you must tick the <em>Add Ruby executables to your path</em> to remove the need for doing that later.</li>
+</ul>
+<p><img src="http://www.bryanbibat.net/images/ruby-install-1.9-win.png" alt="ruby installer" class="aligncenter" /></p>
+<ul>
+<li>Went to the command prompt (I used <a href="http://en.wikipedia.org/wiki/Windows_PowerShell">PowerShell</a> because it&#8217;s just better) and installed Rails 3 using the same command for installing it in Linux or OS X: <code>gem install rails --no-ri --no-rdoc</code></li>
+</ul>
+<p><img src="http://www.bryanbibat.net/images/win-install-rails.png" alt="installing rails" class="aligncenter" /></p>
+<ul>
+<li>Downloaded SQLite3 Windows DLL from <a href="http://www.sqlite.org/download.html">the official download page</a> and extracted it to the Ruby bin directory (use <code>gem env</code> to determine the path)</li>
+</ul>
+<p><img src="http://www.bryanbibat.net/images/win-gem-env.png" alt="gem env" class="aligncenter" /></p>
+<ul>
+<li>Created the 6-command blog program. (<code>cd blog</code> not included in pics)</li>
+</ul>
+<p><img src="http://www.bryanbibat.net/images/win-create-rails-app.png" alt="rails new blog" class="aligncenter" /></p>
+<p><img src="http://www.bryanbibat.net/images/win-bundle-install.png" alt="bundle install" class="aligncenter" /></p>
+<p><img src="http://www.bryanbibat.net/images/win-generate-scaffold.png" alt="rails generate scaffold" class="aligncenter" /></p>
+<p><img src="http://www.bryanbibat.net/images/win-migration.png" alt="rake db:migrate" class="aligncenter" /></p>
+<p><img src="http://www.bryanbibat.net/images/win-server.png" alt="rails server" class="aligncenter" /></p>
+<ul>
+<li>Opened http://localhost:3000/entries in a browser. Works as expected.</li>
+</ul>
+<p><img src="http://www.bryanbibat.net/images/win-browser.png" alt="open browser" class="aligncenter" /></p>
+<p><strong>Conclusion</strong>: Ruby 1.9 on Windows is pretty fast. Have the newbie install this along with <a href="http://netbeans.org/features/ruby/index.html">NetBeans</a> or <a href="http://www.aptana.com/products/radrails">RadRails</a> and he should be diving into Rails in no time.</p>
+<h3>Virtualization (my personal choice)</h3>
+<p><img src="http://www.bryanbibat.net/images/virtualization.jpg" alt="virtual machine" class="aligncenter" /></p>
+<p>The problem with Windows is that some important gems (<a href="http://rvm.beginrescueend.com/">rvm</a>, <a href="http://unicorn.bogomips.org/">unicorn</a>, and <a href="http://www.modrails.com/">passenger</a>) are not supported by the OS. Fortunately, with a decent computer, you can run Linux inside of Windows without having to dual boot. <a href="http://www.virtualbox.org/">VirtualBox</a> or <a href="http://www.vmware.com/products/player/">VMWare Player</a> are both free virtualization options available on Windows.</p>
+<p>For a gaming level rig (~4 GB RAM, RAM is pretty cheap nowadays), installing <a href="http://www.ubuntu.com/desktop">Ubuntu Desktop 10.4 (Lucid Lynx)</a> on a VM with 10GB of space and 1GB of RAM should be more than enough for development needs. If you want to use a Windows editor/IDE to edit your files, you can setup shared folders to gain access to the files from the host PC.</p>
+<p>For a slightly weaker machine, you could install <a href="http://www.ubuntu.com/server">Ubuntu Server</a> on a VM with 10GB of space and 512MB of RAM, and voila! instant VPS on your PC. You can even use <a href="https://help.ubuntu.com/9.04/serverguide/C/openssh-server.html">openssh-sever</a> + <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">PuTTY</a> to emulate having multiple terminal windows.</p>
+<h3><a href="http://jruby.org/">JRuby</a></h3>
+<p>Pretty much the same as MRI Ruby with some minor differences. We don&#8217;t have rvm on Windows so you&#8217;ll have to change all of your &#8220;<code>ruby</code>&#8221; commands with &#8220;<code>jruby</code>&#8221; and prefix your ruby system commands with &#8220;<code>jruby -S</code>&#8221; e.g. &#8220;<code>jruby -S gem ...</code>&#8220;.</p>
+<p>Downside is that it has the slow startup speed of 1.8 (they say you could tweak it to preload the libraries faster, but I haven&#8217;t tried it myself) and the native extension problems of having a different environment.</p>
+<p>On the plus side, it&#8217;s on the JVM: just package your project into a WAR file with <a href="http://kenai.com/projects/warbler/pages/Home">Warbler</a> and it should be deployable on any J2EE application server. Great for convincing J2EE software houses to try out Rails.</p>
+<p>&#8211;</p>
+<p>In closing, if you&#8217;ve got a MacBook Pro and someone asks you about developing Rails on a PC, don&#8217;t be a dick and tell them &#8220;Get a Mac!&#8221;. Ruby is just fine regardless of whether you&#8217;re using Windows, Linux, or OS X.</p>

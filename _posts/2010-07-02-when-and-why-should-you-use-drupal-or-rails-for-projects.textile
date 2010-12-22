@@ -1,0 +1,49 @@
+---
+layout: post
+title:        'When And Why Should You Use Drupal or Rails For Projects'
+published_at: 2010-07-02
+---
+
+<h1> {{ page.title }} </h1>
+
+<p class='meta'> {{ page.published_at }} </p>
+
+<p>There are several reasons why we used Drupal. Even if I am a Rubyist, I also use <a href="http://drupal.org/user/43058"  rel="nofollow">Drupal</a> (PHP5) for certain reasons.</p>
+
+<p><strong>When and Why Should You Use Drupal?</strong></p>
+
+<p>a) Both time and money is  a major concern</p>
+
+<p>  <p>You'll hardly find good Ruby/Python programmers with hourly rates below $15 on ODesk. You can hire newbie's at below $10/hr however. If you have some understanding of Drupal configuration, Unix and XHTML at the very least, you can get some things done with Drupal at little or no cost. </p></p>
+
+<p>b) You are prototyping a platform</p>
+
+<p>  <p>You're just not sure what you're doing. Everything is an "experiment." You have an idea, but don't believe you can make money out of it - YET. Use Drupal. The fact that Drupal has the essentials a "working" application, you'll learn that there are many things you don't need to bother about so you can focus on the design and elements of the site (blocks, nodes, content types, views).  </p></p>
+
+<p>c) You want at least 50% of the site features done within 2 days</p>
+
+<p>  <p>I conceived an idea about a blog site where I can post my rants and people can contact me if they have any similar issues with a certain website like eBay. They can report issues, register (and spam protection is available) and provide feedback. After 2 days or about 16 hours of work, the site is fully launched with all the basic features. Deployment is done using Capistrano. I didn't bother remembering things because I use Git. Some things I've learned as a Ruby developer, I apply to PHP projects. Some of my sites are still using PHP5. </p></p>
+
+<p>d) You believe you need a module, not a developer</p>
+
+<p> I needed twitter integrated with that site too (new blog posts are announced via Twitter) and there's a module for that. Few minutes and the feature is working (for all users).</p>
+
+<p>e) The web server doesn't support Ruby on Rails applications
+  <p>
+Still not much of a reason but people say it's the number one issue. They don't know Unix, Git, Capistrano and all that.  There's a free <a href="http://heroku.com/"  rel="nofollow">Heroku</a> plan, you know that right? </p></p>
+
+<p><strong>When and Why Should You Use Rails?</strong></p>
+
+<p>a) High-traffic sites</p>
+
+<p>  <p>See <a href="http://railslab.newrelic.com/scaling-rails" rel="nofollow" >Scaling Rails</a> screencasts. </p></p>
+
+<p>b) You are an optimist, driven to learn quickly as changes for the Rails framework are done everyday</p>
+
+<p>  <p>If it works, it's ok. If it doesn't work, it's still ok. Only an optimist can see the bright(er) side of things. But the skilled businessman/developer (who should be an optimist) will just make it work. </p></p>
+
+<p>c) Usability is a major concern and you just care about every small detail of the project.</p>
+
+<p>d) You think "starting from scratch" is better than scratching your head and worrying about overriding default templates.</p>
+
+<p>e) You just can afford a good VPS host (and hire a Unix geek if you're not one).</p>

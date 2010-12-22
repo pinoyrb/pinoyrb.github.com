@@ -1,0 +1,64 @@
+---
+layout: post
+title:        'Automatically Start PostgreSQL on Mac OS X'
+published_at: 2010-06-25
+---
+
+<h1> {{ page.title }} </h1>
+
+<p class='meta'> {{ page.published_at }} </p>
+
+<p>Why bother remembering very long commands?</p>
+
+<p>There is a shell script for automatically starting, stopping and restarting PostgreSQL if you have installed PostgreSQL on /usr/local. In fact there is a shell script for nearly every redundant task for developers and Linux system administrators (even spammers).</p>
+
+<p>See the following guide first:</p>
+
+<p><a href="http://developer.apple.com/internet/opensource/postgres.html"  rel="nofollow">PostgreSQL on Mac OS X</a></p>
+
+<p>The shell script:</p>
+
+<pre class="brush: ruby">
+
+#!/bin/bash
+
+start()
+{
+        echo -n "Starting PostgreSQL server"
+        sudo su postgres -c '/usr/local/pgsql/bin/pg_ctl -D /usr/local/pgsql/data/ -l /usr/local/pgsql/data/postgresql.log start'
+
+        return
+}
+
+stop()
+{
+        echo -n "Stopping PostgreSQL server"
+        sudo su postgres -c '/usr/local/pgsql/bin/pg_ctl -D /usr/local/pgsql/data/ stop'
+        return
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: {start|stop|restart}"
+        exit 1
+        ;;
+esac
+
+</pre>
+
+
+<p>Usage: /path/to/script start (stop|restart).</p>
+
+<p>You can create aliases on .bash_profile to make the command shorter.</p>
+
+<p>A good friend also has a very nice post for Mac OS users who are also Ruby programmers. I am not sure if we all have the same preferences. Do we use Firefox and Firebug that often? Chrome is worth trying, right? Do we use MongoDB for Rails apps? You can rework his script according to your needs. Check out the post of Radamanthus Batnag on how to <a href="http://rad.batnag.org/2010/06/work-sh" >automatically start applications</a> you need to get ready for "work mode."</p>

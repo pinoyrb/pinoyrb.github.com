@@ -1,0 +1,95 @@
+title:        'Why You Might Not Use Named Scopes In Rails3'
+published_at: '2010-07-25'
+filename:     '2010-07-25-why-you-might-not-use-named-scopes-in-rails3'
+content: |-
+  <p>It's interesting how Rails 3 querying is a lot easier than it was before.</p>
+  
+  <p><em>Simple Task:</em> Get all posts that are promoted to front page.</p>
+  
+  <p>Some apps probably do not use the field "promoted" primarily because there's a published field then all published posts will be promoted on front page. But in Drupal, nodes have promoted field and I think most apps should too. Sometimes you wouldn't want to show everything on the front page or want some post on top of the list of posts.</p>
+  
+  <p>Write the tests first.</p>
+  
+  <pre class="brush: ruby">
+  
+  spec/fixtures/post.yml
+  
+  hello_world:
+    title: Hello World
+    body: "We are ruby enthusiasts"
+    promoted: true
+  
+  
+  spec/models/post_spec.rb
+  
+  require 'spec_helper'
+  
+  describe Post do
+    before(:each) do
+      @post = Post.new
+      @date = Time.now
+    end
+  
+   
+    describe 'return promoted post' do
+      it 'gets promoted posts' do
+        Post.promoted.size.should == 1
+      end
+    end 
+  
+  end
+  
+  </pre>
+  
+  
+  <p>The test could be written in a better way. But this is just written to make sure there are returns for that method. Run "rake spec". It should show an error.</p>
+  
+  <pre class="brush: ruby">
+  
+  app/models/post.rb
+  
+  
+  BEFORE:
+  
+  named_scope :promoted, :conditions => { :promoted => true }
+  
+  (In Rails 3, named_scope is now scope)
+  
+  AFTER: 
+  
+  def self.promoted
+    where(:promoted => true)
+  end
+  
+  </pre>
+  
+  
+  <p>That is it for the models. Rails 3 is much better, really.</p>
+  
+  <pre class="brush: ruby">
+  
+  BEFORE:
+  
+  app/controllers/posts_controller.rb
+  
+  Post.find(:all, :conditions=>{:promoted => true}, :order=>"created_at DESC")
+  
+  or modify the named scope:
+  
+  
+  app/models/post.rb
+  
+  named_scope :promoted, :conditions => { :promoted => true }, :order=>"created_at DESC"
+  
+  
+  AFTER: 
+  
+  app/models/post.rb
+  
+  
+  Post.promoted.order("created_at DESC")
+  
+  </pre>
+  
+  
+  <p>With the new querying API, we don't have to assume the order is always "created_at DESC". It's quite flexible and concise. Just as DHH mentioned in the RailsConf 2010, one of the strengths of Rails 3 is to build queries on stages.</p>

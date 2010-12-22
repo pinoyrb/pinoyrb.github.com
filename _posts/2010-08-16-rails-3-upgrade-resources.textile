@@ -1,0 +1,252 @@
+---
+layout: post
+title:        'Rails 3 Upgrade Resources'
+published_at: 2010-08-16
+---
+
+<h1> {{ page.title }} </h1>
+
+<p class='meta'> {{ page.published_at }} </p>
+
+<p>Many of us have several existing 2.x applications and would want to upgrade without pulling our hair because we can't figure out something or we are wary of consuming too much time. I'm about to post several links where you could find useful advice on upgrading Rails 3. Feel free to share other links if you know some.</p>
+
+<p><strong>Question: is it worth it to upgrade?</strong></p>
+
+<p>It's definitely worth it. There is no logical reason for staying "behind" (other than money).</p>
+
+<p>Obviously, an application that has a test suite or has been developed using TDD (Test-Driven Development) or BDD (Behaviour-Driven Development) is much is easier to upgrade than apps that don't.</p>
+
+<p>What has changed in RSpec for Rails 3?
+Not much.</p>
+
+<p>In Rails 2.x, we have this functional test:</p>
+
+<pre class="brush: ruby">
+ require 'spec_helper'
+
+describe PostsController do
+  integrate_views
+  fixtures :posts
+  fixtures :users
+  setup :activate_authlogic
+
+  def mock_post(stubs={})
+    @mock_post ||= mock_model(Post, stubs).as_null_object
+  end
+
+  describe "GET index" do
+
+     before do
+        require_admin
+     end
+
+    it "assigns all posts as @posts" do
+      Post.stub(:all) { [mock_post] }
+      get :index
+      assigns(:posts).should eq([mock_post])
+    end
+  end
+
+end 
+
+</pre>
+
+
+<p>If we'd like it to work for Rails 3, we just need to change one thing.</p>
+
+<pre class="brush: ruby">
+require 'spec_helper'
+
+describe PostsController do
+  render_views
+  fixtures :posts
+  fixtures :users
+  setup :activate_authlogic
+
+  def mock_post(stubs={})
+    @mock_post ||= mock_model(Post, stubs).as_null_object
+  end
+
+  describe "GET index" do
+
+     before do
+        require_admin
+     end
+
+    it "assigns all posts as @posts" do
+      Post.stub(:all) { [mock_post] }
+      get :index
+      assigns(:posts).should eq([mock_post])
+    end
+  end
+
+end
+</pre>
+
+
+<p>I really appreciate that many developers share their experience on how they successfully upgraded their applications to 3.x. One of them is Greg Moreno. He is founder of Propsify. He's a Filipino developer based in Canada who'll come back to the Philippines in September for RailsJam events. Please find time to check out the website (which I designed) for details about the events:</p>
+
+<p><a href="http://railsjam.net" >RailsJam</a></p>
+
+<p>These are the most useful and concise posts I've seen on upgrading a 2.x app to 3.x:</p>
+
+<p><a href="http://gregmoreno.ca/rails-3-upgrade-part-1-booting-the-application/" >Rails 3 upgrade part 1: Booting the application</a></p>
+
+<p><a href="http://gregmoreno.ca/rails-3-upgrade-part-2-routes/" >Rails 3 upgrade part 2: Routes</a></p>
+
+<p><a href="http://gregmoreno.ca/rails-3-upgrade-part-3-code-fixes-views-and-forms/"  >Rails 3 upgrade part 3: Code fixes, views, and forms </a></p>
+
+<p>I also find the Rails 3 Upgrade handbook PDF (not free) very useful. It's like a manual that shows everything (or nearly everything) that's deprecated in Rails 3.</p>
+
+<p><a href="http://peepcode.com/products/rails-3-upgrade-handbook-pdf/"  >Rails 3 Upgrade Handbook</a></p>
+
+<p>Also Rails 3 works well or better for Ruby 1.9.2. So you have to install RVM to use with 1.9.2 version.</p>
+
+<pre class="brush: ruby">
+Katherine-Pes-iMac:railsjam katz$ rvm info
+
+rvm 0.1.3 by Wayne E. Seguin (wayneeseguin@gmail.com) [http://rvm.beginrescueend.com/]
+
+
+system:
+  uname: "Darwin Katherine-Pes-iMac.local 10.4.0 Darwin Kernel Version 10.4.0: Fri Apr 23 18:28:53 PDT 2010; root:xnu-1504.7.4~1/RELEASE_I386 i386"
+
+ruby:
+  interpreter:  "ruby"
+  version:      "1.9.2dev"
+  date:         "2010-07-11"
+  platform:     "x86_64-darwin10.4.0"
+  patchlevel:   "2010-07-11 revision 28618"
+  full_version: "ruby 1.9.2dev (2010-07-11 revision 28618) [x86_64-darwin10.4.0]"
+
+homes:
+  gem:          "/Users/katz/.rvm/gems/ruby-1.9.2-rc2"
+  ruby:         "/Users/katz/.rvm/rubies/ruby-1.9.2-rc2"
+
+binaries:
+  ruby:         "/Users/katz/.rvm/rubies/ruby-1.9.2-rc2/bin/ruby"
+  irb:          "/Users/katz/.rvm/rubies/ruby-1.9.2-rc2/bin/irb"
+  gem:          "/Users/katz/.rvm/rubies/ruby-1.9.2-rc2/bin/gem"
+  rake:         "/Users/katz/.rvm/rubies/ruby-1.9.2-rc2/bin/rake"
+
+environment:
+  GEM_HOME:     "/Users/katz/.rvm/gems/ruby-1.9.2-rc2"
+  MY_RUBY_HOME: "/Users/katz/.rvm/rubies/ruby-1.9.2-rc2"
+  IRBRC:        "/Users/katz/.rvm/rubies/ruby-1.9.2-rc2/.irbrc"
+
+
+</pre>
+
+
+<p>Someone asked me this, what is "g" in Rails 3?</p>
+
+<p>It's simply an alias for "generate."</p>
+
+<pre class="brush: ruby">
+
+rails g
+Usage: rails generate GENERATOR [args] [options]
+
+General options:
+  -h, [--help]     # Print generators options and usage
+  -p, [--pretend]  # Run but do not make any changes
+  -f, [--force]    # Overwrite files that already exist
+  -s, [--skip]     # Skip files that already exist
+  -q, [--quiet]    # Supress status output
+
+Please choose a generator below.
+
+Rails:
+  controller
+  generator
+  helper
+  integration_test
+  mailer
+  migration
+  model
+  observer
+  performance_test
+  plugin
+  resource
+  scaffold
+  scaffold_controller
+  session_migration
+  stylesheets
+
+Authlogic:
+  authlogic:session
+  authlogic:session
+
+Cucumber:
+  cucumber:feature
+  cucumber:install
+
+Datamapper:
+  datamapper:migration
+  datamapper:model
+  datamapper:observer
+
+Erb:
+  erb:controller
+  erb:mailer
+  erb:scaffold
+
+Erubis:
+  erubis:controller
+  erubis:scaffold
+
+FactoryGirl:
+  factory_girl:model
+
+Formtastic:
+  formtastic:scaffold
+
+FriendlyId:
+  friendly_id
+
+Haml:
+  haml:install
+
+Jquery:
+  jquery:install
+
+Koala:
+  koala:install
+
+Machinist:
+  machinist:model
+
+Mongomapper:
+  mongomapper:model
+  mongomapper:observer
+
+Mustache:
+  mustache:controller
+  mustache:install
+  mustache:scaffold
+
+Rspec:
+  rspec:install
+
+Shoulda:
+  shoulda:controller
+  shoulda:model
+
+SimpleForm:
+  simple_form:scaffold
+
+TestUnit:
+  test_unit:controller
+  test_unit:helper
+  test_unit:integration
+  test_unit:mailer
+  test_unit:model
+  test_unit:observer
+  test_unit:performance
+  test_unit:plugin
+  test_unit:scaffold
+
+</pre>
+
+
+<p>Hope this was useful.</p>

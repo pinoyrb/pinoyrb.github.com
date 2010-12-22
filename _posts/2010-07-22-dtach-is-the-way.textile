@@ -1,0 +1,60 @@
+---
+layout: post
+title:        'Dtach is the way'
+published_at: 2010-07-22
+---
+
+<h1> {{ page.title }} </h1>
+
+<p class='meta'> {{ page.published_at }} </p>
+
+<p>If you have a worker that doesn&#8217;t stop (looping endlessly and waiting for some queue to have a job), you might want to have the ability to put this worker in the background for the following reasons:</p>
+
+<ol>
+<li>Closing the terminal will close your worker</li>
+
+<li>If you&#8217;re in development, having a dedicated terminal window for this is too much of a pain.</li>
+
+<li>In production, you&#8217;d definitely need the option to put tasks in the background.</li>
+</ol>
+<code><pre><span class="ident">rake</span> <span class="ident">worker</span>
+</pre></code>
+<p>Running this in the background means either building your daemonizing code in-ruby using daemons.rubyforge.org or something similar. Or is there another way?</p>
+
+<h2 id='enter_dtach'>Enter Dtach</h2>
+
+<p>Let&#8217;s first quickly read through the help of dtach.</p>
+<code><pre><span class="constant">Usage</span><span class="punct">:</span> <span class="ident">dtach</span> <span class="punct">-</span><span class="ident">a</span> <span class="punct">&lt;</span><span class="ident">socket</span><span class="punct">&gt;</span> <span class="punct">&lt;</span><span class="ident">options</span><span class="punct">&gt;</span>
+       <span class="ident">dtach</span> <span class="punct">-</span><span class="constant">A</span> <span class="punct">&lt;</span><span class="ident">socket</span><span class="punct">&gt;</span> <span class="punct">&lt;</span><span class="ident">options</span><span class="punct">&gt;</span> <span class="punct">&lt;</span><span class="ident">command</span><span class="punct">...&gt;</span>
+       <span class="ident">dtach</span> <span class="punct">-</span><span class="ident">c</span> <span class="punct">&lt;</span><span class="ident">socket</span><span class="punct">&gt;</span> <span class="punct">&lt;</span><span class="ident">options</span><span class="punct">&gt;</span> <span class="punct">&lt;</span><span class="ident">command</span><span class="punct">...&gt;</span>
+       <span class="ident">dtach</span> <span class="punct">-</span><span class="ident">n</span> <span class="punct">&lt;</span><span class="ident">socket</span><span class="punct">&gt;</span> <span class="punct">&lt;</span><span class="ident">options</span><span class="punct">&gt;</span> <span class="punct">&lt;</span><span class="ident">command</span><span class="punct">...&gt;</span>
+<span class="constant">Modes</span><span class="punct">:</span>
+  <span class="punct">-</span><span class="ident">a</span>		<span class="constant">Attach</span> <span class="ident">to</span> <span class="ident">the</span> <span class="ident">specified</span> <span class="ident">socket</span><span class="punct">.</span>
+  <span class="punct">-</span><span class="ident">A</span>		<span class="ident">Attach</span> <span class="ident">to</span> <span class="ident">the</span> <span class="ident">specified</span> <span class="ident">socket</span><span class="punct">,</span> <span class="keyword">or</span> <span class="ident">create</span> <span class="ident">it</span> <span class="keyword">if</span> <span class="ident">it</span>
+		  <span class="ident">does</span> <span class="keyword">not</span> <span class="ident">exist</span><span class="punct">,</span> <span class="ident">running</span> <span class="ident">the</span> <span class="ident">specified</span> <span class="ident">command</span><span class="punct">.</span>
+  <span class="punct">-</span><span class="ident">c</span>		<span class="constant">Create</span> <span class="ident">a</span> <span class="ident">new</span> <span class="ident">socket</span> <span class="keyword">and</span> <span class="ident">run</span> <span class="ident">the</span> <span class="ident">specified</span> <span class="ident">command</span><span class="punct">.</span>
+  <span class="punct">-</span><span class="ident">n</span>		<span class="constant">Create</span> <span class="ident">a</span> <span class="ident">new</span> <span class="ident">socket</span> <span class="keyword">and</span> <span class="ident">run</span> <span class="ident">the</span> <span class="ident">specified</span> <span class="ident">command</span> <span class="ident">detached</span><span class="punct">.</span>
+</pre></code>
+<p>We can handle putting our rake task in the background a couple of different ways:</p>
+
+<ol>
+<li>Start normally, detach on demand</li>
+</ol>
+<code><pre><span class="ident">dtach</span> <span class="punct">-</span><span class="constant">A</span> <span class="punct">/</span><span class="ident">tmp</span><span class="punct">/</span><span class="ident">dtach</span><span class="punct">.</span><span class="ident">worker</span> <span class="ident">rake</span> <span class="ident">worker</span>
+
+<span class="comment"># dtach -c doesn't actually have much difference except </span>
+<span class="comment"># that it always tries to create the socket.</span>
+</pre></code>
+<p>This runs as normal, but when you want to <code>dtach</code>, you can hit <code>Ctrl + \</code>.</p>
+
+<ol>
+<li>Start it in the background right off the bat.</li>
+</ol>
+<code><pre><span class="ident">dtach</span> <span class="punct">-</span><span class="ident">n</span> <span class="punct">/</span><span class="ident">tmp</span><span class="punct">/</span><span class="ident">dtach</span><span class="punct">.</span><span class="ident">worker</span> <span class="ident">rake</span> <span class="ident">worker</span>
+</pre></code>
+<p>This will just run it in the background as normal. Now when you want to re-attach it, just run:</p>
+<code><pre><span class="ident">dtach</span> <span class="punct">-</span><span class="ident">a</span> <span class="punct">/</span><span class="ident">tmp</span><span class="punct">/</span><span class="ident">dtach</span><span class="punct">.</span><span class="ident">worker</span>
+</pre></code>
+<h2 id='but_why_why_not_build_daemonizing_into_your_ruby_script'>But why? Why not build daemonizing into your ruby script?</h2>
+
+<p>Well, I&#8217;m just a fan of really simple tools that doesn&#8217;t try to overstep its responsibilities. Lately I&#8217;ve been moving away from rails (monolithic) and into <em>nix style philosophy (monk, sinatra, ohm, etc, etc).</em></p>

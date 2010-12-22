@@ -1,0 +1,9 @@
+title:        'Rails3: ActiveModel Lint'
+published_at: '2010-03-04'
+filename:     '2010-03-04-rails3-activemodel-lint'
+content: |-
+  <p>If you&#8217;re building ActiveModel-like classes, it&#8217;s quite useful that you run the ActiveModel Lint tests that&#8217;s shipped with Rails 3. Unfortunately, if you&#8217;re using Rspec 2.0, using the Test::Unit version doesn&#8217;t fly as well.</p>
+  
+  <p>I added a behavior in our rspec-rails-matchers gem which enables you to do the following:</p>
+  <script src='http://gist.github.com/322272.js?file=reply_spec.rb' />
+  <p>Check it out at http://rubygems.org/gems/rspec-rails-matchers</p>

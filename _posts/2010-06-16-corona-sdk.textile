@@ -1,0 +1,19 @@
+---
+layout: post
+title:        'Corona SDK'
+published_at: 2010-06-16
+---
+
+<h1> {{ page.title }} </h1>
+
+<p class='meta'> {{ page.published_at }} </p>
+
+<p>It seems I can develop some games much, much faster with the <a href="http://anscamobile.com/corona/" onclick="pageTracker._trackPageview('/outgoing/anscamobile.com/corona/?referer=');">Corona SDK</a>. It will cost me $99, and it&#8217;s not as macho as mastering Objective-C, but I think I&#8217;ll end up saving hundreds of hours with this kit.</p>
+<p>I think Corona is a great kit for writing games in general, especially arcade games and board games. There&#8217;s no built-in support yet for tiled maps, and it looks like <a href="http://www.cocos2d-iphone.org/" onclick="pageTracker._trackPageview('/outgoing/www.cocos2d-iphone.org/?referer=');">Cocos2D</a> will have that built-in first. But even with that disadvantage, developing on Lua is so much more productive than developing on Objective-C that I&#8217;ll still come out ahead.</p>
+<p>Some apps aren&#8217;t a good fit, though:</p>
+<ul>
+<li>those that extensively use the CocoaTouch UI controls. In Corona, you have to create your own buttons, text fields, etc. There&#8217;s the ui library, but it only covers a few controls.</li>
+<li>those that access APIs that aren&#8217;t wrapped yet by Corona. For example, access to the address book seems to be missing.</li>
+</ul>
+<p>There&#8217;s the worry that Corona SDK will violate section <a href="http://rad.batnag.org/2010/05/iphone-sdk-tos-3-3-1-one-month-later/">3.3.1</a>. Folks from Corona gave some reassuring <a href="http://blog.anscamobile.com/2010/04/lua-the-lingua-franca-of-iphone-games/" onclick="pageTracker._trackPageview('/outgoing/blog.anscamobile.com/2010/04/lua-the-lingua-franca-of-iphone-games/?referer=');">messages</a>, but of course, with Apple, you can&#8217;t have absolute uncertainty. My take is that even if Apple gives Corona the boot, Corona will become Android-only, and Corona SDK is worth $99 even as an Android</p>
+<p>I&#8217;m taking the $99 plunge. If nothing else, I think Lua will give me a refreshing break from my day-to-day Ruby and Javascript coding.</p>

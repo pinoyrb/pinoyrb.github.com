@@ -1,0 +1,12 @@
+---
+layout: post
+title:        'uninitialized constant Delayed::Job'
+published_at: 2010-04-14
+---
+
+<h1> {{ page.title }} </h1>
+
+<p class='meta'> {{ page.published_at }} </p>
+
+<p>Just a quick shout out for those having a problem with the latest DelayedJob, this is a quick fix!</p>
+<script src='http://gist.github.com/365826.js?file=delayed_job_fix.rb' />

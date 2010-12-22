@@ -1,0 +1,59 @@
+title:        'Hello whenever, goodbye manual crontab'
+published_at: '2010-01-30'
+filename:     '2010-01-30-hello-whenever-goodbye-manual-crontab'
+content: |-
+  Do you hate managing cron configurations manually? How about maintaining different cron configs for every Rails application you might possibly have?
+  <h2 id="wheneverize">Wheneverize</h2>
+  Say hello to a ruby gem called <a href="http://github.com/javan/whenever">whenever</a>. It basically allows you to configure your cron jobs in ruby. An example to illustrate:
+  
+  <code> </code>
+  
+  <code>
+  <pre><span class="comment"># assuming you have gemcutter in your list of sources</span>
+  <span class="ident">sudo</span> <span class="ident">gem</span> <span class="ident">install</span> <span class="ident">whenever</span>
+  
+  <span class="comment"># in your rails application</span>
+  <span class="ident">wheneverize</span> <span class="punct">.</span>
+  
+  <span class="comment"># now edit config/schedule.rb</span>
+  <span class="ident">vi</span> <span class="ident">config</span><span class="punct">/</span><span class="ident">schedule</span><span class="punct">.</span><span class="ident">rb</span></pre>
+  </code>
+  
+  Now you’re presented with a very easy to understand Ruby DSL. No more reading cron manuals, it’s very straightforward and intuitive.
+  
+  <code> </code>
+  
+  <code>
+  <pre><span class="ident">set</span> <span class="symbol">:output</span><span class="punct">,</span> <span class="punct">"</span><span class="string">/opt/myapp.com/current/log/cron_log.log</span><span class="punct">"</span>
+  
+  <span class="ident">every</span> <span class="symbol">:reboot</span> <span class="keyword">do</span>
+    <span class="ident">rake</span> <span class="punct">"</span><span class="string">solr:start</span><span class="punct">"</span>
+  <span class="keyword">end</span>
+  
+  <span class="ident">every</span> <span class="symbol">:friday</span><span class="punct">,</span> <span class="symbol">:at</span> <span class="punct">=&gt;</span> <span class="punct">'</span><span class="string">8am</span><span class="punct">'</span> <span class="keyword">do</span>
+    <span class="ident">rake</span> <span class="punct">"</span><span class="string">newsletters:deliver</span><span class="punct">"</span>
+  <span class="keyword">end</span>
+  
+  <span class="ident">every</span> <span class="number">1</span><span class="punct">.</span><span class="ident">day</span><span class="punct">,</span> <span class="symbol">:at</span> <span class="punct">=&gt;</span> <span class="punct">'</span><span class="string">12am</span><span class="punct">'</span> <span class="keyword">do</span>
+    <span class="ident">rake</span> <span class="punct">"</span><span class="string">harvester:analyze</span><span class="punct">"</span>
+  <span class="keyword">end</span></pre>
+  </code>
+  
+  Now this ruby file will not be enough to run itself. Fortunately, if you’re using capistrano, updating your cron config after every deploy is dead simple:
+  
+  <code> </code>
+  
+  <code>
+  <pre><span class="comment"># in your config/deploy/production.rb maybe</span>
+  
+  <span class="ident">namespace</span> <span class="symbol">:deploy</span> <span class="keyword">do</span>
+    <span class="ident">desc</span> <span class="punct">"</span><span class="string">Update the crontab file</span><span class="punct">"</span>
+    <span class="ident">task</span> <span class="symbol">:update_crontab</span><span class="punct">,</span> <span class="symbol">:roles</span> <span class="punct">=&gt;</span> <span class="symbol">:db</span> <span class="keyword">do</span>
+      <span class="ident">run</span> <span class="punct">"</span><span class="string">cd <span class="expr">#{release_path}</span> &amp;&amp; whenever --update-crontab <span class="expr">#{application}</span></span><span class="punct">"</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+  
+  <span class="ident">after</span> <span class="punct">"</span><span class="string">deploy:restart</span><span class="punct">",</span> <span class="punct">"</span><span class="string">deploy:update_crontab</span><span class="punct">"</span></pre>
+  </code>
+  
+  Say goodbye to minding crontabs saved on different servers and say hello to a well maintained and managed configuration in your rails app.

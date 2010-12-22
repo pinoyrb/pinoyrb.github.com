@@ -1,0 +1,63 @@
+title:        'Ruby 101: Make your class behave like a Ruby built-in'
+published_at: '2010-06-10'
+filename:     '2010-06-10-ruby-101-make-your-class-behave-like-a-ruby-built-in'
+content: |-
+  <p>I got re-acquianted with this scenario while working on the<a href="http://github.com/gregmoreno/openamplify"> OpenAmplify gem</a> &#8211; a wrapper for the <a href="http://community.openamplify.com/blogs/quickstart/pages/overview.aspx">OpenAmplify API</a>.  When you give the api a text like a blog comment, it will return a list of common terms, opinion scores, named locations, and other information that can be used for text mining operations. </p>
+  <p>The OpenAmplify returns key-value pairs in an XML string by default, but it can also be in JSON, CSV, or RDF format. From a Ruby client’s point of view, we want it in Hash.  You can choose to use an XML library like Nokogiri but in my opinion, working with a Hash  fits nicely with Ruby.</p>
+  <p>Anyway, back to the problem.  I have an instance variable that holds the data.  One approach is to give clients access to the instance variable.</p>
+  <pre class="brush: ruby;">
+  class Response
+    attr_reader :data
+  
+    def initialize
+      @data = {}
+    end
+  end
+  
+  data = response.data
+  topics = data[‘Topics’]
+  </pre>
+  <p>One major issue with this approach is you’re exposing the internals of your class. What if you decided to rename the variable into ‘@results_in_hash_form’?  Then,  all programs that uses your code will break.  Worse,  you will be limited from enhancing the behavior of your class like lazy loading of the data.  You can wrap the access to your data inside a method but that still presents the problem of exposing the internals of your class. Also, that’s an unnecessary extra line of code :)</p>
+  <p>My suggestion is to make ‘Response’ behave like a Hash so we can do these:</p>
+  <pre class="brush: ruby;">
+  topics = response[‘Topics’]
+  response.has_key?(‘Topics’)
+  
+  # And still have our own methods:
+  response.some_method_we_defined
+  </pre>
+  <p>So, how can we do this? The trick is to delegate the calls to the instance variable. One approach is to define the Hash methods you want to support:</p>
+  <pre class="brush: ruby;">
+  class Response
+  
+    [‘[]’, ‘has_key?’, ‘fetch’, ‘empty?’, ‘keys’].each do |method_name|
+      class_eval &lt;&lt;-EOS
+        def #{method}(*args)
+           @data.send(‘#{method_name}’, *args)
+        end
+      EOS
+    end
+  
+  end
+  </pre>
+  <p>The code above is a shortcut to writing every method by hand. If you want to support all Hash methods, that would be a lot of typing.  </p>
+  <p>A better approach is to just take advantage of Ruby’s ‘method_missing’ which is called every time an undefined method is called.</p>
+  <pre class="brush: ruby;">
+  class Response
+  
+    def method_missing(name, *args, &amp;amp;block)
+      @data.send(name, *args, &amp;amp;block)
+    end
+  
+  end
+  </pre>
+  <p>Of course, how your &#8216;method_missing&#8217; will look like depends on your requirements. In our simple case, we can simply delegate to @data.</p>
+  <p>This approach is called a &#8220;Dynamic Proxy&#8221; from the book <a href="http://pragprog.com/titles/ppmetr/metaprogramming-ruby">Metaprogramming Ruby by Paolo Perrota</a>. If you want to take your Ruby skills to the next level, I highly recommend this book.</p>
+  
+  
+  <p>Related posts:<ol><li><a href='http://gregmoreno.ca/how-to-use-openamplify-with-ruby/' rel='bookmark' title='Permanent Link: How to use OpenAmplify with Ruby'>How to use OpenAmplify with Ruby</a> <small>The OpenAmplify API reads text you supply and returns linguistic data explaining and classifying the content. What you do with that analysis is, in the fine tradition of APIs and...</small></li>
+  <li><a href='http://gregmoreno.ca/ruby-101-how-to-add-methods-to-a-ruby-class/' rel='bookmark' title='Permanent Link: Ruby 101: How to add methods to a Ruby class'>Ruby 101: How to add methods to a Ruby class</a> <small>Let’s add a method that checks whether an Array has many elements. a = [1,2,3] a.many? # NoMethodError: undefined method `many?' Let’s fix this by adding a new method to...</small></li>
+  <li><a href='http://gregmoreno.ca/how-to-create-a-class-on-the-fly-in-ruby/' rel='bookmark' title='Permanent Link: How to create a class on the fly in Ruby'>How to create a class on the fly in Ruby</a> <small>&#8220;So what if Ruby is dynamic?&#8221; This is often the reaction I get whenever I tell friends that Ruby allows you to fiddle with your program at runtime; followed by...</small></li>
+  </ol></p>
+  <p><a href="http://feedads.g.doubleclick.net/~a/wSkNamBulvAxCr7LnNIURaxMtpg/0/da"><img src="http://feedads.g.doubleclick.net/~a/wSkNamBulvAxCr7LnNIURaxMtpg/0/di" border="0" ismap="true"></img></a><br/>
+  <a href="http://feedads.g.doubleclick.net/~a/wSkNamBulvAxCr7LnNIURaxMtpg/1/da"><img src="http://feedads.g.doubleclick.net/~a/wSkNamBulvAxCr7LnNIURaxMtpg/1/di" border="0" ismap="true"></img></a></p>

@@ -1,0 +1,19 @@
+---
+layout: post
+title:        'Rails3: Factory girl and file uploads'
+published_at: 2010-02-24
+---
+
+<h1> {{ page.title }} </h1>
+
+<p class='meta'> {{ page.published_at }} </p>
+
+<p>Our experience so far with rails 3 has been pretty good. Some of the modules and internals of rails were renamed, but so far we haven&#8217;t experienced anything that changed drastically. Most of the stuff still have some parallelisms.</p>
+
+<h2 id='actioncontrollertestprocess_is_now_actiondispatchtestprocess'>ActionController::TestProcess is now ActionDispatch::TestProcess</h2>
+
+<p>We had a model with a paperclip attachment, which we required the presence of. In order to specify that in our spec/support/factories.rb, we just had to do the following:</p>
+<script src='http://gist.github.com/313121.js?file=factories.rb' />
+<p>One other important detail here is that right now, Rails doesn&#8217;t have the option of overriding the fixtures file path when you&#8217;re using Rspec. To overcome that problem, I just had to add a file in <code>spec/support</code>. For our purposes we just named it <code>001_fixture_path.rb</code>. As soon as RSpec and Rails fixes their integration problem, we&#8217;ll just remove the file.</p>
+<script src='http://gist.github.com/313126.js?file=001_fixture_path.rb' />
+<p>Next up, we&#8217;re gonna share our very exciting and slightly painful experience with upgrading to RSpec 2.0.</p>

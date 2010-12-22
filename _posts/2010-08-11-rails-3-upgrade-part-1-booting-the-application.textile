@@ -1,0 +1,174 @@
+---
+layout: post
+title:        'Rails 3 upgrade part 1: Booting the application'
+published_at: 2010-08-11
+---
+
+<h1> {{ page.title }} </h1>
+
+<p class='meta'> {{ page.published_at }} </p>
+
+<p>It&#8217;s time for another Rails upgrade! We all have our share of bad experiences and frustrations every time we upgrade a piece of software. Even for technical people who live and breath on the edge, upgrades are one of these things we try to avoid as much as possible.  Still, there is always a sense of excitement in trying something new even if it adds problems to an already stable piece of code.</p>
+<p>For a little background, I am upgrading a Rails app several of friends and I have written last year. The code is available at <a href="http://github.com/gregmoreno/propsify">github</a>.</p>
+<p>In this post, I share the steps I did to boot the application. This doesn&#8217;t mean the upgrade went fine neither the app is ready to go. It only means all the required initialization are OK. In succeeding posts, I share my experiences in upgrading the app to a green state.</p>
+<p>First, my environment.</p>
+<pre class="brush: bash;">
+greg@piccolo:~/dev/projects/propsify3$ rvm info
+ruby-1.8.7-p299@propsify:
+
+  system:
+    uname:        &quot;Linux piccolo 2.6.31-22-generic #61-Ubuntu SMP Wed Jul 28 01:57:06 UTC 2010 i686 GNU/Linux&quot;
+    shell:        &quot;bash&quot;
+    version:      &quot;4.0.33(1)-release&quot;
+
+  rvm:
+    version:      &quot;rvm 0.1.44 by Wayne E. Seguin (wayneeseguin@gmail.com) [http://rvm.beginrescueend.com/]&quot;
+
+  ruby:
+    interpreter:  &quot;ruby&quot;
+    version:      &quot;1.8.7&quot;
+    date:         &quot;2010-06-23&quot;
+    platform:     &quot;i686-linux&quot;
+    patchlevel:   &quot;2010-06-23 patchlevel 299&quot;
+    full_version: &quot;ruby 1.8.7 (2010-06-23 patchlevel 299) [i686-linux]&quot;
+
+greg@piccolo:~/dev/projects/propsify3$ script/about
+About your application's environment
+Ruby version              1.8.7 (i686-linux)
+RubyGems version          1.3.7
+Rack version              1.0 bundled
+Rails version             2.3.2
+Active Record version     2.3.2
+Action Pack version       2.3.2
+Active Resource version   2.3.2
+Action Mailer version     2.3.2
+Active Support version    2.3.2
+Application root          /mnt/hgfs/greg-mini/dev/projects/propsify
+Environment               development
+Database adapter          postgresql
+Database schema version   20100113032723
+
+greg@piccolo:~/dev/projects/propsify3$ gem list
+
+*** LOCAL GEMS ***
+
+actionmailer (2.3.2)
+actionpack (2.3.2)
+activerecord (2.3.2)
+activeresource (2.3.2)
+activesupport (2.3.2)
+geokit (1.5.0)
+json (1.4.5)
+mime-types (1.16)
+oauth (0.4.1)
+pg (0.9.0)
+rails (2.3.2)
+rake (0.8.7)
+RedCloth (4.2.2)
+twitter_oauth (0.3.2)
+
+greg@piccolo:~/dev/projects/propsify3$ ls vendor/gems/
+authlogic-2.1.3  geokit-1.5.0  haml-2.2.16  macaddr-1.0.0  twitter_oauth-0.3.2  uuid-2.1.0
+
+greg@piccolo:~/dev/projects/propsify3$ ls vendor/plugins/
+acts_as_commentable        geokit-rails     is_taggable   thinking-sphinx      will_paginate
+declarative_authorization  gravatar-plugin  jrails        validates_date_time
+exception_notification     haml             subdomain-fu  vote_fu
+</pre>
+<p><strong>Step 1: Install rails 3</strong></p>
+<pre class="brush: plain;">
+gem install rails --pre
+</pre>
+<p><strong>Step 2: Install the plugin tool </strong></p>
+<pre class="brush: plain;">
+script/plugin install git://github.com/rails/rails_upgrade.git
+</pre>
+<p><strong>Step 3: Show upgrade checklist</strong></p>
+<pre class="brush: ruby;">
+rake rails:upgrade:check
+</pre>
+<p>This task lists the items you should watch out for when doing the upgrade. You don&#8217;t need to fix everything right away (some are deprecation notice) but review the checklist nevertheless.</p>
+<p><strong>Step 4: Generate the new routes</strong></p>
+<pre class="brush: plain;">
+rake rails:upgrade:routes
+</pre>
+<p>This task reads the current config/routes.rb and outputs a Rails 3 version.<br />
+Don&#8217;t worry, it doesn&#8217;t override your routes file. Keep this in a safe place for later use.</p>
+<p><strong>IMPORTANT:</strong> I actually didn&#8217;t realize I did the right thing until after the actual code upgrade. When I tried generating the new routes after the code change, it outputted an empty block. I have no idea if this is unique to my case but just to be sure, generate the routes beforehand and keep a copy.</p>
+<p><strong>Step 5: Create Gemfiles</strong></p>
+<pre class="brush: plain;">
+rails:upgrade:gems
+</pre>
+<p>Next is to generate the file &#8216;Gemfile&#8217;. In Rails 2, the gems you need are listed in config/environment.rb while in Rails 3 the gems are listed in the Gemfile. Gemfile is used by the program &#8216;bundler&#8217; to manage the gems required by your application. Unfortunately, this task didn&#8217;t include the gems I listed in environment.rb so I have to add it later.</p>
+<p><strong>Step 6: Backup your files</strong></p>
+<pre class="brush: plain;">
+rails:upgrade:backup
+</pre>
+<p>I hope you are working on another branch (or a copy) but just in case you are not, run this task to make copies of the files that will be affected during the upgrade.</p>
+<p>Now comes the juicy part. </p>
+<p><strong>Step 7: Generate the Rails 3 app on top of your Rails 2 app</strong></p>
+<pre class="brush: plain;">
+rails new propsify3 -d postgresql
+</pre>
+<p>Run this command in your app&#8217;s parent folder. In my case, my app&#8217;s name and pathname is &#8216;propsify3&#8242; and I am using postgresql as my database. This command created and replaced a bunch of files. Since you&#8217;ve backed-up everything, there&#8217;s nothing to worry. </p>
+<p><strong>Step 8: Move code from environment.rb to application.rb</strong></p>
+<p>Your new config/environment.rb file looks like it went through a rigorous diet. You can leave this file for now. What is important now is you move the initializer code from your config/environment.rb.rails2 to config/application.rb.  These are the config.* lines except the config.gem which goes to Gemfile.</p>
+<p><strong>Step 9: Convert the new routes</strong></p>
+<p>You can still use the existing routes until 3.1 but since there&#8217;s a tool to help you migrate, I suggest doing it. At this point, when I tried the rails:upgrade:routes, no routes were generated. So make sure you generate the routes before Step 7.</p>
+<p><strong>Step 10: Delete new_rails_defaults.rb </strong></p>
+<pre class="brush: plain;">
+rm config/initializers/new_rails_defaults
+</pre>
+<p><strong>Step 11: Upgrade the plugins and gems</strong></p>
+<p>Many plugins are now available as gems. Check your plugins and gems at <a href="http://railsplugins.org">http://railsplugins.org</a>. In my case, the following plugins were converted to gems:</p>
+<pre class="brush: ruby;">
+acts_as_commentable
+declarative_authorization
+haml
+will_paginate
+thinking-sphinx
+</pre>
+<p>Unfortunately, the plugins below are not yet ready for Rails 3. I removed them for now and all code that references them.</p>
+<pre class="brush: ruby;">
+jrails
+subdomain-fu
+vote_fu
+</pre>
+<p><strong>IMPORTANT</strong>: In your Gemfile, make sure you check specify the right version that is compatible with Rails 3. Some gems are still in the pre-release version and will  not be downloaded if you don&#8217;t specify a version in your Gemfile. For example, this is a snippet from my Gemfile:</p>
+<pre class="brush: ruby;">
+gem 'pg'
+gem 'acts_as_commentable'
+gem 'declarative_authorization'
+gem 'haml'
+gem 'thinking-sphinx', '2.0.0.rc1', :require =&gt; 'thinking_sphinx'
+gem 'will_paginate', '3.0.pre2'
+gem 'uuid'
+gem 'geokit'
+</pre>
+<p><strong>Step 12: Update initialization code</strong></p>
+<p>After step 10 you are good to go, if you&#8217;re lucky. In my case, I had to remove some patches and change code to boot the application.</p>
+<pre class="brush: ruby;">
+ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS.merge!(date_time_formats)
+</pre>
+<p>This fails in Rails 3 because core extensions have been moved out of their modules and are now included in classes they extend. For example, to fix the date format problem do:</p>
+<pre class="brush: ruby;">
+Date::DATE_FORMATS.merge!(date_time_formats)
+</pre>
+<p><strong>Step 13: Boot the app</strong></p>
+<pre class="brush: plain;">
+rails server
+</pre>
+<p>Yay! If you are wondering what happened to <code>script/server</code> command,  Rails went the &#8220;Merb way&#8221; and consolidated the <code>script/*</code> commands into  the <code>rails</code> script.</p>
+<p>By now, you should see the famous Rails&#8217; &#8220;Welcome aboard&#8221; message in your browser. </p>
+<p><strong>Step 14: Remove public/index.html</strong></p>
+<p>Now, you can try if your application is working.</p>
+<p>There are still more work to do like moving to the ActiveRecord/ActiveRelation API and removing the deprecation notices. Before moving on, I still need to fix the problems in my routes and unsupported gems which I will tackle in my next post.</p>
+<p><strong>Next</strong>: <a href="http://gregmoreno.ca/rails-3-upgrade-part-2-routes/">Rails 3 upgrade Part 2: Routes</a></p>
+
+
+<p>Related posts:<ol><li><a href='http://gregmoreno.ca/rails-3-upgrade-part-2-routes/' rel='bookmark' title='Permanent Link: Rails 3 upgrade part 2: Routes'>Rails 3 upgrade part 2: Routes</a> <small>In the previous post, I outlined the steps I took to upgrade and boot a Rails 3 application. This time, I share my experience upgrading the routes file. By the...</small></li>
+<li><a href='http://gregmoreno.ca/rails-3-upgrade-part-3-code-fixes-views-and-forms/' rel='bookmark' title='Permanent Link: Rails 3 upgrade part 3: Code fixes, views, and forms'>Rails 3 upgrade part 3: Code fixes, views, and forms</a> <small>This is part 3 of my Rails 2 to Rails 3 upgrade experience. Part 1 is about the initial code upgrade and getting the application to boot while part 2...</small></li>
+<li><a href='http://gregmoreno.ca/deploy-a-rails-3-sqlite3-application-in-tomcat-using-jruby/' rel='bookmark' title='Permanent Link: Deploy a Rails 3, Sqlite3 application in Tomcat using JRuby'>Deploy a Rails 3, Sqlite3 application in Tomcat using JRuby</a> <small>and have a Ruby version running side-by-side. A few months ago I got interested in JRuby while researching for text mining algorithms. I found some gems but they are either...</small></li>
+</ol></p>
+<p><a href="http://feedads.g.doubleclick.net/~a/SAJrWga-0BbsHkvDMVcve5CBHCY/0/da"><img src="http://feedads.g.doubleclick.net/~a/SAJrWga-0BbsHkvDMVcve5CBHCY/0/di" border="0" ismap="true"></img></a><br/>
+<a href="http://feedads.g.doubleclick.net/~a/SAJrWga-0BbsHkvDMVcve5CBHCY/1/da"><img src="http://feedads.g.doubleclick.net/~a/SAJrWga-0BbsHkvDMVcve5CBHCY/1/di" border="0" ismap="true"></img></a></p>
