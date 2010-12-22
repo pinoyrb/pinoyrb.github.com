@@ -64,7 +64,7 @@ var WRInitTime=(new Date()).getTime();
   </div>
 </div>
 
-<a href="http://github.com/gregmoreno"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" /></a>
+<a href="http://github.com/pinoyrb/pinoyrb.github.com"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" /></a>
 
 <!-- ClickTale Bottom part -->
 <div id="ClickTaleDiv" style="display: none;"></div>
@@ -79,15 +79,17 @@ if(typeof ClickTale=='function') ClickTale(206,0.3,"www03");
 
 <!-- Google Analytics -->
 <script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-var pageTracker = _gat._getTracker("UA-98523-11");
-pageTracker._trackPageview();
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-98523-37']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
 </script>
 <!-- Google Analytics end -->
-
 
 <script type="text/javascript">
   SyntaxHighlighter.defaults['toolbar'] = false;
