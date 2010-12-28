@@ -13,7 +13,7 @@ class Blog
 end
 
 class Post
-  attr_accessor :title, :filename, :content, :published_at
+  attr_accessor :title, :filename, :content, :published_at, :author
 end
 
 
@@ -39,7 +39,8 @@ def load_wp(wpfile)
                    gsub(/\342\200\231/, '') # right single quote
   
       post.filename = "#{pubdate}-#{titleize}"
-      post.content = (item/'content:encoded').inner_text.gsub(/\015/, '') # remove ^M
+      post.content  = (item/'content:encoded').inner_text.gsub(/\015/, '') # remove ^M
+      post.author   = (item/'dc:creator').inner_text
 
       blog.posts << post
     end
@@ -54,13 +55,14 @@ def save_to_jekyll(blog)
       f.puts "---"
       f.puts "layout: post"
       f.puts "title:        '#{p.title}'"
+      f.puts "author:       '#{p.author}'"
       f.puts "published_at: #{p.published_at}"
       f.puts "---"
     
       f.puts
       f.puts "<h1> {{ page.title }} </h1>"
       f.puts
-      f.puts "<p class='meta'> {{ page.published_at }} </p>"
+      f.puts "<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>"
     
       f.puts
       f.puts p.content
@@ -72,6 +74,7 @@ def save_to_yaml(blog)
   blog.posts.each do |p|
     File.open("_raw/#{p.filename}.yaml", "w") do |f|
       f.puts "title:        '#{p.title}'"
+      f.puts "author:       '#{p.author}'"
       f.puts "published_at: '#{p.published_at}'"
       f.puts "filename:     '#{p.filename}'"
       f.puts "content: |-"
@@ -99,5 +102,5 @@ def load_raw
   blog
 end
 
-#save_to_yaml(load_wp(ARGV[0]))
+save_to_yaml(load_wp(ARGV[0]))
 save_to_jekyll(load_raw)

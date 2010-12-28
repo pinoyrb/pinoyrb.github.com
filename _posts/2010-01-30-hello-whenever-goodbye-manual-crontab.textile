@@ -1,12 +1,13 @@
 ---
 layout: post
 title:        'Hello whenever, goodbye manual crontab'
+author:       ''
 published_at: 2010-01-30
 ---
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'> {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
 
 Do you hate managing cron configurations manually? How about maintaining different cron configs for every Rails application you might possibly have?
 <h2 id="wheneverize">Wheneverize</h2>

@@ -1,12 +1,13 @@
 ---
 layout: post
 title:        'DHH’s RailsConf 2010 Keynote Video'
+author:       ''
 published_at: 2010-06-11
 ---
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'> {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
 
 <p><object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/b0iKYRKtAsA&#038;color1=0xb1b1b1&#038;color2=0xd0d0d0&#038;hl=en_US&#038;feature=player_embedded&#038;fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><embed src="http://www.youtube.com/v/b0iKYRKtAsA&#038;color1=0xb1b1b1&#038;color2=0xd0d0d0&#038;hl=en_US&#038;feature=player_embedded&#038;fs=1" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="640" height="385"></embed></object></p>
 <p>The keynote is about Rails 3.0 and the many enhancements it bring to make web application development more fun.  The improvements in writing database queries (via <a href="http://rubyonrails.org/screencasts/rails3/active-relation-active-model">ActiveRelation</a>), routes, ActionMailer are really neat and I believe would make it easier for  developers to get on board with Rails.</p>

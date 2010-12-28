@@ -1,12 +1,13 @@
 ---
 layout: post
 title:        'Learn RSpec in 15 Minutes or Less'
+author:       ''
 published_at: 2010-01-04
 ---
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'> {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
 
 <p>You can learn RSpec in less than 15 minutes especially if you are not Rails newbie. RSpec and BDD is a way of getting an application done right in an unbelievably short period of time.</p>
 

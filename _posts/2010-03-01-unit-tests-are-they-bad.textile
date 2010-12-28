@@ -1,12 +1,13 @@
 ---
 layout: post
 title:        'Unit tests: Are they bad?'
+author:       ''
 published_at: 2010-03-01
 ---
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'> {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
 
 <p>Jay fields wrote a blog post about the <a href='http://blog.jayfields.com/2010/02/maintainability-of-unit-tests.html'>maintainability of tests</a>. Basically his takeaways were the following:</p>
 

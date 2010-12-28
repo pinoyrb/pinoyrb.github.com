@@ -1,12 +1,13 @@
 ---
 layout: post
 title:        'How to use OpenAmplify with Ruby'
+author:       ''
 published_at: 2010-10-06
 ---
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'> {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
 
 <p>The <a href="http://community.openamplify.com/blogs/quickstart/pages/overview.aspx">OpenAmplify API</a> reads text you supply and returns linguistic data explaining and classifying the content. What you do with that analysis is, in the fine tradition of APIs and mashups, up to you. Some possibilities might include pairing ads with articles, creating rich tag-clouds, or monitoring the tone of forum threads.</p>
 <p>I created a ruby gem to simplify the use of the OpenAmplify API. It&#8217;s still in the early stages but should be enough to get you started.</p>

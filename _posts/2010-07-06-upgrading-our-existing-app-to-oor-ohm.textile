@@ -1,12 +1,13 @@
 ---
 layout: post
 title:        'Upgrading our existing app to OOR Ohm'
+author:       ''
 published_at: 2010-07-06
 ---
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'> {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
 
 <br /><i>OOR - Object Oriented Redis.</i>
 <h2 id='1__is_dead_long_live_'>1. <code>key(:something)</code> is dead, long live <code>key[:something]</code></h2>

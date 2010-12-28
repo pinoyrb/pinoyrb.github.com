@@ -1,12 +1,13 @@
 ---
 layout: post
 title:        'Installing Nginx with Passenger on Snow Leopard Using MacPorts'
+author:       ''
 published_at: 2009-12-20
 ---
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'> {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
 
 <p><a href="http://www.macports.org/install.php">Install MacPorts</a> if you don&#8217;t have it.</p>
 <p>Download and install the Portfile</p>

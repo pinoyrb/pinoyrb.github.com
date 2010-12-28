@@ -1,12 +1,13 @@
 ---
 layout: post
 title:        'Our first app in Rails 3'
+author:       ''
 published_at: 2010-02-23
 ---
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'> {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
 
 <p>We&#8217;re building a very simple app, and we decided to start with Rails3. Here is our stack so far:</p>
 

@@ -1,12 +1,13 @@
 ---
 layout: post
 title:        'Rails 3 Upgrade Resources'
+author:       ''
 published_at: 2010-08-16
 ---
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'> {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
 
 <p>Many of us have several existing 2.x applications and would want to upgrade without pulling our hair because we can't figure out something or we are wary of consuming too much time. I'm about to post several links where you could find useful advice on upgrading Rails 3. Feel free to share other links if you know some.</p>
 

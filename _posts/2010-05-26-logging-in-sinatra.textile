@@ -1,12 +1,13 @@
 ---
 layout: post
 title:        'Logging in Sinatra'
+author:       ''
 published_at: 2010-05-26
 ---
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'> {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
 
 <p>This is more of a note to self. I spent a few mins figuring this out properly so best not to waste a few mins again next time.</p>
 <script src='http://gist.github.com/414048.js?file=sinatra-monk-logging.rb' />

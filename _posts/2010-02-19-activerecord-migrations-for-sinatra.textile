@@ -1,12 +1,13 @@
 ---
 layout: post
 title:        'ActiveRecord Migrations for Sinatra'
+author:       ''
 published_at: 2010-02-19
 ---
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'> {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
 
 <p>I have learned that <a href="http://sequel.rubyforge.org/" >Sequel ORM</a> was simple and is the preferred ORM for Sinatra developers. But I feel so attached to ActiveRecord right now. Basically some of the gems I am using are actually extensions to ActiveRecord and I have grown to love these Ruby gems despite being ActiveRecord-centric. They wouldn't work with DataMapper or anything else.</p>
 

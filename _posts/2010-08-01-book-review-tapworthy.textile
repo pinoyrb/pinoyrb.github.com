@@ -1,12 +1,13 @@
 ---
 layout: post
 title:        'Book Review: Tapworthy'
+author:       ''
 published_at: 2010-08-01
 ---
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'> {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
 
 <p><img src="http://covers.oreilly.com/images/0636920001133/cat.gif" alt="Tapworthy" /><br />
 <strong>Tapworthy</strong><br />

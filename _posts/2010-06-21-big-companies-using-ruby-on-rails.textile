@@ -1,12 +1,13 @@
 ---
 layout: post
 title:        'Big Companies Using Ruby on Rails'
+author:       ''
 published_at: 2010-06-21
 ---
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'> {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
 
 <p>Just thought I might share this. Who said only "nobody's" are using Rails?</p>
 

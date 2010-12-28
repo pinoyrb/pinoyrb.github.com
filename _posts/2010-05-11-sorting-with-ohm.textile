@@ -1,12 +1,13 @@
 ---
 layout: post
 title:        'Sorting with Ohm'
+author:       ''
 published_at: 2010-05-11
 ---
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'> {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
 
 <p>In the last 2 months of using <a href='http://ohm.keyvalue.org'>Ohm</a>, I have used sort a couple of times, and have ran into some gotchas.</p>
 

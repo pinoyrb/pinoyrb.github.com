@@ -1,12 +1,13 @@
 ---
 layout: post
 title:        'Tax for the poor and mathematically challenged'
+author:       ''
 published_at: 2010-10-03
 ---
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'> {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
 
 <p><a href="http://apps.bryanbibat.net/lotto/"><img src="http://www.bryanbibat.net/images/lotto_simulator.png" alt="lotto simulator" class="aligncenter" /></a></p>
 <p>The Lottery: another way for the government to tax the (typically tax-exempt) poor.</p>

@@ -1,12 +1,13 @@
 ---
 layout: post
 title:        'Redmine on Jruby'
+author:       ''
 published_at: 2010-09-28
 ---
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'> {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
 
 <p>To be able to take advantage of jruby, you need to add config.threadsafe! on your rails app. I tried doing this on redmine 1.0.2 but some pages were not working. Some of the errors were</p>
 <p>uninitialized constant Redmine::Views::OtherFormatsBuilder<br />

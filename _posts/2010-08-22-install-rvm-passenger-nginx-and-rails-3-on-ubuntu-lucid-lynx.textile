@@ -1,12 +1,13 @@
 ---
 layout: post
 title:        'Install RVM, Passenger, Nginx and Rails 3 on Ubuntu Lucid Lynx'
+author:       ''
 published_at: 2010-08-22
 ---
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'> {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
 
 <p>This has been a problem encountered by several developers including myself:</p>
 
