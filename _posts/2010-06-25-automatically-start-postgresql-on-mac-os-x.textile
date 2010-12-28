@@ -1,15 +1,15 @@
 ---
 layout: post
-title:        'Automatically Start PostgreSQL on Mac OS X'
-author:       'Katz Pe'
-published_at: 2010-06-25
-permalink:    http://blog.bridgeutopiaweb.com/post/automatically-start-postgresql-on-mac-os-x/
+title:         'Automatically Start PostgreSQL on Mac OS X'
+author:        'Katz Pe'
+published_at:  2010-06-25
+original_link: http://blog.bridgeutopiaweb.com/post/automatically-start-postgresql-on-mac-os-x/
 ---
 
 <h1> {{ page.title }} </h1>
 
 <p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
-&middot; <a href='{{ page.permalink }}'>Permalink</a></p>
+&middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>Why bother remembering very long commands?</p>
 

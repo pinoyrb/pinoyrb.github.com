@@ -1,15 +1,15 @@
 ---
 layout: post
-title:        'How to avoid breaking builds'
-author:       'Bryan Bibat'
-published_at: 2010-09-02
-permalink:    http://blog.bryanbibat.net/2010/09/02/how-to-avoid-breaking-builds/
+title:         'How to avoid breaking builds'
+author:        'Bryan Bibat'
+published_at:  2010-09-02
+original_link: http://blog.bryanbibat.net/2010/09/02/how-to-avoid-breaking-builds/
 ---
 
 <h1> {{ page.title }} </h1>
 
 <p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
-&middot; <a href='{{ page.permalink }}'>Permalink</a></p>
+&middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <img class="alignleft" src="http://www.bryanbibat.net/images/git-logo.png" alt="git" /> The guy I’m mentoring right now in one of my freelancing gigs is fairly new to software development so I decided to give him a couple of guidelines (conveniently posted on the project’s wiki) on how to properly use <a href="http://blog.bryanbibat.net/2009/06/10/distributed-revision-control/">git</a>.
 

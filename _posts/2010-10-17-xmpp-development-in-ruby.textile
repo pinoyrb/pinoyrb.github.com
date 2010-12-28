@@ -1,15 +1,15 @@
 ---
 layout: post
-title:        'XMPP Development in Ruby'
-author:       'Rad Batnag'
-published_at: 2010-10-17
-permalink:    http://rad.batnag.org/2010/10/xmpp-development-in-ruby/
+title:         'XMPP Development in Ruby'
+author:        'Rad Batnag'
+published_at:  2010-10-17
+original_link: http://rad.batnag.org/2010/10/xmpp-development-in-ruby/
 ---
 
 <h1> {{ page.title }} </h1>
 
 <p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
-&middot; <a href='{{ page.permalink }}'>Permalink</a></p>
+&middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>Recently I wasted a day and half in debugging an XMPP-based service I&#8217;m working on. As is usual, the real reason I lost so much time was because I was totally unfamiliar with the terrain. I should have spent an hour or two on XMPP basics before I waded into this unfamiliar territory.</p>
 <p>If you&#8217;re just starting on XMPP development with Ruby, here are some tips and resources that you might find useful.</p>

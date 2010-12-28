@@ -1,15 +1,15 @@
 ---
 layout: post
-title:        'Ruby on Windows'
-author:       'Bryan Bibat'
-published_at: 2010-09-19
-permalink:    http://blog.bryanbibat.net/2010/09/20/ruby-on-windows/
+title:         'Ruby on Windows'
+author:        'Bryan Bibat'
+published_at:  2010-09-19
+original_link: http://blog.bryanbibat.net/2010/09/20/ruby-on-windows/
 ---
 
 <h1> {{ page.title }} </h1>
 
 <p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
-&middot; <a href='{{ page.permalink }}'>Permalink</a></p>
+&middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>Some posts just write themselves. Today&#8217;s post comes from my reply to a guy in <a href="http://groups.google.com/group/ruby-phil">PhRUG</a> who still thinks you need a Mac before you can develop Rails applications.</p>
 <p><img src="http://www.bryanbibat.net/images/windows-ruby.png" alt="windows and ruby" class="aligncenter" /></p>

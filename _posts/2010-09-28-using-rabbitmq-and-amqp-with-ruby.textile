@@ -1,15 +1,15 @@
 ---
 layout: post
-title:        'Using RabbitMQ and AMQP with Ruby'
-author:       'Greg Moreno'
-published_at: 2010-09-28
-permalink:    http://gregmoreno.ca/using-rabbitmq-and-amqp-with-ruby/
+title:         'Using RabbitMQ and AMQP with Ruby'
+author:        'Greg Moreno'
+published_at:  2010-09-28
+original_link: http://gregmoreno.ca/using-rabbitmq-and-amqp-with-ruby/
 ---
 
 <h1> {{ page.title }} </h1>
 
 <p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
-&middot; <a href='{{ page.permalink }}'>Permalink</a></p>
+&middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p><em>This post is also available at <a href="http://rubyoncloud.org">Ruby On Cloud</a></em></p>
 <p><a href="http://www.amqp.org/">AMQP</a> stands for Advanced Message Queuing Protocol. RabbitMQ is a server that implements the protocol. RabbitMQ is available on Linux, OSX, and Windows. Installation instructions for RabbitMQ are available at <a href="http://www.rabbitmq.com/install.html">http://www.rabbitmq.com/install.html</a></p>

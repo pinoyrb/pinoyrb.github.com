@@ -58,17 +58,17 @@ def save_to_jekyll(blog)
     File.open("./_posts/#{p.filename}.textile", 'w') do |f|
       f.puts "---"
       f.puts "layout: post"
-      f.puts "title:        '#{p.title}'"
-      f.puts "author:       '#{p.author}'"
-      f.puts "published_at: #{p.published_at}"
-      f.puts "permalink:    #{p.permalink}"
+      f.puts "title:         '#{p.title}'"
+      f.puts "author:        '#{p.author}'"
+      f.puts "published_at:  #{p.published_at}"
+      f.puts "original_link: #{p.permalink}"  # if we use 'permalink', github will use it
       f.puts "---"
     
       f.puts
       f.puts "<h1> {{ page.title }} </h1>"
       f.puts
       f.puts "<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>"
-      f.puts "&middot; <a href='{{ page.permalink }}'>Permalink</a></p>"
+      f.puts "&middot; <a href='{{ page.original_link }}'>Permalink</a></p>"
     
       f.puts
       f.puts p.content

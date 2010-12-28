@@ -1,15 +1,15 @@
 ---
 layout: post
-title:        'Command aliases for Subversion, Git and Rails'
-author:       'Katz Pe'
-published_at: 2010-05-07
-permalink:    http://blog.bridgeutopiaweb.com/post/command-aliases-for-subversion-git-and-rails/
+title:         'Command aliases for Subversion, Git and Rails'
+author:        'Katz Pe'
+published_at:  2010-05-07
+original_link: http://blog.bridgeutopiaweb.com/post/command-aliases-for-subversion-git-and-rails/
 ---
 
 <h1> {{ page.title }} </h1>
 
 <p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
-&middot; <a href='{{ page.permalink }}'>Permalink</a></p>
+&middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>I got a Peepcode unlimited last year which came with a nice video about the command line. <a href="http://peepcode.com/products/advanced-command-line" >Check it out</a>.</p>
 

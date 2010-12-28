@@ -1,15 +1,15 @@
 ---
 layout: post
-title:        'Blizzard is the Enemy of Rails'
-author:       'Rad Batnag'
-published_at: 2010-07-28
-permalink:    http://rad.batnag.org/2010/07/blizzard-is-the-enemy-of-rails/
+title:         'Blizzard is the Enemy of Rails'
+author:        'Rad Batnag'
+published_at:  2010-07-28
+original_link: http://rad.batnag.org/2010/07/blizzard-is-the-enemy-of-rails/
 ---
 
 <h1> {{ page.title }} </h1>
 
 <p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
-&middot; <a href='{{ page.permalink }}'>Permalink</a></p>
+&middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>Not Django, not Java, but Blizzard. They&#8217;re actively working to reduce Rails3 adoption. </p>
 <p>Take a look at these dates:</p>

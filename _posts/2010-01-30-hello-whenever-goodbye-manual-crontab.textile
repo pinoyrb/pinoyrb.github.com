@@ -1,15 +1,15 @@
 ---
 layout: post
-title:        'Hello whenever, goodbye manual crontab'
-author:       'cyx'
-published_at: 2010-01-30
-permalink:    http://pipetodevnull.upstrat.com/past/2010/1/30/hello_whenever_goodbye_manual_crontab/
+title:         'Hello whenever, goodbye manual crontab'
+author:        'cyx'
+published_at:  2010-01-30
+original_link: http://pipetodevnull.upstrat.com/past/2010/1/30/hello_whenever_goodbye_manual_crontab/
 ---
 
 <h1> {{ page.title }} </h1>
 
 <p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
-&middot; <a href='{{ page.permalink }}'>Permalink</a></p>
+&middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 Do you hate managing cron configurations manually? How about maintaining different cron configs for every Rails application you might possibly have?
 <h2 id="wheneverize">Wheneverize</h2>

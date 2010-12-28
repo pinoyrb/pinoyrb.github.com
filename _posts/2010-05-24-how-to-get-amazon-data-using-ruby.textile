@@ -1,15 +1,15 @@
 ---
 layout: post
-title:        'How to Get Amazon Data Using Ruby'
-author:       'Katz Pe'
-published_at: 2010-05-24
-permalink:    http://blog.bridgeutopiaweb.com/post/how-to-get-amazon-data-using-ruby/
+title:         'How to Get Amazon Data Using Ruby'
+author:        'Katz Pe'
+published_at:  2010-05-24
+original_link: http://blog.bridgeutopiaweb.com/post/how-to-get-amazon-data-using-ruby/
 ---
 
 <h1> {{ page.title }} </h1>
 
 <p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
-&middot; <a href='{{ page.permalink }}'>Permalink</a></p>
+&middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>This is post is inspired by several posts of Greg Moreno on RubyonCloud. Check out <a href="http://www.rubyoncloud.org" >the site</a>.</p>
 

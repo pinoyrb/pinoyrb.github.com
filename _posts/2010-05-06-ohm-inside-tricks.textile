@@ -1,15 +1,15 @@
 ---
 layout: post
-title:        'Ohm inside tricks'
-author:       'cyx'
-published_at: 2010-05-06
-permalink:    http://pipetodevnull.upstrat.com/past/2010/5/6/ohm_inside_tricks/
+title:         'Ohm inside tricks'
+author:        'cyx'
+published_at:  2010-05-06
+original_link: http://pipetodevnull.upstrat.com/past/2010/5/6/ohm_inside_tricks/
 ---
 
 <h1> {{ page.title }} </h1>
 
 <p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
-&middot; <a href='{{ page.permalink }}'>Permalink</a></p>
+&middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <h2 id='did_you_know_1'>Did you know #1</h2>
 

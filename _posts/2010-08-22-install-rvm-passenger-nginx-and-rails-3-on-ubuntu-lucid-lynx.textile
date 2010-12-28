@@ -1,15 +1,15 @@
 ---
 layout: post
-title:        'Install RVM, Passenger, Nginx and Rails 3 on Ubuntu Lucid Lynx'
-author:       'Katz Pe'
-published_at: 2010-08-22
-permalink:    http://blog.bridgeutopiaweb.com/post/install-rvm-passenger-nginx-and-rails-3-on-ubuntu-lucid-lynx/
+title:         'Install RVM, Passenger, Nginx and Rails 3 on Ubuntu Lucid Lynx'
+author:        'Katz Pe'
+published_at:  2010-08-22
+original_link: http://blog.bridgeutopiaweb.com/post/install-rvm-passenger-nginx-and-rails-3-on-ubuntu-lucid-lynx/
 ---
 
 <h1> {{ page.title }} </h1>
 
 <p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
-&middot; <a href='{{ page.permalink }}'>Permalink</a></p>
+&middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>This has been a problem encountered by several developers including myself:</p>
 

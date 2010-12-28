@@ -1,15 +1,15 @@
 ---
 layout: post
-title:        'uninitialized constant Delayed::Job'
-author:       'cyx'
-published_at: 2010-04-14
-permalink:    http://pipetodevnull.upstrat.com/past/2010/4/14/uninitialized_constant_delayedjob/
+title:         'uninitialized constant Delayed::Job'
+author:        'cyx'
+published_at:  2010-04-14
+original_link: http://pipetodevnull.upstrat.com/past/2010/4/14/uninitialized_constant_delayedjob/
 ---
 
 <h1> {{ page.title }} </h1>
 
 <p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
-&middot; <a href='{{ page.permalink }}'>Permalink</a></p>
+&middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>Just a quick shout out for those having a problem with the latest DelayedJob, this is a quick fix!</p>
 <script src='http://gist.github.com/365826.js?file=delayed_job_fix.rb' />
