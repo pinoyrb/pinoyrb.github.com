@@ -61,7 +61,7 @@ def save_to_jekyll(blog)
       f.puts "title:         '#{p.title}'"
       f.puts "author:        '#{p.author}'"
       f.puts "published_at:  #{p.published_at}"
-      f.puts "original_link: #{p.permalink}"  # if we use 'permalink', github will use it
+      f.puts "original_link: #{p.permalink}"  # if we use 'permalink', github will use it for the post link
       f.puts "---"
     
       f.puts
