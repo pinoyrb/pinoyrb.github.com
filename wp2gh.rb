@@ -13,7 +13,8 @@ class Blog
 end
 
 class Post
-  attr_accessor :title, :filename, :content, :published_at, :author
+  attr_accessor :title, :filename, :content, :published_at, 
+                :author, :permalink
 end
 
 
@@ -38,9 +39,12 @@ def load_wp(wpfile)
                    gsub(/&#?\S+;/, '').     # html entity codes
                    gsub(/\342\200\231/, '') # right single quote
   
-      post.filename = "#{pubdate}-#{titleize}"
-      post.content  = (item/'content:encoded').inner_text.gsub(/\015/, '') # remove ^M
-      post.author   = (item/'dc:creator').inner_text
+      post.filename  = "#{pubdate}-#{titleize}"
+      post.content   = (item/'content:encoded').inner_text.gsub(/\015/, '') # remove ^M
+      post.author    = (item/'dc:creator').inner_text
+      
+      meta = (item/'wp:postmeta').find { |n| (n/'wp:meta_key').inner_html == 'syndication_permalink' }
+      post.permalink = (meta/'wp:meta_value').inner_text unless meta.nil? 
 
       blog.posts << post
     end
@@ -57,12 +61,14 @@ def save_to_jekyll(blog)
       f.puts "title:        '#{p.title}'"
       f.puts "author:       '#{p.author}'"
       f.puts "published_at: #{p.published_at}"
+      f.puts "permalink:    #{p.permalink}'"
       f.puts "---"
     
       f.puts
       f.puts "<h1> {{ page.title }} </h1>"
       f.puts
       f.puts "<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>"
+      f.puts "&middot; <a href='{{ page.permalink }}'>Permalink</a></p>"
     
       f.puts
       f.puts p.content
@@ -77,6 +83,7 @@ def save_to_yaml(blog)
       f.puts "author:       '#{p.author}'"
       f.puts "published_at: '#{p.published_at}'"
       f.puts "filename:     '#{p.filename}'"
+      f.puts "permalink:    '#{p.permalink}'"
       f.puts "content: |-"
       f.puts p.content.gsub(/^/, '  ')
     end 

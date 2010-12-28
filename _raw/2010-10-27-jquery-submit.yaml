@@ -2,6 +2,7 @@ title:        'jQuery Submit'
 author:       'Christopher Rigor'
 published_at: '2010-10-27'
 filename:     '2010-10-27-jquery-submit'
+permalink:    'http://crigor.com/jquery-submit/'
 content: |-
   <p>When you submit a form, you might want to do something before the form is submitted. In the code below, we show an alert box with the value of the text field &#8216;name&#8217;.</p>
   <pre class="brush: jscript; auto-links: false; light: true;">

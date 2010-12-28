@@ -2,6 +2,7 @@ title:        'Redmine on Jruby'
 author:       'Christopher Rigor'
 published_at: '2010-09-28'
 filename:     '2010-09-28-redmine-on-jruby'
+permalink:    'http://crigor.com/redmine-on-jruby/'
 content: |-
   <p>To be able to take advantage of jruby, you need to add config.threadsafe! on your rails app. I tried doing this on redmine 1.0.2 but some pages were not working. Some of the errors were</p>
   <p>uninitialized constant Redmine::Views::OtherFormatsBuilder<br />

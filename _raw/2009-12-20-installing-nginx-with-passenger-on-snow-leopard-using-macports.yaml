@@ -2,6 +2,7 @@ title:        'Installing Nginx with Passenger on Snow Leopard Using MacPorts'
 author:       'Christopher Rigor'
 published_at: '2009-12-20'
 filename:     '2009-12-20-installing-nginx-with-passenger-on-snow-leopard-using-macports'
+permalink:    'http://crigor.com/nginx-passenger-snow-leopard-macports/'
 content: |-
   <p><a href="http://www.macports.org/install.php">Install MacPorts</a> if you don&#8217;t have it.</p>
   <p>Download and install the Portfile</p>

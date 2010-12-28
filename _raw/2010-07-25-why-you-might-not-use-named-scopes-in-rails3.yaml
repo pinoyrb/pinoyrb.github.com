@@ -2,6 +2,7 @@ title:        'Why You Might Not Use Named Scopes In Rails3'
 author:       'Katz Pe'
 published_at: '2010-07-25'
 filename:     '2010-07-25-why-you-might-not-use-named-scopes-in-rails3'
+permalink:    'http://blog.bridgeutopiaweb.com/post/why-you-might-not-use-named-scopes-in-rails3/'
 content: |-
   <p>It's interesting how Rails 3 querying is a lot easier than it was before.</p>
   

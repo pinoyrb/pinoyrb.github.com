@@ -3,11 +3,13 @@ layout: post
 title:        'How to Use jQuery For Rails 3'
 author:       'Katz Pe'
 published_at: 2010-09-25
+permalink:    '
 ---
 
 <h1> {{ page.title }} </h1>
 
 <p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+&middot; <a href='{{ page.permalink }}'>Permalink</a></p>
 
 <p>jQuery is the defacto Javascript framework used by happy programmers. I am very glad to use it in almost all of the applications I am working on.</p>
 

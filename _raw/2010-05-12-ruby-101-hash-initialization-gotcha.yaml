@@ -2,6 +2,7 @@ title:        'Ruby 101: Hash initialization gotcha'
 author:       'Greg Moreno'
 published_at: '2010-05-12'
 filename:     '2010-05-12-ruby-101-hash-initialization-gotcha'
+permalink:    'http://gregmoreno.ca/ruby-101-hash-initialization-gotcha/'
 content: |-
   <p>I have a code that counts how many times a word occurs &#8211; a perfect fit for Hash. </p>
   <pre class="brush: plain;">

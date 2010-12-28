@@ -2,6 +2,7 @@ title:        'jQuery to prevent form submission via ENTER'
 author:       'cyx'
 published_at: '2010-06-01'
 filename:     '2010-06-01-jquery-to-prevent-form-submission-via-enter'
+permalink:    'http://pipetodevnull.upstrat.com/past/2010/5/31/jquery_to_prevent_form_submission_via_enter/'
 content: |-
   <p>Note to self:</p>
   <script src='http://gist.github.com/420440.js?file=prevent-enter.js' />

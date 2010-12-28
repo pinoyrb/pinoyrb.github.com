@@ -2,6 +2,7 @@ title:        'Lua Day 1: So near yet so far'
 author:       'cyx'
 published_at: '2010-05-10'
 filename:     '2010-05-10-lua-day-1-so-near-yet-so-far'
+permalink:    'http://pipetodevnull.upstrat.com/past/2010/5/10/lua_day_1_so_near_yet_so_far/'
 content: |-
   <p>So far Lua is strikingly similar to ruby. This of course only appears to be the case for very simple scripts.</p>
   <p>Some common things so far:</p>

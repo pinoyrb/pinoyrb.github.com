@@ -2,6 +2,7 @@ title:        'RVM Gemsets: Awesomeness'
 author:       'cyx'
 published_at: '2010-04-11'
 filename:     '2010-04-11-rvm-gemsets-awesomeness'
+permalink:    'http://pipetodevnull.upstrat.com/past/2010/4/11/rvm_gemsets_something_you_need_to_know/'
 content: |-
   If you have recently been keeping up to date with Ruby, and have tried using multiple versions at the same time, you’re most probably using <a href="http://rvm.beginrescueend.com">RVM</a> to manage these different versions.
   

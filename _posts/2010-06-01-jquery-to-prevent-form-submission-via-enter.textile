@@ -3,11 +3,13 @@ layout: post
 title:        'jQuery to prevent form submission via ENTER'
 author:       'cyx'
 published_at: 2010-06-01
+permalink:    '
 ---
 
 <h1> {{ page.title }} </h1>
 
 <p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+&middot; <a href='{{ page.permalink }}'>Permalink</a></p>
 
 <p>Note to self:</p>
 <script src='http://gist.github.com/420440.js?file=prevent-enter.js' />

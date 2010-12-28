@@ -3,11 +3,13 @@ layout: post
 title:        'Book Review: Tapworthy'
 author:       'Rad Batnag'
 published_at: 2010-08-01
+permalink:    '
 ---
 
 <h1> {{ page.title }} </h1>
 
 <p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+&middot; <a href='{{ page.permalink }}'>Permalink</a></p>
 
 <p><img src="http://covers.oreilly.com/images/0636920001133/cat.gif" alt="Tapworthy" /><br />
 <strong>Tapworthy</strong><br />

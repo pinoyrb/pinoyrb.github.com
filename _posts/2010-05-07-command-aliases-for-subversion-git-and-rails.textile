@@ -3,11 +3,13 @@ layout: post
 title:        'Command aliases for Subversion, Git and Rails'
 author:       'Katz Pe'
 published_at: 2010-05-07
+permalink:    '
 ---
 
 <h1> {{ page.title }} </h1>
 
 <p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+&middot; <a href='{{ page.permalink }}'>Permalink</a></p>
 
 <p>I got a Peepcode unlimited last year which came with a nice video about the command line. <a href="http://peepcode.com/products/advanced-command-line" >Check it out</a>.</p>
 

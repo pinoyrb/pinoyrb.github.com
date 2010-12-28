@@ -2,6 +2,7 @@ title:        'Rails 3 upgrade part 2: Routes'
 author:       'Greg Moreno'
 published_at: '2010-08-12'
 filename:     '2010-08-12-rails-3-upgrade-part-2-routes'
+permalink:    'http://gregmoreno.ca/rails-3-upgrade-part-2-routes/'
 content: |-
   <p>In the previous post, I outlined the steps I took to<a href="http://gregmoreno.ca/rails-3-upgrade-part-1-booting-the-application/"> upgrade and boot a Rails 3 application</a>. This time, I share my experience upgrading the routes file. By the way, I forgot to mention in the last post that I&#8217;m using <a href="http://www.railsupgradehandbook.com/">Rails 3 Upgrade Handbook by Jeremy McAnally</a>.</p>
   <p>The task rails:upgrade:routes (comes with the rails_upgrade plugin) converts your Rails 2 routes into Rails 3 format. It handles most cases but you may still need to edit the generated routes depending on your setup.</p>

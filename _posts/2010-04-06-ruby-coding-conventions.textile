@@ -3,11 +3,13 @@ layout: post
 title:        'Ruby Coding Conventions'
 author:       'cyx'
 published_at: 2010-04-06
+permalink:    '
 ---
 
 <h1> {{ page.title }} </h1>
 
 <p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+&middot; <a href='{{ page.permalink }}'>Permalink</a></p>
 
 <p>I&#8217;ve recently been following chris neukirchen&#8217;s coding conventions by the letter. All of them are really good. But one of the most interesting and probably opinionated convention he advocates is this:</p>
 <script src='http://gist.github.com/357442.js?file=coding.txt' />

@@ -3,11 +3,13 @@ layout: post
 title:        'Lua Day 1: So near yet so far'
 author:       'cyx'
 published_at: 2010-05-10
+permalink:    '
 ---
 
 <h1> {{ page.title }} </h1>
 
 <p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+&middot; <a href='{{ page.permalink }}'>Permalink</a></p>
 
 <p>So far Lua is strikingly similar to ruby. This of course only appears to be the case for very simple scripts.</p>
 <p>Some common things so far:</p>

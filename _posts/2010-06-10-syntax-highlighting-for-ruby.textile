@@ -3,11 +3,13 @@ layout: post
 title:        'Syntax Highlighting for Ruby'
 author:       'Katz Pe'
 published_at: 2010-06-10
+permalink:    '
 ---
 
 <h1> {{ page.title }} </h1>
 
 <p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+&middot; <a href='{{ page.permalink }}'>Permalink</a></p>
 
 <p>There are more than couple of ways to do syntax highlighting for Ruby code. Your geek blog doesn't look nice if the code cannot be read properly or cannot be copied easily. Gists work well. Most blogs now would probably just use gist.github.com especially if it's lengthly file or there are way to many stuff on it that you don't want to scare your visitors. By naming the file "syntax.rb" on gist.github.com for instance, it would know what code you are using and syntax highlighting will be based on the filename. See <a href="http://gist.github.com/432825" > syntax.rb </a>.</p>
 

@@ -2,6 +2,7 @@ title:        'Learn RSpec in 15 Minutes or Less'
 author:       'Katz Pe'
 published_at: '2010-01-04'
 filename:     '2010-01-04-learn-rspec-in-15-minutes-or-less'
+permalink:    'http://blog.bridgeutopiaweb.com/post/learn-rspec-in-15-minutes-or-less/'
 content: |-
   <p>You can learn RSpec in less than 15 minutes especially if you are not Rails newbie. RSpec and BDD is a way of getting an application done right in an unbelievably short period of time.</p>
   

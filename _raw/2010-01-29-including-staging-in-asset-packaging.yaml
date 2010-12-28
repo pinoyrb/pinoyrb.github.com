@@ -2,6 +2,7 @@ title:        'Including Staging in Asset Packaging'
 author:       'cyx'
 published_at: '2010-01-29'
 filename:     '2010-01-29-including-staging-in-asset-packaging'
+permalink:    'http://pipetodevnull.upstrat.com/past/2010/1/29/including_staging_in_asset_packaging/'
 content: |-
   <p>If ever you want to include staging when using <a href='http://github.com/sbecker/asset_packager'>asset packager</a>, just write this initializer</p>
   <code><pre><span class="comment"># config/initializers/asset_packager.rb</span>

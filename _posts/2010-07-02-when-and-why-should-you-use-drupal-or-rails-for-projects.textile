@@ -3,11 +3,13 @@ layout: post
 title:        'When And Why Should You Use Drupal or Rails For Projects'
 author:       'Katz Pe'
 published_at: 2010-07-02
+permalink:    '
 ---
 
 <h1> {{ page.title }} </h1>
 
 <p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+&middot; <a href='{{ page.permalink }}'>Permalink</a></p>
 
 <p>There are several reasons why we used Drupal. Even if I am a Rubyist, I also use <a href="http://drupal.org/user/43058"  rel="nofollow">Drupal</a> (PHP5) for certain reasons.</p>
 

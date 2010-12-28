@@ -2,6 +2,7 @@ title:        'Corona SDK'
 author:       'Rad Batnag'
 published_at: '2010-06-16'
 filename:     '2010-06-16-corona-sdk'
+permalink:    'http://rad.batnag.org/2010/06/corona-sdk/'
 content: |-
   <p>It seems I can develop some games much, much faster with the <a href="http://anscamobile.com/corona/" onclick="pageTracker._trackPageview('/outgoing/anscamobile.com/corona/?referer=');">Corona SDK</a>. It will cost me $99, and it&#8217;s not as macho as mastering Objective-C, but I think I&#8217;ll end up saving hundreds of hours with this kit.</p>
   <p>I think Corona is a great kit for writing games in general, especially arcade games and board games. There&#8217;s no built-in support yet for tiled maps, and it looks like <a href="http://www.cocos2d-iphone.org/" onclick="pageTracker._trackPageview('/outgoing/www.cocos2d-iphone.org/?referer=');">Cocos2D</a> will have that built-in first. But even with that disadvantage, developing on Lua is so much more productive than developing on Objective-C that I&#8217;ll still come out ahead.</p>

@@ -2,6 +2,7 @@ title:        'Ruby Coding Conventions'
 author:       'cyx'
 published_at: '2010-04-06'
 filename:     '2010-04-06-ruby-coding-conventions'
+permalink:    'http://pipetodevnull.upstrat.com/past/2010/4/6/ruby_coding_conventions/'
 content: |-
   <p>I&#8217;ve recently been following chris neukirchen&#8217;s coding conventions by the letter. All of them are really good. But one of the most interesting and probably opinionated convention he advocates is this:</p>
   <script src='http://gist.github.com/357442.js?file=coding.txt' />

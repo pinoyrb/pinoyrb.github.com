@@ -2,6 +2,7 @@ title:        'Rails 2.3 XSS Plugin'
 author:       'Katz Pe'
 published_at: '2010-01-18'
 filename:     '2010-01-18-rails-2.3-xss-plugin'
+permalink:    'http://blog.bridgeutopiaweb.com/post/rails-2-dot-3-xss-plugin/'
 content: |-
   <p>This is not new to those closely watching updates regarding Rails development: for Rails 3 applications, there is no need to use the h() function to escape html for security reasons.</p>
   

@@ -2,6 +2,7 @@ title:        'uninitialized constant Delayed::Job'
 author:       'cyx'
 published_at: '2010-04-14'
 filename:     '2010-04-14-uninitialized-constant-delayedjob'
+permalink:    'http://pipetodevnull.upstrat.com/past/2010/4/14/uninitialized_constant_delayedjob/'
 content: |-
   <p>Just a quick shout out for those having a problem with the latest DelayedJob, this is a quick fix!</p>
   <script src='http://gist.github.com/365826.js?file=delayed_job_fix.rb' />

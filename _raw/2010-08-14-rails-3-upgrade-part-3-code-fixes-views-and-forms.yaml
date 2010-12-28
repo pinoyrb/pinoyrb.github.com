@@ -2,6 +2,7 @@ title:        'Rails 3 upgrade part 3: Code fixes, views, and forms'
 author:       'Greg Moreno'
 published_at: '2010-08-14'
 filename:     '2010-08-14-rails-3-upgrade-part-3-code-fixes-views-and-forms'
+permalink:    'http://gregmoreno.ca/rails-3-upgrade-part-3-code-fixes-views-and-forms/'
 content: |-
   <p>This is part 3 of my Rails 2 to Rails 3 upgrade experience. Part 1 is about the initial code upgrade and <a href="http://gregmoreno.ca/rails-3-upgrade-part-1-booting-the-application/">getting the application to boot</a> while <a href="http://gregmoreno.ca/rails-3-upgrade-part-2-routes/">part 2 deals with routes</a>. While Part 2 is mainly about routes, getting it work involved changes in other parts of the code which I&#8217;ll share this time. So while you are updating your routes, you may need to check this post in between changes.</p>
   <p><strong>Update ApplicationController</strong></p>

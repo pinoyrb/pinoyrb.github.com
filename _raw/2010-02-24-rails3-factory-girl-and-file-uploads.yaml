@@ -2,6 +2,7 @@ title:        'Rails3: Factory girl and file uploads'
 author:       'cyx'
 published_at: '2010-02-24'
 filename:     '2010-02-24-rails3-factory-girl-and-file-uploads'
+permalink:    'http://pipetodevnull.upstrat.com/past/2010/2/23/rails3_factory_girl_and_file_uploads/'
 content: |-
   <p>Our experience so far with rails 3 has been pretty good. Some of the modules and internals of rails were renamed, but so far we haven&#8217;t experienced anything that changed drastically. Most of the stuff still have some parallelisms.</p>
   

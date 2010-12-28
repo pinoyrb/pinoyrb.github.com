@@ -2,6 +2,7 @@ title:        'How to Install RVM and Rails 3 on Snow Leopard'
 author:       'Katz Pe'
 published_at: '2010-01-25'
 filename:     '2010-01-25-how-to-install-rvm-and-rails-3-on-snow-leopard'
+permalink:    'http://blog.bridgeutopiaweb.com/post/how-to-install-rvm-and-rails-3-on-snow-leopard/'
 content: |-
   <p>This is a continuation of my post on installing Ruby version manager or multiple versions of Ruby for Unix. This time it's about OS X 10.6.1 or the Snow Leopard.</p>
   

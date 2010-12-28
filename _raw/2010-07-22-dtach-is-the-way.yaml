@@ -2,6 +2,7 @@ title:        'Dtach is the way'
 author:       'cyx'
 published_at: '2010-07-22'
 filename:     '2010-07-22-dtach-is-the-way'
+permalink:    'http://pipetodevnull.upstrat.com/past/2010/7/21/dtach_is_the_way/'
 content: |-
   <p>If you have a worker that doesn&#8217;t stop (looping endlessly and waiting for some queue to have a job), you might want to have the ability to put this worker in the background for the following reasons:</p>
   

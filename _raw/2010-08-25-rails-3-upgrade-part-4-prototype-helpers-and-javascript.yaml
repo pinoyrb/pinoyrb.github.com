@@ -2,6 +2,7 @@ title:        'Rails 3 upgrade part 4: Prototype helpers and Javascript'
 author:       'Greg Moreno'
 published_at: '2010-08-25'
 filename:     '2010-08-25-rails-3-upgrade-part-4-prototype-helpers-and-javascript'
+permalink:    'http://gregmoreno.ca/rails-3-upgrade-part-4-prototype-helpers-and-javascript/'
 content: |-
   <p>Rails 3 is embracing the <a href="http://en.wikipedia.org/wiki/Unobtrusive_JavaScript">unobtrusive Javascript (or UJS)</a> mantra which is good because it is the right way; at the same time, it is bad because many applications will break when they upgrade to Rails 3. On the other hand, who&#8217;s expecting a smooth upgrade anyway :)</p>
   <p>In my test application, I used jrails because I am more interested in jQuery than Prototype. But since <a href="http://www.railsplugins.org/plugins/264-jrails">jrails doesn&#8217;t work with Rails 3</a>, I removed it.</p>

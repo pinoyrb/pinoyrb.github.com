@@ -2,6 +2,7 @@ title:        'Install RVM, Passenger, Nginx and Rails 3 on Ubuntu Lucid Lynx'
 author:       'Katz Pe'
 published_at: '2010-08-22'
 filename:     '2010-08-22-install-rvm-passenger-nginx-and-rails-3-on-ubuntu-lucid-lynx'
+permalink:    'http://blog.bridgeutopiaweb.com/post/install-rvm-passenger-nginx-and-rails-3-on-ubuntu-lucid-lynx/'
 content: |-
   <p>This has been a problem encountered by several developers including myself:</p>
   

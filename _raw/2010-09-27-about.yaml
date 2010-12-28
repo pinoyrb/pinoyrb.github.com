@@ -2,6 +2,7 @@ title:        'About'
 author:       'admin'
 published_at: '2010-09-27'
 filename:     '2010-09-27-about'
+permalink:    ''
 content: |-
   <strong>Our goal </strong>
   <blockquote>When you think of Ruby, Rails, and Asia, you think about the Philippines.</blockquote>

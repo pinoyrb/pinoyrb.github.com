@@ -2,6 +2,7 @@ title:        'Hello whenever, goodbye manual crontab'
 author:       'cyx'
 published_at: '2010-01-30'
 filename:     '2010-01-30-hello-whenever-goodbye-manual-crontab'
+permalink:    'http://pipetodevnull.upstrat.com/past/2010/1/30/hello_whenever_goodbye_manual_crontab/'
 content: |-
   Do you hate managing cron configurations manually? How about maintaining different cron configs for every Rails application you might possibly have?
   <h2 id="wheneverize">Wheneverize</h2>
