@@ -8,8 +8,7 @@ original_link: http://gregmoreno.ca/ruby-101-make-your-class-behave-like-a-ruby-
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}
-&middot; <a href='{{ page.original_link }}'>Permalink</a></p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>I got re-acquianted with this scenario while working on the<a href="http://github.com/gregmoreno/openamplify"> OpenAmplify gem</a> &#8211; a wrapper for the <a href="http://community.openamplify.com/blogs/quickstart/pages/overview.aspx">OpenAmplify API</a>.  When you give the api a text like a blog comment, it will return a list of common terms, opinion scores, named locations, and other information that can be used for text mining operations. </p>
 <p>The OpenAmplify returns key-value pairs in an XML string by default, but it can also be in JSON, CSV, or RDF format. From a Ruby client’s point of view, we want it in Hash.  You can choose to use an XML library like Nokogiri but in my opinion, working with a Hash  fits nicely with Ruby.</p>

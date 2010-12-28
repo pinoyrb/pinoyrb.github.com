@@ -8,8 +8,7 @@ original_link: http://blog.bridgeutopiaweb.com/post/how-to-install-rvm-and-rails
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}
-&middot; <a href='{{ page.original_link }}'>Permalink</a></p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>This is a continuation of my post on installing Ruby version manager or multiple versions of Ruby for Unix. This time it's about OS X 10.6.1 or the Snow Leopard.</p>
 

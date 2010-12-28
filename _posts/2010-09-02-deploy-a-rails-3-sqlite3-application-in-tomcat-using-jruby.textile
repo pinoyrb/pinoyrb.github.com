@@ -8,8 +8,7 @@ original_link: http://gregmoreno.ca/deploy-a-rails-3-sqlite3-application-in-tomc
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}
-&middot; <a href='{{ page.original_link }}'>Permalink</a></p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p><em>and have a Ruby version running side-by-side.</em></p>
 <p>A few months ago I got interested in <a href="http://jruby.org/">JRuby</a> while researching for <a href="http://alias-i.com/lingpipe/">text mining algorithms</a>. I found some gems but they are either unmaintained or inadequate while the mature libraries I found were written in Java. No problem! JRuby to the rescue. Thank God.</p>

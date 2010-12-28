@@ -8,8 +8,7 @@ original_link: http://pipetodevnull.upstrat.com/past/2010/2/23/rails3_factory_gi
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}
-&middot; <a href='{{ page.original_link }}'>Permalink</a></p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>Our experience so far with rails 3 has been pretty good. Some of the modules and internals of rails were renamed, but so far we haven&#8217;t experienced anything that changed drastically. Most of the stuff still have some parallelisms.</p>
 

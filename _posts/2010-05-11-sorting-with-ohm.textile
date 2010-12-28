@@ -8,8 +8,7 @@ original_link: http://pipetodevnull.upstrat.com/past/2010/5/10/sorting_with_ohm/
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}
-&middot; <a href='{{ page.original_link }}'>Permalink</a></p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>In the last 2 months of using <a href='http://ohm.keyvalue.org'>Ohm</a>, I have used sort a couple of times, and have ran into some gotchas.</p>
 
