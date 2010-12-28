@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Using RabbitMQ and AMQP with Ruby'
-author:       ''
+author:       'Greg Moreno'
 published_at: 2010-09-28
 ---
 

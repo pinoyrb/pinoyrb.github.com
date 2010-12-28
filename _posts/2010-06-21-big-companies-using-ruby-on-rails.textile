@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Big Companies Using Ruby on Rails'
-author:       ''
+author:       'Katz Pe'
 published_at: 2010-06-21
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Installing Nginx with Passenger on Snow Leopard Using MacPorts'
-author:       ''
+author:       'Christopher Rigor'
 published_at: 2009-12-20
 ---
 

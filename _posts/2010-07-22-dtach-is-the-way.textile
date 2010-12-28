@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Dtach is the way'
-author:       ''
+author:       'cyx'
 published_at: 2010-07-22
 ---
 

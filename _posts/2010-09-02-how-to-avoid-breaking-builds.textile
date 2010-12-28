@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'How to avoid breaking builds'
-author:       ''
+author:       'Bryan Bibat'
 published_at: 2010-09-02
 ---
 

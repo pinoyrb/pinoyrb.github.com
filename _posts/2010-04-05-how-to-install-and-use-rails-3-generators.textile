@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'How to Install and Use Rails 3 Generators'
-author:       ''
+author:       'Katz Pe'
 published_at: 2010-04-05
 ---
 

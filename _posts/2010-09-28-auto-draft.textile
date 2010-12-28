@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Auto Draft'
-author:       ''
+author:       'George Mendoza'
 published_at: 2010-09-28
 ---
 

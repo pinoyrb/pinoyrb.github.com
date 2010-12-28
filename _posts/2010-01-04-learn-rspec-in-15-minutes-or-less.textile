@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Learn RSpec in 15 Minutes or Less'
-author:       ''
+author:       'Katz Pe'
 published_at: 2010-01-04
 ---
 

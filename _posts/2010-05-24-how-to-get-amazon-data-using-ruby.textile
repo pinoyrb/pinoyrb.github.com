@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'How to Get Amazon Data Using Ruby'
-author:       ''
+author:       'Katz Pe'
 published_at: 2010-05-24
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Rails 3 upgrade part 1: Booting the application'
-author:       ''
+author:       'Greg Moreno'
 published_at: 2010-08-11
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'work.sh'
-author:       ''
+author:       'Rad Batnag'
 published_at: 2010-06-09
 ---
 

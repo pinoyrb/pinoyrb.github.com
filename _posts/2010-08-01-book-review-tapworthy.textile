@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Book Review: Tapworthy'
-author:       ''
+author:       'Rad Batnag'
 published_at: 2010-08-01
 ---
 

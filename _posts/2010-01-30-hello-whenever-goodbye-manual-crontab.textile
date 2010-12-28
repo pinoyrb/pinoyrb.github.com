@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Hello whenever, goodbye manual crontab'
-author:       ''
+author:       'cyx'
 published_at: 2010-01-30
 ---
 

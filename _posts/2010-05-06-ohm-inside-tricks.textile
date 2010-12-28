@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Ohm inside tricks'
-author:       ''
+author:       'cyx'
 published_at: 2010-05-06
 ---
 

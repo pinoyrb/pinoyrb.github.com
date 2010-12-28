@@ -92,6 +92,7 @@ def load_raw
   
     p = Post.new
     p.title        = y['title']
+    p.author       = y['author']
     p.published_at = y['published_at']
     p.content      = y['content']
     p.filename     = y['filename'] 

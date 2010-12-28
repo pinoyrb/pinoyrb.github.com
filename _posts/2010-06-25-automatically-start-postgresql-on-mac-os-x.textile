@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Automatically Start PostgreSQL on Mac OS X'
-author:       ''
+author:       'Katz Pe'
 published_at: 2010-06-25
 ---
 

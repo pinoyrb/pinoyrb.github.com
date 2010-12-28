@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Why You Might Not Use Named Scopes In Rails3'
-author:       ''
+author:       'Katz Pe'
 published_at: 2010-07-25
 ---
 

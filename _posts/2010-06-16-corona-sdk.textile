@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Corona SDK'
-author:       ''
+author:       'Rad Batnag'
 published_at: 2010-06-16
 ---
 

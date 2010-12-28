@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Syntax Highlighting for Ruby'
-author:       ''
+author:       'Katz Pe'
 published_at: 2010-06-10
 ---
 

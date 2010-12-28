@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Command aliases for Subversion, Git and Rails'
-author:       ''
+author:       'Katz Pe'
 published_at: 2010-05-07
 ---
 

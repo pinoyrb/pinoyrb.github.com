@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Auto Draft'
-author:       ''
+author:       'Rad Batnag'
 published_at: 2010-09-27
 ---
 

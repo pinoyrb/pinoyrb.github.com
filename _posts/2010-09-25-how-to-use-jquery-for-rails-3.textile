@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'How to Use jQuery For Rails 3'
-author:       ''
+author:       'Katz Pe'
 published_at: 2010-09-25
 ---
 

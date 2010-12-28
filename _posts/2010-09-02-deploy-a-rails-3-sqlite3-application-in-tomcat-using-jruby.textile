@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Deploy a Rails 3, Sqlite3 application in Tomcat using JRuby'
-author:       ''
+author:       'Greg Moreno'
 published_at: 2010-09-02
 ---
 

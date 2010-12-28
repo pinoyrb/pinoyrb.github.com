@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Rails3: Factory girl and file uploads'
-author:       ''
+author:       'cyx'
 published_at: 2010-02-24
 ---
 

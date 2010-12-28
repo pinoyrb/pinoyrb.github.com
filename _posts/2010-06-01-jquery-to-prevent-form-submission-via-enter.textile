@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'jQuery to prevent form submission via ENTER'
-author:       ''
+author:       'cyx'
 published_at: 2010-06-01
 ---
 

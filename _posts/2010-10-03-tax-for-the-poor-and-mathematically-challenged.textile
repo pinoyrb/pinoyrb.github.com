@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Tax for the poor and mathematically challenged'
-author:       ''
+author:       'Bryan Bibat'
 published_at: 2010-10-03
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'How to Install RVM and Rails 3 on Snow Leopard'
-author:       ''
+author:       'Katz Pe'
 published_at: 2010-01-25
 ---
 

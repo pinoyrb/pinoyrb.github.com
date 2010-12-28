@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Rails 3 upgrade part 2: Routes'
-author:       ''
+author:       'Greg Moreno'
 published_at: 2010-08-12
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'How to use OpenAmplify with Ruby'
-author:       ''
+author:       'Greg Moreno'
 published_at: 2010-10-06
 ---
 

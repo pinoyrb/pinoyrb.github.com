@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'XMPP Development in Ruby'
-author:       ''
+author:       'Rad Batnag'
 published_at: 2010-10-17
 ---
 

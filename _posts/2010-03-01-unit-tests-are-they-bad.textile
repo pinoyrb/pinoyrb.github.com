@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Unit tests: Are they bad?'
-author:       ''
+author:       'cyx'
 published_at: 2010-03-01
 ---
 

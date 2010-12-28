@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Lua Day 1: So near yet so far'
-author:       ''
+author:       'cyx'
 published_at: 2010-05-10
 ---
 

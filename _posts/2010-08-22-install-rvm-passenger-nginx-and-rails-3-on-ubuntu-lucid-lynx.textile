@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Install RVM, Passenger, Nginx and Rails 3 on Ubuntu Lucid Lynx'
-author:       ''
+author:       'Katz Pe'
 published_at: 2010-08-22
 ---
 

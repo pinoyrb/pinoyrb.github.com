@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Our first app in Rails 3'
-author:       ''
+author:       'cyx'
 published_at: 2010-02-23
 ---
 

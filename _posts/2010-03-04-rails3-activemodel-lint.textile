@@ -1,7 +1,7 @@
 ---
 layout: post
 title:        'Rails3: ActiveModel Lint'
-author:       ''
+author:       'cyx'
 published_at: 2010-03-04
 ---
 
