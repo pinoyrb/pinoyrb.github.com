@@ -4,26 +4,29 @@ published_at: '2010-08-25'
 filename:     '2010-08-25-rails-3-upgrade-part-4-prototype-helpers-and-javascript'
 permalink:    'http://gregmoreno.ca/rails-3-upgrade-part-4-prototype-helpers-and-javascript/'
 content: |-
-  <p>Rails 3 is embracing the <a href="http://en.wikipedia.org/wiki/Unobtrusive_JavaScript">unobtrusive Javascript (or UJS)</a> mantra which is good because it is the right way; at the same time, it is bad because many applications will break when they upgrade to Rails 3. On the other hand, who&#8217;s expecting a smooth upgrade anyway :)</p>
-  <p>In my test application, I used jrails because I am more interested in jQuery than Prototype. But since <a href="http://www.railsplugins.org/plugins/264-jrails">jrails doesn&#8217;t work with Rails 3</a>, I removed it.</p>
-  <p>When jrails was removed, I received this error:</p>
-  <pre class="brush: ruby;">
-  undefined method `observe_field' for #&lt;#&lt;Class:0xb6867e58&gt;:0xb6865b6c&gt;
-  </pre>
-  <p><strong>Install Prototype helper plugin</strong></p>
-  <p>&#8216;<a href="http://apidock.com/rails/ActionView/Helpers/PrototypeHelper/observe_field">observe_field&#8217; is a Prototype helper</a> and Rails 3 removed the the link between its Javascript helpers and Prototype. The goal in Rails 3 is for developers to use their preferred Javascript library. Also note that  remote_#{method} helpers have been removed from Rails and moved to <a href="http://github.com/rails/prototype_legacy_helper">Prototype Legacy Helper plugin</a> . To install this plugin, just do:</p>
-  <pre class="brush: plain;">
+  Rails 3 is embracing the <a href="http://en.wikipedia.org/wiki/Unobtrusive_JavaScript">unobtrusive Javascript (or UJS)</a> mantra which is good because it is the right way; at the same time, it is bad because many applications will break when they upgrade to Rails 3. On the other hand, who's expecting a smooth upgrade anyway :)
+  
+  In my test application, I used jrails because I am more interested in jQuery than Prototype. But since <a href="http://www.railsplugins.org/plugins/264-jrails">jrails doesn't work with Rails 3</a>, I removed it.
+  
+  When jrails was removed, I received this error:
+  
+  <pre class="brush: ruby">
+  undefined method `observe_field' for #<#<Class:0xb6867e58>:0xb6865b6c>
+  </pre>  
+
+  <strong>Install Prototype helper plugin</strong>
+  
+  '<a href="http://apidock.com/rails/ActionView/Helpers/PrototypeHelper/observe_field">observe_field' is a Prototype helper</a> and Rails 3 removed the the link between its Javascript helpers and Prototype. The goal in Rails 3 is for developers to use their preferred Javascript library. Also note that  remote_#{method} helpers have been removed from Rails and moved to <a href="http://github.com/rails/prototype_legacy_helper">Prototype Legacy Helper plugin</a> . To install this plugin, just do:
+
+  <pre class="brush: ruby">
   rails plugin install git://github.com/rails/prototype_legacy_helper
   </pre>
-  <p><strong>Remove jQuery</strong></p>
-  <p>Once the prototype_legacy_helper is installed, the missing method is gone but observe_field is not triggering. Removing jQuery fixes this problem.</p>
-  <p>Now what if you want to use jQuery instead of Prototype? It depends how dependent your application is to Prototype. I have not found a jQuery equivalent for Prototype helper plugin yet so that would be an issue like in my case. Based on this <a href="http://blog.bernatfarrero.com/jquery-and-rails-3-mini-tutorial/">jQuery and Rails 3 tutorial</a>, using the jQuery UJS driver looks very easy. </p>
-  <p>Previous: <a href="http://gregmoreno.ca/rails-3-upgrade-part-3-code-fixes-views-and-forms/">Rails 3 upgrade part 3: Code fixes, views, and forms</a></p>
   
+  <strong>Remove jQuery</strong>
   
-  <p>Related posts:<ol><li><a href='http://gregmoreno.ca/rails-3-upgrade-part-3-code-fixes-views-and-forms/' rel='bookmark' title='Permanent Link: Rails 3 upgrade part 3: Code fixes, views, and forms'>Rails 3 upgrade part 3: Code fixes, views, and forms</a> <small>This is part 3 of my Rails 2 to Rails 3 upgrade experience. Part 1 is about the initial code upgrade and getting the application to boot while part 2...</small></li>
-  <li><a href='http://gregmoreno.ca/how-to-share-code-between-javascript-and-rails/' rel='bookmark' title='Permanent Link: How to share code between Javascript and Rails'>How to share code between Javascript and Rails</a> <small>Rails&#8217; validations is great because it allows you to quickly implement the valid states of your models and at the same time have a ready-made way of displaying the errors...</small></li>
-  <li><a href='http://gregmoreno.ca/rails-3-upgrade-part-2-routes/' rel='bookmark' title='Permanent Link: Rails 3 upgrade part 2: Routes'>Rails 3 upgrade part 2: Routes</a> <small>In the previous post, I outlined the steps I took to upgrade and boot a Rails 3 application. This time, I share my experience upgrading the routes file. By the...</small></li>
-  </ol></p>
-  <p><a href="http://feedads.g.doubleclick.net/~a/kbRVr5-W8MwfjlfjBkCtzbIl-Jo/0/da"><img src="http://feedads.g.doubleclick.net/~a/kbRVr5-W8MwfjlfjBkCtzbIl-Jo/0/di" border="0" ismap="true"></img></a><br/>
-  <a href="http://feedads.g.doubleclick.net/~a/kbRVr5-W8MwfjlfjBkCtzbIl-Jo/1/da"><img src="http://feedads.g.doubleclick.net/~a/kbRVr5-W8MwfjlfjBkCtzbIl-Jo/1/di" border="0" ismap="true"></img></a></p>
+  Once the prototype_legacy_helper is installed, the missing method is gone but observe_field is not triggering. Removing jQuery fixes this problem.
+  
+  Now what if you want to use jQuery instead of Prototype? It depends how dependent your application is to Prototype. I have not found a jQuery equivalent for Prototype helper plugin yet so that would be an issue like in my case. Based on this <a href="http://blog.bernatfarrero.com/jquery-and-rails-3-mini-tutorial/">jQuery and Rails 3 tutorial</a>, using the jQuery UJS driver looks very easy. 
+  
+  Previous: <a href="http://gregmoreno.ca/rails-3-upgrade-part-3-code-fixes-views-and-forms/">Rails 3 upgrade part 3: Code fixes, views, and forms</a>
+  

@@ -4,20 +4,25 @@ published_at: '2010-09-02'
 filename:     '2010-09-02-deploy-a-rails-3-sqlite3-application-in-tomcat-using-jruby'
 permalink:    'http://gregmoreno.ca/deploy-a-rails-3-sqlite3-application-in-tomcat-using-jruby/'
 content: |-
-  <p><em>and have a Ruby version running side-by-side.</em></p>
-  <p>A few months ago I got interested in <a href="http://jruby.org/">JRuby</a> while researching for <a href="http://alias-i.com/lingpipe/">text mining algorithms</a>. I found some gems but they are either unmaintained or inadequate while the mature libraries I found were written in Java. No problem! JRuby to the rescue. Thank God.</p>
-  <p>Next stop, I decided to take Rails 3 and JRuby for a spin. Incidentally, I will be on a <a href="http://railsjam.net">3-city Rails tour in the Philippines</a> this September  and since there are many<a href="http://tech.groups.yahoo.com/group/pinoyjug/"> Filipino Java developers</a>, they might find it interesting to see their favorite Java platform works nicely with Ruby on Rails.</p>
-  <p><strong>Setup</strong></p>
-  <p>I will be using the following for this tutorial:</p>
-  <pre class="brush: bash;">
+  <em>and have a Ruby version running side-by-side.</em>
+  
+  A few months ago I got interested in <a href="http://jruby.org/">JRuby</a> while researching for <a href="http://alias-i.com/lingpipe/">text mining algorithms</a>. I found some gems but they are either unmaintained or inadequate while the mature libraries I found were written in Java. No problem! JRuby to the rescue. Thank God.
+  
+  Next stop, I decided to take Rails 3 and JRuby for a spin. Incidentally, I will be on a <a href="http://railsjam.net">3-city Rails tour in the Philippines</a> this September  and since there are many<a href="http://tech.groups.yahoo.com/group/pinoyjug/"> Filipino Java developers</a>, they might find it interesting to see their favorite Java platform works nicely with Ruby on Rails.
+  
+  <strong>Setup</strong>
+  
+  I will be using the following for this tutorial:
+  
   java 1.6 + JDK
   tomcat 7.0.2
   rvm 1.0.1
   jruby 1.5.0
   ruby 1.9.2p0
-  </pre>
-  <p>Further below, I outline how to install these software. First, let’s see my current environment.</p>
-  <pre class="brush: bash;">
+  
+  Further below, I outline how to install these software. First, let’s see my current environment.
+  
+  <pre class="brush: bash">
   $ more /etc/issue
   Ubuntu 9.10 \n \l
   
@@ -32,7 +37,7 @@ content: |-
   $ jruby -v
   jruby 1.5.0 (ruby 1.8.7 patchlevel 249) (2010-05-12 6769999) (Java HotSpot(TM) Client VM 1.6.0_20) [i386-java]
   
-  $ TOMCAT/bin/version.sh
+  $ TOMCAT/bin/version.sh 
   Using CATALINA_BASE:   /usr/local/apache-tomcat-7.0.2
   Using CATALINA_HOME:   /usr/local/apache-tomcat-7.0.2
   Using CATALINA_TMPDIR: /usr/local/apache-tomcat-7.0.2/temp
@@ -49,32 +54,41 @@ content: |-
   
   $ ruby -v
   ruby 1.9.2p0 (2010-08-18 revision 29036) [i686-linux]
-  </pre>
-  <p><strong>Install JDK and Tomcat</strong></p>
-  <pre class="brush: bash;">
+  
+  # install jdk and tomcat
+  
   $ aptitude install curl sun-java6-bin sun-java6-jre sun-java6-jdk
   $ wget  http://apache.mobiles5.com/tomcat/tomcat-7/v7.0.2-beta/bin/apache-tomcat-7.0.2.tar.gz
-  $&gt; tar zxvf apache-tomcat-7.0.2.tar.gz
-  $&gt; mv apache-tomcat-7.0.2 /usr/local
+  $ tar zxvf apache-tomcat-7.0.2.tar.gz
+  $ mv apache-tomcat-7.0.2 /usr/local
+  
   </pre>
-  <p>Of course, these assume you want to use 7.0.2 and you want it installed at your /usr/local.</p>
-  <p><strong>Install JRuby, Rails 3</strong></p>
-  <p>I assume you already have <a href="http://rvm.beginrescueend.com/">rvm</a> installed. If not, I highly recommend that you do. I can’t imagine a Ruby developer not using rvm :)</p>
-  <pre class="brush: bash;">
+
+  Of course, these assume you want to use 7.0.2 and you want it installed at your /usr/local.
+  
+  <strong>Install JRuby, Rails 3</strong>
+  
+  I assume you already have <a href="http://rvm.beginrescueend.com/">rvm</a> installed. If not, I highly recommend that you do. I can’t imagine a Ruby developer not using rvm :)
+  
+  <pre class="brush: bash">
   $ rvm install jruby
   $ rvm jruby
   $ rvm gemset create railsjam
   $ rvm jruby@railsjam
   $ gem install rails
   </pre>
-  <p><strong>Try a sample app</strong></p>
-  <p>I’ve created  sample app for the<a href="http://railsjam.net"> RailsJam tour</a>. This have several functionalities already and better than creating a Rails app from scratch.</p>
-  <pre class="brush: bash;">
+  
+  <strong>Try a sample app</strong>
+  
+  I’ve created  sample app for the<a href="http://railsjam.net"> RailsJam tour</a>. This have several functionalities already and better than creating a Rails app from scratch.
+  
   $ git clone git://github.com/gregmoreno/railsjam.git
-  </pre>
-  <p><strong>Update the Gemfile</strong></p>
-  <p>You need a separate set of gems to make your Rails 3 application work with JRuby. For learning purposes, I want my Rails 3 application to work other than JRuby. To accomplish that, we need to specify what gems are needed solely by JRuby.</p>
-  <pre class="brush: ruby;">
+  
+  <strong>Update the Gemfile</strong>
+  
+  You need a separate set of gems to make your Rails 3 application work with JRuby. For learning purposes, I want my Rails 3 application to work other than JRuby. To accomplish that, we need to specify what gems are needed solely by JRuby.
+
+  <pre class="brush: ruby">
   source 'http://rubygems.org'
   
   gem 'rails', '3.0.0'
@@ -87,39 +101,51 @@ content: |-
     gem 'jruby-rack'
     gem 'warbler'
   else
-    gem 'sqlite3-ruby', :require =&gt; 'sqlite3'
+    gem 'sqlite3-ruby', :require => 'sqlite3'
   end
   </pre>
-  <p>(A copy of this Gemfile is available at the ‘jruby’ folder of the railsjam application.)</p>
-  <p>Now, it’s time to intall the gems.</p>
-  <pre class="brush: bash;">
-  # Must do this. Otherwise,  bundle picks up wrong version of jdbc
-  $ rm Gemfile.lock
+
+  (A copy of this Gemfile is available at the ‘jruby’ folder of the railsjam application.)
+  
+  Now, it’s time to intall the gems. You must delete 'Gemfile.lock'. Otherwise,  bundle picks up wrong version of jdbc
+
+  <pre class="brush: bash">
+  $ rm Gemfile.lock  
   $ jruby -S bundle install
   </pre>
-  <p><strong>Prepare the database.</strong></p>
-  <p>The first time I worked on this tutorial, I needed to specify the jdbcsqlite3 as the database adapter. However, when I tried the tutorial on the same machine with a fresh gemset, it worked pretty well with just ‘sqlite3’.  Just to be sure, I modified  ‘database.yml’ to check for JRuby.</p>
-  <pre class="brush: ruby;">
+  
+  <strong>Prepare the database.</strong>
+  
+  The first time I worked on this tutorial, I needed to specify the jdbcsqlite3 as the database adapter. However, when I tried the tutorial on the same machine with a fresh gemset, it worked pretty well with just ‘sqlite3’.  Just to be sure, I modified  ‘database.yml’ to check for JRuby.
+
+  <pre class="brush: ruby">
   development:
-    adapter: &lt;%= defined?(JRUBY_VERSION) ? 'jdbcsqlite3' : 'sqlite3' %&gt;
+    adapter: <%= defined?(JRUBY_VERSION) ? 'jdbcsqlite3' : 'sqlite3' %>
     database: db/development.sqlite3
     pool: 5
     timeout: 5000
   
   production:
-    adapter: &lt;%= defined?(JRUBY_VERSION) ? 'jdbcsqlite3' : 'sqlite3' %&gt;
-    database: /home/greg/dev/railsjam/db/development.sqlite3
+    adapter: <%= defined?(JRUBY_VERSION) ? 'jdbcsqlite3' : 'sqlite3' %>
+    database: /home/greg/dev/railsjam/db/development.sqlite3 
     pool: 5
     timeout: 5000
   </pre>
-  <p>When you deploy to Tomcat, it will be on ‘production’ mode by default. Since sqlite3 is file based and for simplicity, I used the same development database.</p>
-  <p>Now, do the migration.</p>
-  <pre class="brush: bash;">
+
+  
+  When you deploy to Tomcat, it will be on ‘production’ mode by default. Since sqlite3 is file based and for simplicity, I used the same development database.
+  
+  Now, do the migration.
+
+  <pre class="brush: bash">
   $ jruby -S rake db:migrate
   </pre>
-  <p><strong>Deploy to Tomcat</strong></p>
-  <p>We use ‘<a href="http://caldersphere.rubyforge.org/warbler/">warble</a>’ which is an excellent tool for packaging your Rails application. It packages everything you need to run your Rails application inside a Java container.</p>
-  <pre class="brush: bash;">
+  
+  <strong>Deploy to Tomcat</strong>
+  
+  We use ‘<a href="http://caldersphere.rubyforge.org/warbler/">warble</a>’ which is an excellent tool for packaging your Rails application. It packages everything you need to run your Rails application inside a Java container.
+  
+  <pre class="brush: bash">
   $ warble
   $ cp railsjam.war  $TOMCAT/webapps
   
@@ -127,17 +153,22 @@ content: |-
   # assuming you arein $TOMCAT dir
   $ sudo ./startup.sh
   </pre>
-  <p><strong>Check your Rails 3 application</strong></p>
-  <pre class="brush: bash;">
+  
+  <strong>Check your Rails 3 application</strong>
+  
+  <pre class="brush: bash">
   # You should see the famous Rails welcome
   localhost:3000/railsjam
   
   # Play around with your application
   localhost:3000/railsjam/users
   </pre>
-  <p><strong>Deploy Rails 3 using Ruby 1.9.2 </strong></p>
-  <p>Without shutting down your JRuby and Tomcat version, let’s try to run our app using Ruby 1.9.2</p>
-  <pre class="brush: bash;">
+  
+  <strong>Deploy Rails 3 using Ruby 1.9.2 </strong>
+  
+  Without shutting down your JRuby and Tomcat version, let’s try to run our app using Ruby 1.9.2
+
+  <pre class="brush: bash">
   # In a new console
   $ rvm 1.9.2
   $ rvm gemset create railsjam
@@ -149,85 +180,112 @@ content: |-
   $ bundle install
   
   $ rails server
-  </pre>
-  <p>Now, go play with your Rails 3 applications</p>
-  <pre class="brush: bash;">
-  # jruby + tomcat
   
+  Now, go play with your Rails 3 applications
+  
+  # jruby + tomcat
   http://localhost:8080/railsjam/users
   
   # ruby 1.9.2
-  
   http://localhost:3000/users
+
   </pre>
-  <p>In case you encountered some problems, here are some ways to solve them. If your problem is not listed here, you can email me. I only accept Paypal :)</p>
-  <p><strong>JRuby does not support native extensions</strong></p>
-  <p>You did not update the Gemfile to use the jdbc version of sqlite3. You will encounter this error when you install the gems.</p>
-  <pre class="brush: bash;">
+  
+  In case you encountered some problems, here are some ways to solve them. If your problem is not listed here, you can email me. I only accept Paypal :)
+  
+  <strong>JRuby does not support native extensions</strong>
+  
+  You did not update the Gemfile to use the jdbc version of sqlite3. You will encounter this error when you install the gems.
+
+  <pre class="brush: bash">
+   
   $ bundle install
   ....
   Installing sqlite3-ruby (1.3.1) with native extensions /home/greg/.rvm/rubies/jruby-1.5.2/lib/ruby/site_ruby/1.8/rubygems/installer.rb:482:in `build_extensions': ERROR: Failed to build gem native extension. (Gem::Installer::ExtensionBuildError)
   
-  /home/greg/.rvm/rubies/jruby-1.5.2/bin/jruby extconf.rb
+  /home/greg/.rvm/rubies/jruby-1.5.2/bin/jruby extconf.rb 
   WARNING: JRuby does not support native extensions or the `mkmf' library.
            Check http://kenai.com/projects/jruby/pages/Home for alternatives.
   extconf.rb:9: undefined method `dir_config' for main:Object (NoMethodError)
   </pre>
-  <p><strong>undefined method `attributes_with_quotes&#8217; for class `ActiveRecord::Base&#8217;</strong></p>
-  <p>I first encountered this problem when doing migration.</p>
-  <pre class="brush: bash;">
+
+  
+  <strong>undefined method `attributes_with_quotes' for class `ActiveRecord::Base'</strong>
+  
+  I first encountered this problem when doing migration.
+
+  <pre class="brush: bash"> 
   $ rake db:migrate
   rake aborted!
-  undefined method `attributes_with_quotes' for class `ActiveRecord::Base'
+  undefined method 'attributes_with_quotes' for class 'ActiveRecord::Base'
   </pre>
-  <p>This is caused by an old version of your jdbc gems. In my case, sometimes bundler installs the old versions:</p>
-  <pre class="brush: bash;">
-  Installing activerecord-jdbc-adapter (0.9.2)
+  
+  This is caused by an old version of your jdbc gems. In my case, sometimes bundler installs the old versions:
+
+  <pre class="brush: bash">
+  Installing activerecord-jdbc-adapter (0.9.2) 
   Installing activerecord-jdbcsqlite3-adapter (0.9.2)
   </pre>
-  <p>As of this writing, the latest version is 0.9.7</p>
-  <pre class="brush: bash;">
+  
+  As of this writing, the latest version is 0.9.7
+
+  <pre class="brush: bash">
   Installing activerecord-jdbc-adapter-0.9.7-java
   Installing activerecord-jdbcsqlite3-adapter-0.9.7-java
   </pre>
-  <p><strong>Bundler keeps installing 0.9.2</strong></p>
-  <pre class="brush: bash;">
+  
+  <strong>Bundler keeps installing 0.9.2</strong>
+
+  <pre class="brush: bash">
+  
   $ rm Gemfile.lock
   $ jruby -S bundle install
   </pre>
-  <p><strong>no such file to load &#8212; sqlite3</strong></p>
-  <pre class="brush: bash;">
+  
+  <strong>no such file to load -- sqlite3</strong>
+
+  <pre class="brush: bash">
   $ rake db:migrate
   (in /home/greg/dev/projects/jruby/railsjam)
   rake aborted!
   no such file to load -- sqlite3
   </pre>
-  <p>‘sqlite3’ is the default name of the database adapter but with jruby, it should be ‘jdbcsqlite3’.  (another) But, when I tried ‘sqlite3’ with a fresh gemset and a new machine, it went well. Anyway, just in case you run into the same problem in the future, add a condition in your database.yml </p>
-  <pre class="brush: ruby;">
+ 
+  'sqlite3' is the default name of the database adapter but with jruby, it should be 'jdbcsqlite3'.  
+  But, when I tried 'sqlite3' with a fresh gemset and a new machine, it went well. 
+  Anyway, just in case you run into the same problem in the future, add a condition 
+  in your database.yml 
+
+  <pre class="brush: ruby">
   development:
-    adapter: &lt;%= defined?(JRUBY_VERSION) ? 'jdbcsqlite3' : 'sqlite3' %&gt;
+    adapter: <%= defined?(JRUBY_VERSION) ? 'jdbcsqlite3' : 'sqlite3' %>
     database: db/development.sqlite3
     pool: 5
     timeout: 5000
+  
+  production:
+    adapter: <%= defined?(JRUBY_VERSION) ? 'jdbcsqlite3' : 'sqlite3' %>
+    database: /home/greg/dev/railsjam/db/development.sqlite3 
+    pool: 5
+    timeout: 5000
   </pre>
-  <p><strong>We&#8217;re sorry, but something went wrong.</strong></p>
-  <p>If you see the famous Rails error message, you need to dig in Tomcat’s log files.</p>
-  <pre class="brush: bash;">
+
+  <strong>We're sorry, but something went wrong.</strong>
+  
+  If you see the famous Rails error message, you need to dig in Tomcat’s log files.
+
+  <pre class="brush: bash">
   $ cd /usr/local/apache-tomcat-7.0.2/logs
   $ ls -al localhost*
   
   -rw-r--r-- 1 root root 1181 2010-09-01 00:17 localhost.2010-09-01.log
   -rw-r--r-- 1 root root 1062 2010-09-01 00:18 localhost_access_log.2010-09-01.txt
   
-  $ tail -f localhost.2010-09-01.log
+  $ tail -f localhost.2010-09-01.log 
   </pre>
-  <p>In the log file, you will see the errors like missing database.</p>
-  <p>org.jruby.rack.RackInitializationException: The driver encountered an error: java.sql.SQLException: path to &#8216;/home/greg/dev/tmp/apache-tomcat-7.0.2/webapps/railsjam/WEB-INF/db/production.sqlite3&#8242;: &#8216;/home/greg/dev/tmp/apache-tomcat-7.0.2/webapps/railsjam/WEB-INF/db&#8217; does not exist</p>
+
+  In the log file, you will see the errors like missing database.
   
-  
-  <p>Related posts:<ol><li><a href='http://gregmoreno.ca/rails-3-upgrade-part-1-booting-the-application/' rel='bookmark' title='Permanent Link: Rails 3 upgrade part 1: Booting the application'>Rails 3 upgrade part 1: Booting the application</a> <small>It&#8217;s time for another Rails upgrade! We all have our share of bad experiences and frustrations every time we upgrade a piece of software. Even for technical people who live...</small></li>
-  <li><a href='http://gregmoreno.ca/how-to-setup-a-rails-3-app/' rel='bookmark' title='Permanent Link: How to setup a Rails 3 app'>How to setup a Rails 3 app</a> <small>I finally decided to give Rails 3 a spin after beta was released 20 days ago. In geek time, that&#8217;s being a late adopter. But first, a warning. I&#8217;ve read...</small></li>
-  <li><a href='http://gregmoreno.ca/rails-3-upgrade-part-4-prototype-helpers-and-javascript/' rel='bookmark' title='Permanent Link: Rails 3 upgrade part 4: Prototype helpers and Javascript'>Rails 3 upgrade part 4: Prototype helpers and Javascript</a> <small>Rails 3 is embracing the unobtrusive Javascript (or UJS) mantra which is good because it is the right way; at the same time, it is bad because many applications will...</small></li>
-  </ol></p>
-  <p><a href="http://feedads.g.doubleclick.net/~a/xVI2JX_tC_ssOkhLTIfn577pW_c/0/da"><img src="http://feedads.g.doubleclick.net/~a/xVI2JX_tC_ssOkhLTIfn577pW_c/0/di" border="0" ismap="true"></img></a><br/>
-  <a href="http://feedads.g.doubleclick.net/~a/xVI2JX_tC_ssOkhLTIfn577pW_c/1/da"><img src="http://feedads.g.doubleclick.net/~a/xVI2JX_tC_ssOkhLTIfn577pW_c/1/di" border="0" ismap="true"></img></a></p>
+  <pre class="brush: bash">
+  org.jruby.rack.RackInitializationException: The driver encountered an error: java.sql.SQLException: path to '/home/greg/dev/tmp/apache-tomcat-7.0.2/webapps/railsjam/WEB-INF/db/production.sqlite3': '/home/greg/dev/tmp/apache-tomcat-7.0.2/webapps/railsjam/WEB-INF/db' does not exist
+  </pre>
