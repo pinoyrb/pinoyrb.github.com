@@ -3,7 +3,7 @@ layout: post
 title:        'Ruby on Windows'
 author:       'Bryan Bibat'
 published_at: 2010-09-19
-permalink:    '
+permalink:    http://blog.bryanbibat.net/2010/09/20/ruby-on-windows/
 ---
 
 <h1> {{ page.title }} </h1>

@@ -3,7 +3,7 @@ layout: post
 title:        'How to Install and Use Rails 3 Generators'
 author:       'Katz Pe'
 published_at: 2010-04-05
-permalink:    '
+permalink:    http://blog.bridgeutopiaweb.com/post/how-to-install-and-use-rails-3-generators/
 ---
 
 <h1> {{ page.title }} </h1>

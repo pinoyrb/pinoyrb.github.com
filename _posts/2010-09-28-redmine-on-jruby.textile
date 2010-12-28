@@ -3,7 +3,7 @@ layout: post
 title:        'Redmine on Jruby'
 author:       'Christopher Rigor'
 published_at: 2010-09-28
-permalink:    '
+permalink:    http://crigor.com/redmine-on-jruby/
 ---
 
 <h1> {{ page.title }} </h1>

@@ -3,7 +3,7 @@ layout: post
 title:        'Fuzzy searching in SOLR with Sunspot'
 author:       'cyx'
 published_at: 2010-08-05
-permalink:    '
+permalink:    http://pipetodevnull.upstrat.com/past/2010/8/5/fuzzy_searching_in_solr_with_sunspot/
 ---
 
 <h1> {{ page.title }} </h1>

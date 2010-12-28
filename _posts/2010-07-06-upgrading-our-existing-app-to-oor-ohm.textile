@@ -3,7 +3,7 @@ layout: post
 title:        'Upgrading our existing app to OOR Ohm'
 author:       'cyx'
 published_at: 2010-07-06
-permalink:    '
+permalink:    http://pipetodevnull.upstrat.com/past/2010/7/5/upgrading_our_existing_app_to_ohm_codename_oor/
 ---
 
 <h1> {{ page.title }} </h1>

@@ -3,7 +3,7 @@ layout: post
 title:        'Deploy a Rails 3, Sqlite3 application in Tomcat using JRuby'
 author:       'Greg Moreno'
 published_at: 2010-09-02
-permalink:    '
+permalink:    http://gregmoreno.ca/deploy-a-rails-3-sqlite3-application-in-tomcat-using-jruby/
 ---
 
 <h1> {{ page.title }} </h1>

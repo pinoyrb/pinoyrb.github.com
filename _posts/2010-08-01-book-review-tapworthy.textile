@@ -3,7 +3,7 @@ layout: post
 title:        'Book Review: Tapworthy'
 author:       'Rad Batnag'
 published_at: 2010-08-01
-permalink:    '
+permalink:    http://rad.batnag.org/2010/08/book-review-tapworthy/
 ---
 
 <h1> {{ page.title }} </h1>

@@ -3,7 +3,7 @@ layout: post
 title:        'Ruby Coding Conventions'
 author:       'cyx'
 published_at: 2010-04-06
-permalink:    '
+permalink:    http://pipetodevnull.upstrat.com/past/2010/4/6/ruby_coding_conventions/
 ---
 
 <h1> {{ page.title }} </h1>

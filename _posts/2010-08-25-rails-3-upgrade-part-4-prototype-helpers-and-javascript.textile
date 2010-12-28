@@ -3,7 +3,7 @@ layout: post
 title:        'Rails 3 upgrade part 4: Prototype helpers and Javascript'
 author:       'Greg Moreno'
 published_at: 2010-08-25
-permalink:    '
+permalink:    http://gregmoreno.ca/rails-3-upgrade-part-4-prototype-helpers-and-javascript/
 ---
 
 <h1> {{ page.title }} </h1>

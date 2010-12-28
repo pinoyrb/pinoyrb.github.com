@@ -3,7 +3,7 @@ layout: post
 title:        'Rails 2.3 XSS Plugin'
 author:       'Katz Pe'
 published_at: 2010-01-18
-permalink:    '
+permalink:    http://blog.bridgeutopiaweb.com/post/rails-2-dot-3-xss-plugin/
 ---
 
 <h1> {{ page.title }} </h1>

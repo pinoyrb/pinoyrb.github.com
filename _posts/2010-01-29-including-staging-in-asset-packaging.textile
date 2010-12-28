@@ -3,7 +3,7 @@ layout: post
 title:        'Including Staging in Asset Packaging'
 author:       'cyx'
 published_at: 2010-01-29
-permalink:    '
+permalink:    http://pipetodevnull.upstrat.com/past/2010/1/29/including_staging_in_asset_packaging/
 ---
 
 <h1> {{ page.title }} </h1>

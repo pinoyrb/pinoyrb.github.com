@@ -3,7 +3,7 @@ layout: post
 title:        'Dtach is the way'
 author:       'cyx'
 published_at: 2010-07-22
-permalink:    '
+permalink:    http://pipetodevnull.upstrat.com/past/2010/7/21/dtach_is_the_way/
 ---
 
 <h1> {{ page.title }} </h1>

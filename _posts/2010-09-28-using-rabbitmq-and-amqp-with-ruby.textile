@@ -3,7 +3,7 @@ layout: post
 title:        'Using RabbitMQ and AMQP with Ruby'
 author:       'Greg Moreno'
 published_at: 2010-09-28
-permalink:    '
+permalink:    http://gregmoreno.ca/using-rabbitmq-and-amqp-with-ruby/
 ---
 
 <h1> {{ page.title }} </h1>

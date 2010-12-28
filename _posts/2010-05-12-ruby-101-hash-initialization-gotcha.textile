@@ -3,7 +3,7 @@ layout: post
 title:        'Ruby 101: Hash initialization gotcha'
 author:       'Greg Moreno'
 published_at: 2010-05-12
-permalink:    '
+permalink:    http://gregmoreno.ca/ruby-101-hash-initialization-gotcha/
 ---
 
 <h1> {{ page.title }} </h1>

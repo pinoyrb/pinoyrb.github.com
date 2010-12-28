@@ -61,7 +61,7 @@ def save_to_jekyll(blog)
       f.puts "title:        '#{p.title}'"
       f.puts "author:       '#{p.author}'"
       f.puts "published_at: #{p.published_at}"
-      f.puts "permalink:    #{p.permalink}'"
+      f.puts "permalink:    #{p.permalink}"
       f.puts "---"
     
       f.puts
@@ -100,6 +100,7 @@ def load_raw
     p = Post.new
     p.title        = y['title']
     p.author       = y['author']
+    p.permalink    = y['permalink']
     p.published_at = y['published_at']
     p.content      = y['content']
     p.filename     = y['filename'] 

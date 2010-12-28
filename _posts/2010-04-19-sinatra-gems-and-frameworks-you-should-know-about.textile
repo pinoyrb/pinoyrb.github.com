@@ -3,7 +3,7 @@ layout: post
 title:        'Sinatra Gems and Frameworks You Should Know About'
 author:       'Katz Pe'
 published_at: 2010-04-19
-permalink:    '
+permalink:    http://blog.bridgeutopiaweb.com/post/sinatra-gems-and-frameworks-you-should-know-about/
 ---
 
 <h1> {{ page.title }} </h1>

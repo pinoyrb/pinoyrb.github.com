@@ -3,7 +3,7 @@ layout: post
 title:        'Rails3: ActiveModel Lint'
 author:       'cyx'
 published_at: 2010-03-04
-permalink:    '
+permalink:    http://pipetodevnull.upstrat.com/past/2010/3/4/rails3_activemodel_lint/
 ---
 
 <h1> {{ page.title }} </h1>

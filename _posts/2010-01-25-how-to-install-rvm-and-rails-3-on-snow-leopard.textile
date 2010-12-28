@@ -3,7 +3,7 @@ layout: post
 title:        'How to Install RVM and Rails 3 on Snow Leopard'
 author:       'Katz Pe'
 published_at: 2010-01-25
-permalink:    '
+permalink:    http://blog.bridgeutopiaweb.com/post/how-to-install-rvm-and-rails-3-on-snow-leopard/
 ---
 
 <h1> {{ page.title }} </h1>

@@ -3,7 +3,7 @@ layout: post
 title:        'Ruby 101: Make your class behave like a Ruby built-in'
 author:       'Greg Moreno'
 published_at: 2010-06-10
-permalink:    '
+permalink:    http://gregmoreno.ca/ruby-101-make-your-class-behave-like-a-ruby-built-in/
 ---
 
 <h1> {{ page.title }} </h1>

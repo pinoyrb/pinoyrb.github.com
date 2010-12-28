@@ -3,7 +3,7 @@ layout: post
 title:        'Ohm inside tricks'
 author:       'cyx'
 published_at: 2010-05-06
-permalink:    '
+permalink:    http://pipetodevnull.upstrat.com/past/2010/5/6/ohm_inside_tricks/
 ---
 
 <h1> {{ page.title }} </h1>

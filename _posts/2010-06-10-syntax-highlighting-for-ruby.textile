@@ -3,7 +3,7 @@ layout: post
 title:        'Syntax Highlighting for Ruby'
 author:       'Katz Pe'
 published_at: 2010-06-10
-permalink:    '
+permalink:    http://blog.bridgeutopiaweb.com/post/syntax-highlighting-for-ruby/
 ---
 
 <h1> {{ page.title }} </h1>

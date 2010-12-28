@@ -3,7 +3,7 @@ layout: post
 title:        'Rails 3 on Ubuntu Karmic Koala (Fivebean)'
 author:       'Katz Pe'
 published_at: 2010-04-04
-permalink:    '
+permalink:    http://blog.bridgeutopiaweb.com/post/rails-3-on-ubuntu-karmic-koala-fivebean/
 ---
 
 <h1> {{ page.title }} </h1>

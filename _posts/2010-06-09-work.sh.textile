@@ -3,7 +3,7 @@ layout: post
 title:        'work.sh'
 author:       'Rad Batnag'
 published_at: 2010-06-09
-permalink:    '
+permalink:    http://rad.batnag.org/2010/06/work-sh/
 ---
 
 <h1> {{ page.title }} </h1>

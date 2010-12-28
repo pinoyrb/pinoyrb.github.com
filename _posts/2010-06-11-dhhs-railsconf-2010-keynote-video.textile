@@ -3,7 +3,7 @@ layout: post
 title:        'DHH’s RailsConf 2010 Keynote Video'
 author:       'Greg Moreno'
 published_at: 2010-06-11
-permalink:    '
+permalink:    http://gregmoreno.ca/dhh%E2%80%99s-railsconf-2010-keynote-video/
 ---
 
 <h1> {{ page.title }} </h1>

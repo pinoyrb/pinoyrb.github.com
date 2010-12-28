@@ -3,7 +3,7 @@ layout: post
 title:        'iPhone SDK TOS 3.3.1: One Month later'
 author:       'Rad Batnag'
 published_at: 2010-05-07
-permalink:    '
+permalink:    http://rad.batnag.org/2010/05/iphone-sdk-tos-3-3-1-one-month-later/
 ---
 
 <h1> {{ page.title }} </h1>

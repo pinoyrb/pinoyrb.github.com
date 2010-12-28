@@ -3,7 +3,7 @@ layout: post
 title:        'How to avoid breaking builds'
 author:       'Bryan Bibat'
 published_at: 2010-09-02
-permalink:    '
+permalink:    http://blog.bryanbibat.net/2010/09/02/how-to-avoid-breaking-builds/
 ---
 
 <h1> {{ page.title }} </h1>

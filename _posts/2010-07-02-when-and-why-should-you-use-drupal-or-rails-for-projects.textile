@@ -3,7 +3,7 @@ layout: post
 title:        'When And Why Should You Use Drupal or Rails For Projects'
 author:       'Katz Pe'
 published_at: 2010-07-02
-permalink:    '
+permalink:    http://blog.bridgeutopiaweb.com/post/when-and-why-should-you-use-drupal-or-rails-for-projects/
 ---
 
 <h1> {{ page.title }} </h1>

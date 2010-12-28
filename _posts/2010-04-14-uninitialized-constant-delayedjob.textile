@@ -3,7 +3,7 @@ layout: post
 title:        'uninitialized constant Delayed::Job'
 author:       'cyx'
 published_at: 2010-04-14
-permalink:    '
+permalink:    http://pipetodevnull.upstrat.com/past/2010/4/14/uninitialized_constant_delayedjob/
 ---
 
 <h1> {{ page.title }} </h1>

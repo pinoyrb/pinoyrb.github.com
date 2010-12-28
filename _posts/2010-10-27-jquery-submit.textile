@@ -3,7 +3,7 @@ layout: post
 title:        'jQuery Submit'
 author:       'Christopher Rigor'
 published_at: 2010-10-27
-permalink:    '
+permalink:    http://crigor.com/jquery-submit/
 ---
 
 <h1> {{ page.title }} </h1>

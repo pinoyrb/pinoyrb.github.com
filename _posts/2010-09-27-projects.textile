@@ -3,7 +3,7 @@ layout: post
 title:        'Projects'
 author:       'Greg Moreno'
 published_at: 2010-09-27
-permalink:    '
+permalink:    
 ---
 
 <h1> {{ page.title }} </h1>

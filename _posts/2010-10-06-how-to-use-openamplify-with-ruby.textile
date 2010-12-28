@@ -3,7 +3,7 @@ layout: post
 title:        'How to use OpenAmplify with Ruby'
 author:       'Greg Moreno'
 published_at: 2010-10-06
-permalink:    '
+permalink:    http://gregmoreno.ca/how-to-use-openamplify-with-ruby/
 ---
 
 <h1> {{ page.title }} </h1>

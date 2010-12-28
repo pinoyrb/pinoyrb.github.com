@@ -3,7 +3,7 @@ layout: post
 title:        'XMPP Development in Ruby'
 author:       'Rad Batnag'
 published_at: 2010-10-17
-permalink:    '
+permalink:    http://rad.batnag.org/2010/10/xmpp-development-in-ruby/
 ---
 
 <h1> {{ page.title }} </h1>

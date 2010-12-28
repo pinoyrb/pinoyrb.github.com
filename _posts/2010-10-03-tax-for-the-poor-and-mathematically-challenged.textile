@@ -3,7 +3,7 @@ layout: post
 title:        'Tax for the poor and mathematically challenged'
 author:       'Bryan Bibat'
 published_at: 2010-10-03
-permalink:    '
+permalink:    http://blog.bryanbibat.net/2010/10/04/tax-for-the-poor-and-mathematically-challenged/
 ---
 
 <h1> {{ page.title }} </h1>

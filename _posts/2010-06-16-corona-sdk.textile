@@ -3,7 +3,7 @@ layout: post
 title:        'Corona SDK'
 author:       'Rad Batnag'
 published_at: 2010-06-16
-permalink:    '
+permalink:    http://rad.batnag.org/2010/06/corona-sdk/
 ---
 
 <h1> {{ page.title }} </h1>

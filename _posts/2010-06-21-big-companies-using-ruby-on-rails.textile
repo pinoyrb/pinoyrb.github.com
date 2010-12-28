@@ -3,7 +3,7 @@ layout: post
 title:        'Big Companies Using Ruby on Rails'
 author:       'Katz Pe'
 published_at: 2010-06-21
-permalink:    '
+permalink:    http://blog.bridgeutopiaweb.com/post/big-companies-using-ruby-on-rails/
 ---
 
 <h1> {{ page.title }} </h1>

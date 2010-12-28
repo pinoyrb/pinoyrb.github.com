@@ -3,7 +3,7 @@ layout: post
 title:        'Learn RSpec in 15 Minutes or Less'
 author:       'Katz Pe'
 published_at: 2010-01-04
-permalink:    '
+permalink:    http://blog.bridgeutopiaweb.com/post/learn-rspec-in-15-minutes-or-less/
 ---
 
 <h1> {{ page.title }} </h1>

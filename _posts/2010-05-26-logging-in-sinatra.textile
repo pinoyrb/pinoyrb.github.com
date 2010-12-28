@@ -3,7 +3,7 @@ layout: post
 title:        'Logging in Sinatra'
 author:       'cyx'
 published_at: 2010-05-26
-permalink:    '
+permalink:    http://pipetodevnull.upstrat.com/past/2010/5/25/logging_in_sinatra/
 ---
 
 <h1> {{ page.title }} </h1>

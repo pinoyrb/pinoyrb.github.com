@@ -3,7 +3,7 @@ layout: post
 title:        'Our first app in Rails 3'
 author:       'cyx'
 published_at: 2010-02-23
-permalink:    '
+permalink:    http://pipetodevnull.upstrat.com/past/2010/2/22/our_first_app_in_rails_3/
 ---
 
 <h1> {{ page.title }} </h1>

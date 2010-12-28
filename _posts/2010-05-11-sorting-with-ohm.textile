@@ -3,7 +3,7 @@ layout: post
 title:        'Sorting with Ohm'
 author:       'cyx'
 published_at: 2010-05-11
-permalink:    '
+permalink:    http://pipetodevnull.upstrat.com/past/2010/5/10/sorting_with_ohm/
 ---
 
 <h1> {{ page.title }} </h1>

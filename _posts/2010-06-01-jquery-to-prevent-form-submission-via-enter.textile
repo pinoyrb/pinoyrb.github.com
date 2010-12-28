@@ -3,7 +3,7 @@ layout: post
 title:        'jQuery to prevent form submission via ENTER'
 author:       'cyx'
 published_at: 2010-06-01
-permalink:    '
+permalink:    http://pipetodevnull.upstrat.com/past/2010/5/31/jquery_to_prevent_form_submission_via_enter/
 ---
 
 <h1> {{ page.title }} </h1>

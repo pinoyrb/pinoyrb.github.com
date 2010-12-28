@@ -3,7 +3,7 @@ layout: post
 title:        'Command aliases for Subversion, Git and Rails'
 author:       'Katz Pe'
 published_at: 2010-05-07
-permalink:    '
+permalink:    http://blog.bridgeutopiaweb.com/post/command-aliases-for-subversion-git-and-rails/
 ---
 
 <h1> {{ page.title }} </h1>

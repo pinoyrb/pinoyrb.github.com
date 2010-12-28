@@ -3,7 +3,7 @@ layout: post
 title:        'RVM Gemsets: Awesomeness'
 author:       'cyx'
 published_at: 2010-04-11
-permalink:    '
+permalink:    http://pipetodevnull.upstrat.com/past/2010/4/11/rvm_gemsets_something_you_need_to_know/
 ---
 
 <h1> {{ page.title }} </h1>

@@ -3,7 +3,7 @@ layout: post
 title:        'Blizzard is the Enemy of Rails'
 author:       'Rad Batnag'
 published_at: 2010-07-28
-permalink:    '
+permalink:    http://rad.batnag.org/2010/07/blizzard-is-the-enemy-of-rails/
 ---
 
 <h1> {{ page.title }} </h1>

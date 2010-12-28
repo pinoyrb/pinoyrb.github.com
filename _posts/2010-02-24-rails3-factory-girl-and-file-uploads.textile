@@ -3,7 +3,7 @@ layout: post
 title:        'Rails3: Factory girl and file uploads'
 author:       'cyx'
 published_at: 2010-02-24
-permalink:    '
+permalink:    http://pipetodevnull.upstrat.com/past/2010/2/23/rails3_factory_girl_and_file_uploads/
 ---
 
 <h1> {{ page.title }} </h1>
