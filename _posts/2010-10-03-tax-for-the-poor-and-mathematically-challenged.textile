@@ -8,7 +8,7 @@ original_link: http://blog.bryanbibat.net/2010/10/04/tax-for-the-poor-and-mathem
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}
 &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p><a href="http://apps.bryanbibat.net/lotto/"><img src="http://www.bryanbibat.net/images/lotto_simulator.png" alt="lotto simulator" class="aligncenter" /></a></p>

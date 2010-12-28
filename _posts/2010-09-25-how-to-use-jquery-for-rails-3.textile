@@ -8,7 +8,7 @@ original_link: http://blog.bridgeutopiaweb.com/post/how-to-use-jquery-for-rails-
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}
 &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>jQuery is the defacto Javascript framework used by happy programmers. I am very glad to use it in almost all of the applications I am working on.</p>

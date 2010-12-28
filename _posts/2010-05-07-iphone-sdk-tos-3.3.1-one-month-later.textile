@@ -8,7 +8,7 @@ original_link: http://rad.batnag.org/2010/05/iphone-sdk-tos-3-3-1-one-month-late
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}
 &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>If you&#8217;ve been living in a cave, &#8220;3.3.1&#8243; refers to section 3.3.1 of the iPhone Developer Program License Agreement. Section 3.3.1 for the iPhone 4.0SDK beta reads:</p>

@@ -8,7 +8,7 @@ original_link: http://pipetodevnull.upstrat.com/past/2010/4/14/uninitialized_con
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}
 &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>Just a quick shout out for those having a problem with the latest DelayedJob, this is a quick fix!</p>

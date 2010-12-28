@@ -8,7 +8,7 @@ original_link: http://blog.bridgeutopiaweb.com/post/how-to-install-and-use-rails
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}
 &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>This is why Rails3's philosophy is agnosticism:</p>

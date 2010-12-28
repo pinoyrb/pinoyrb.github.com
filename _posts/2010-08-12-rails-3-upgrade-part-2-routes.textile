@@ -8,7 +8,7 @@ original_link: http://gregmoreno.ca/rails-3-upgrade-part-2-routes/
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}
 &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>In the previous post, I outlined the steps I took to<a href="http://gregmoreno.ca/rails-3-upgrade-part-1-booting-the-application/"> upgrade and boot a Rails 3 application</a>. This time, I share my experience upgrading the routes file. By the way, I forgot to mention in the last post that I&#8217;m using <a href="http://www.railsupgradehandbook.com/">Rails 3 Upgrade Handbook by Jeremy McAnally</a>.</p>

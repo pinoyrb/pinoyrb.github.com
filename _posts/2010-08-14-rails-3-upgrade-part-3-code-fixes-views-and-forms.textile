@@ -8,7 +8,7 @@ original_link: http://gregmoreno.ca/rails-3-upgrade-part-3-code-fixes-views-and-
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}
 &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>This is part 3 of my Rails 2 to Rails 3 upgrade experience. Part 1 is about the initial code upgrade and <a href="http://gregmoreno.ca/rails-3-upgrade-part-1-booting-the-application/">getting the application to boot</a> while <a href="http://gregmoreno.ca/rails-3-upgrade-part-2-routes/">part 2 deals with routes</a>. While Part 2 is mainly about routes, getting it work involved changes in other parts of the code which I&#8217;ll share this time. So while you are updating your routes, you may need to check this post in between changes.</p>

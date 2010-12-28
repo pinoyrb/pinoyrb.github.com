@@ -8,7 +8,7 @@ original_link: http://blog.bridgeutopiaweb.com/post/why-you-might-not-use-named-
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}
 &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>It's interesting how Rails 3 querying is a lot easier than it was before.</p>

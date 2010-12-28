@@ -8,7 +8,7 @@ original_link: http://rad.batnag.org/2010/06/corona-sdk/
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}
 &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>It seems I can develop some games much, much faster with the <a href="http://anscamobile.com/corona/" onclick="pageTracker._trackPageview('/outgoing/anscamobile.com/corona/?referer=');">Corona SDK</a>. It will cost me $99, and it&#8217;s not as macho as mastering Objective-C, but I think I&#8217;ll end up saving hundreds of hours with this kit.</p>

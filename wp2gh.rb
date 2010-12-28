@@ -67,7 +67,7 @@ def save_to_jekyll(blog)
       f.puts
       f.puts "<h1> {{ page.title }} </h1>"
       f.puts
-      f.puts "<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>"
+      f.puts "<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}"
       f.puts "&middot; <a href='{{ page.original_link }}'>Permalink</a></p>"
     
       f.puts

@@ -8,7 +8,7 @@ original_link: http://pipetodevnull.upstrat.com/past/2010/4/11/rvm_gemsets_somet
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}
 &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 If you have recently been keeping up to date with Ruby, and have tried using multiple versions at the same time, you’re most probably using <a href="http://rvm.beginrescueend.com">RVM</a> to manage these different versions.

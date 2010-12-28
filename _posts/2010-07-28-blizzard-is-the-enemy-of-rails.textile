@@ -8,7 +8,7 @@ original_link: http://rad.batnag.org/2010/07/blizzard-is-the-enemy-of-rails/
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}
 &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>Not Django, not Java, but Blizzard. They&#8217;re actively working to reduce Rails3 adoption. </p>

@@ -8,7 +8,7 @@ original_link: http://rad.batnag.org/2010/08/book-review-tapworthy/
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}
 &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p><img src="http://covers.oreilly.com/images/0636920001133/cat.gif" alt="Tapworthy" /><br />

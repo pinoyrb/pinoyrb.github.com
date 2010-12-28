@@ -8,7 +8,7 @@ original_link: http://pipetodevnull.upstrat.com/past/2010/7/21/dtach_is_the_way/
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}
 &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>If you have a worker that doesn&#8217;t stop (looping endlessly and waiting for some queue to have a job), you might want to have the ability to put this worker in the background for the following reasons:</p>

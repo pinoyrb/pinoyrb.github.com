@@ -8,7 +8,7 @@ original_link: http://pipetodevnull.upstrat.com/past/2010/2/28/unit_tests_are_th
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}
 &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>Jay fields wrote a blog post about the <a href='http://blog.jayfields.com/2010/02/maintainability-of-unit-tests.html'>maintainability of tests</a>. Basically his takeaways were the following:</p>

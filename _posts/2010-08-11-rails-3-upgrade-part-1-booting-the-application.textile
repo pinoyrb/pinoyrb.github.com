@@ -8,7 +8,7 @@ original_link: http://gregmoreno.ca/rails-3-upgrade-part-1-booting-the-applicati
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}
 &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>It&#8217;s time for another Rails upgrade! We all have our share of bad experiences and frustrations every time we upgrade a piece of software. Even for technical people who live and breath on the edge, upgrades are one of these things we try to avoid as much as possible.  Still, there is always a sense of excitement in trying something new even if it adds problems to an already stable piece of code.</p>

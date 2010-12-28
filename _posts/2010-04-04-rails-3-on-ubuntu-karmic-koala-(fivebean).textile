@@ -8,7 +8,7 @@ original_link: http://blog.bridgeutopiaweb.com/post/rails-3-on-ubuntu-karmic-koa
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}
 &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>This is one of my "Getting Things Right" posts, a.k.a, "How The Hell Do I Set Up My Rails Site on a VPS host." It’s almost always more difficult to get things right than get things done. I tried Slicehost and Linode before and I always ended up rebuilding because I couldn't get the right setup.</p>

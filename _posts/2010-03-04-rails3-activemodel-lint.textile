@@ -8,7 +8,7 @@ original_link: http://pipetodevnull.upstrat.com/past/2010/3/4/rails3_activemodel
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}
 &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>If you&#8217;re building ActiveModel-like classes, it&#8217;s quite useful that you run the ActiveModel Lint tests that&#8217;s shipped with Rails 3. Unfortunately, if you&#8217;re using Rspec 2.0, using the Test::Unit version doesn&#8217;t fly as well.</p>

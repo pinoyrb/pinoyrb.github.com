@@ -8,7 +8,7 @@ original_link: http://rad.batnag.org/2010/10/xmpp-development-in-ruby/
 
 <h1> {{ page.title }} </h1>
 
-<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} </p>
+<p class='meta'>by {{ page.author }} &middot; {{ page.published_at }}
 &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
 <p>Recently I wasted a day and half in debugging an XMPP-based service I&#8217;m working on. As is usual, the real reason I lost so much time was because I was totally unfamiliar with the terrain. I should have spent an hour or two on XMPP basics before I waded into this unfamiliar territory.</p>
