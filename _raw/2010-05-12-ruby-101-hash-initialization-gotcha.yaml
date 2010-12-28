@@ -4,8 +4,9 @@ published_at: '2010-05-12'
 filename:     '2010-05-12-ruby-101-hash-initialization-gotcha'
 permalink:    'http://gregmoreno.ca/ruby-101-hash-initialization-gotcha/'
 content: |-
-  <p>I have a code that counts how many times a word occurs &#8211; a perfect fit for Hash. </p>
-  <pre class="brush: plain;">
+  I have a code that counts how many times a word occurs - a perfect fit for Hash. 
+  
+  <pre class="brush: ruby">
   def word_counts(words)
     counts = Hash.new(0)
     words.each do |word|
@@ -14,12 +15,14 @@ content: |-
   end
   
   categories = {
-    :a =&gt; word_counts(‘some text’)
-    :b =&gt; word_counts(‘another set of text’)
+    :a => word_counts(‘some text’)
+    :b => word_counts(‘another set of text’)
   }
   </pre>
-  <p>Somewhere, I use the hash returned by the word_counts method to do some calculation.</p>
-  <pre class="brush: plain;">
+  
+  Somewhere, I use the hash returned by the word_counts method to do some calculation.
+  
+  <pre class="brush: ruby">
   def score(word_scores, words)
     words.each do |word|
       v = word_scores[word]
@@ -33,21 +36,18 @@ content: |-
     score(word_counts, %w{some random text})
   end
   </pre>
-  <p>When I run the score, I always get an ‘Infinity’.  After some debugging, the problem is this piece of code:</p>
-  <pre class="brush: plain;">
+  
+  When I run the score, I always get an ‘Infinity’.  After some debugging, the problem is this piece of code:
+  
+  <pre class="brush: ruby">
   v = word_scores[word]
   v = 0.1 if v.nil?
   </pre>
-  <p>‘word_scores’  returns 0 if  ‘word’ doesn’t exist; not nil which is the default behavior. Later, I realized I initialized it via   Hash.new(0) which makes 0 the default value.  In fact, it is not even necessary to check for nil or 0. All we want is to retrieve the value referenced by the key, and if the key does not exist, give me 0.1.</p>
-  <pre class="brush: plain;">
+  
+  ‘word_scores’  returns 0 if  ‘word’ doesn’t exist; not nil which is the default behavior. Later, I realized I initialized it via   Hash.new(0) which makes 0 the default value.  In fact, it is not even necessary to check for nil or 0. All we want is to retrieve the value referenced by the key, and if the key does not exist, give me 0.1.
+  
+  <pre class="brush: ruby">
   v = word_counts.fetch word, 0.1
   </pre>
-  <p>By the way, the code is from a simple exercise on <a href="http://www.rubyoncloud.org/questions/how-to-classify-text-as-spam-or-funny-or-what-have-you-using-naive-bayes-algorithm">Naive Bayes algorithm to classify text</a>.</p>
   
-  
-  <p>Related posts:<ol><li><a href='http://gregmoreno.ca/ruby-101-make-your-class-behave-like-a-ruby-built-in/' rel='bookmark' title='Permanent Link: Ruby 101: Make your class behave like a Ruby built-in'>Ruby 101: Make your class behave like a Ruby built-in</a> <small>I got re-acquianted with this scenario while working on the OpenAmplify gem &#8211; a wrapper for the OpenAmplify API. When you give the api a text like a blog comment,...</small></li>
-  <li><a href='http://gregmoreno.ca/ruby-101-how-to-add-methods-to-a-ruby-class/' rel='bookmark' title='Permanent Link: Ruby 101: How to add methods to a Ruby class'>Ruby 101: How to add methods to a Ruby class</a> <small>Let’s add a method that checks whether an Array has many elements. a = [1,2,3] a.many? # NoMethodError: undefined method `many?' Let’s fix this by adding a new method to...</small></li>
-  <li><a href='http://gregmoreno.ca/ruby-101-how-to-filter-an-array-using-proc/' rel='bookmark' title='Permanent Link: Ruby 101: How to filter an Array using proc'>Ruby 101: How to filter an Array using proc</a> <small>Over at the PhRUG, a Ruby developer community based in the Philippines, we conduct code review sessions via our mailing list. A code is posted and members share alternative implementations....</small></li>
-  </ol></p>
-  <p><a href="http://feedads.g.doubleclick.net/~a/r1-FCUUzCX-n33j7qqtjLKqL4So/0/da"><img src="http://feedads.g.doubleclick.net/~a/r1-FCUUzCX-n33j7qqtjLKqL4So/0/di" border="0" ismap="true"></img></a><br/>
-  <a href="http://feedads.g.doubleclick.net/~a/r1-FCUUzCX-n33j7qqtjLKqL4So/1/da"><img src="http://feedads.g.doubleclick.net/~a/r1-FCUUzCX-n33j7qqtjLKqL4So/1/di" border="0" ismap="true"></img></a></p>
+  By the way, the code is from a simple exercise on <a href="http://www.rubyoncloud.org/questions/how-to-classify-text-as-spam-or-funny-or-what-have-you-using-naive-bayes-algorithm">Naive Bayes algorithm to classify text</a>.
