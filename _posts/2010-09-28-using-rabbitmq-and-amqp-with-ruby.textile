@@ -10,7 +10,6 @@ original_link: http://gregmoreno.ca/using-rabbitmq-and-amqp-with-ruby/
 
 <p class='meta'>by {{ page.author }} &middot; {{ page.published_at }} &middot; <a href='{{ page.original_link }}'>Permalink</a></p>
 
-<p><em>This post is also available at <a href="http://rubyoncloud.org">Ruby On Cloud</a></em></p>
 <p><a href="http://www.amqp.org/">AMQP</a> stands for Advanced Message Queuing Protocol. RabbitMQ is a server that implements the protocol. RabbitMQ is available on Linux, OSX, and Windows. Installation instructions for RabbitMQ are available at <a href="http://www.rabbitmq.com/install.html">http://www.rabbitmq.com/install.html</a></p>
 <p>I will be running RabbitMQ on Ubuntu 9.10. First, let&#8217;s install the server:</p>
 <pre class="brush: bash;">
@@ -46,7 +45,7 @@ original_link: http://gregmoreno.ca/using-rabbitmq-and-amqp-with-ruby/
     i=0
     while true
       i += 1
-      q.publish(&quot;Hello, World #{i}&quot;)
+      q.publish("Hello, World #{i}")
       sleep(1)
     end
 </pre>
@@ -58,7 +57,7 @@ original_link: http://gregmoreno.ca/using-rabbitmq-and-amqp-with-ruby/
       q = MQ.queue('my_queue')
 
       q.subscribe do |msg|
-        puts &quot;#{Time.now}: #{msg}&quot; if msg
+        puts "#{Time.now}: #{msg}" if msg
       end
     end
 </pre>
@@ -67,24 +66,16 @@ original_link: http://gregmoreno.ca/using-rabbitmq-and-amqp-with-ruby/
     AMQP.start do
       q = MQ.queue('my_queue')
       q.pop do |msg|
-        puts &quot;#{Time.now}: #{msg}&quot; if msg
+        puts "#{Time.now}: #{msg}" if msg
         q.pop
       end
     end
 </pre>
 <p>If you want to run AMQP on several machines, just specify the location of the broker in your publisher and consumer code:</p>
 <pre class="brush: ruby;">
-    AMQP.start(:host =&gt; '192.168.0.195') do
+    AMQP.start(:host => '192.168.0.195') do
       # code here
     end
 </pre>
 <p>You only need to run 1 rabbitmq server, which in my case is on Ubuntu. When you try the code in other machines, you only need the <a href="http://github.com/tmm1/amqp">amqp</a> gem installed.</p>
-<p>I highly recommend &#8220;<a href="http://tinyurl.com/2aqcz22">Distributed Programming with Ruby</a>&#8221; by Mark Bates if you&#8217;re interested in distributed programming.</p>
-
-
-<p>Related posts:<ol><li><a href='http://gregmoreno.ca/how-to-setup-a-rails-3-app/' rel='bookmark' title='Permanent Link: How to setup a Rails 3 app'>How to setup a Rails 3 app</a> <small>I finally decided to give Rails 3 a spin after beta was released 20 days ago. In geek time, that&#8217;s being a late adopter. But first, a warning. I&#8217;ve read...</small></li>
-<li><a href='http://gregmoreno.ca/deploy-a-rails-3-sqlite3-application-in-tomcat-using-jruby/' rel='bookmark' title='Permanent Link: Deploy a Rails 3, Sqlite3 application in Tomcat using JRuby'>Deploy a Rails 3, Sqlite3 application in Tomcat using JRuby</a> <small>and have a Ruby version running side-by-side. A few months ago I got interested in JRuby while researching for text mining algorithms. I found some gems but they are either...</small></li>
-<li><a href='http://gregmoreno.ca/ruby-101-how-to-add-methods-to-a-ruby-class/' rel='bookmark' title='Permanent Link: Ruby 101: How to add methods to a Ruby class'>Ruby 101: How to add methods to a Ruby class</a> <small>Let’s add a method that checks whether an Array has many elements. a = [1,2,3] a.many? # NoMethodError: undefined method `many?' Let’s fix this by adding a new method to...</small></li>
-</ol></p>
-<p><a href="http://feedads.g.doubleclick.net/~a/a1ChoPbfLSf_hBwmmvFHSEOXYXA/0/da"><img src="http://feedads.g.doubleclick.net/~a/a1ChoPbfLSf_hBwmmvFHSEOXYXA/0/di" border="0" ismap="true"></img></a><br/>
-<a href="http://feedads.g.doubleclick.net/~a/a1ChoPbfLSf_hBwmmvFHSEOXYXA/1/da"><img src="http://feedads.g.doubleclick.net/~a/a1ChoPbfLSf_hBwmmvFHSEOXYXA/1/di" border="0" ismap="true"></img></a></p>
+<p>I highly recommend <a href="http://tinyurl.com/2aqcz22">Distributed Programming with Ruby</a> by Mark Bates if you&#8217;re interested in distributed programming.</p>
